@@ -16,8 +16,7 @@ public class Direccion {
     public String toString() {
         return "Direccion{" + "calle=" + calle + ", numero=" + numero + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + '}';
     }
-    
-    
+  
     public String getCalle() {
         return calle;
     }
