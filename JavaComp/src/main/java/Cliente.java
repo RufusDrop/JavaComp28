@@ -1,5 +1,5 @@
 
-public class Cliente {
+public abstract class Cliente {
     private String nombre;
     private String correo;
     private String clave;
