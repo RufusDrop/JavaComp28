@@ -12,6 +12,28 @@ public class Registro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        
+        /**
+         * Asegura que todas las cajas empiecen con la visibilidad esperada
+         */
+        Object tipoDeUsuario;
+        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        if(tipoDeUsuario=="Empresa"){
+            jLabelDNI.setVisible(false);
+            jTextFieldDNI.setVisible(false);
+            jLabelCIF.setVisible(true);
+            jTextFieldCIF.setVisible(true);
+            jLabelWeb.setVisible(true);
+            jTextFieldWeb.setVisible(true);
+        }
+        else if(tipoDeUsuario == "Particular"){
+            jLabelDNI.setVisible(true);
+            jTextFieldDNI.setVisible(true);
+            jLabelCIF.setVisible(false);
+            jTextFieldCIF.setVisible(false);
+            jLabelWeb.setVisible(false);
+            jTextFieldWeb.setVisible(false);
+        }
     } 
 
     /**
@@ -37,10 +59,18 @@ public class Registro extends javax.swing.JDialog {
         jTextFieldDireccion = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JTextField();
         jToggleButtonSiguiente = new javax.swing.JToggleButton();
+        jLabelTieneCuentaPregunta = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jComboBoxAdministradorCliente = new javax.swing.JComboBox<>();
+        jLabelTipoDeCuenta = new javax.swing.JLabel();
+        jLabelWeb = new javax.swing.JLabel();
+        jTextFieldWeb = new javax.swing.JTextField();
+        jLabelCIF = new javax.swing.JLabel();
+        jTextFieldCIF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabelRegistro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelRegistro.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelRegistro.setForeground(new java.awt.Color(51, 153, 255));
         jLabelRegistro.setText("REGISTRO");
 
@@ -48,7 +78,7 @@ public class Registro extends javax.swing.JDialog {
 
         jLabelNombre.setText("Nombre:");
 
-        jLabelCorreoElectronico.setText("Correo elctrónico:");
+        jLabelCorreoElectronico.setText("Correo electrónico:");
 
         jLabelContrasena.setText("Contraseña");
 
@@ -62,6 +92,8 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
+        jTextFieldCorreoElectronico.setText("Ej: user@gmail.com");
+
         jToggleButtonSiguiente.setText("SIGUIENTE");
         jToggleButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,42 +101,91 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
+        jLabelTieneCuentaPregunta.setForeground(new java.awt.Color(50, 150, 180));
+        jLabelTieneCuentaPregunta.setText("¿Ya tiene una cuenta?");
+
+        jButton1.setText("Log In");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jComboBoxAdministradorCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
+        jComboBoxAdministradorCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAdministradorClienteActionPerformed(evt);
+            }
+        });
+
+        jLabelTipoDeCuenta.setText("Tipo de cuenta");
+
+        jLabelWeb.setText("Web:");
+
+        jLabelCIF.setText("CIF:");
+
+        jTextFieldCIF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCIFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addContainerGap(31, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelNombre)
                             .addComponent(jLabelDNI)
                             .addComponent(jLabelCorreoElectronico)
                             .addComponent(jLabelContrasena)
                             .addComponent(jLabelDireccion)
-                            .addComponent(jLabelTelefono))
+                            .addComponent(jLabelTelefono)
+                            .addComponent(jLabelTipoDeCuenta)
+                            .addComponent(jLabelWeb)
+                            .addComponent(jLabelCIF))
                         .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldDNI)
+                            .addComponent(jTextFieldNombre)
+                            .addComponent(jTextFieldCorreoElectronico)
+                            .addComponent(jTextFieldContrasena)
+                            .addComponent(jTextFieldDireccion)
+                            .addComponent(jTextFieldTelefono)
+                            .addComponent(jComboBoxAdministradorCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCIF)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelRegistro)
-                            .addComponent(jToggleButtonSiguiente))))
-                .addContainerGap(46, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabelTieneCuentaPregunta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelRegistro)
+                    .addComponent(jToggleButtonSiguiente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabelRegistro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTipoDeCuenta)
+                    .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelCIF)
+                    .addComponent(jTextFieldCIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelDNI)
                     .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,8 +210,16 @@ public class Registro extends javax.swing.JDialog {
                     .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelTelefono))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelWeb))
+                .addGap(18, 18, 18)
                 .addComponent(jToggleButtonSiguiente)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jLabelTieneCuentaPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -150,18 +239,39 @@ public class Registro extends javax.swing.JDialog {
         } catch(NumberFormatException e){
             numInvalido = true;
         }
-         if(jTextFieldDNI.getText().isBlank()||    //Se comprueba que los campos esten rellenos
-                 jTextFieldNombre.getText().isBlank()||
-                 jTextFieldCorreoElectronico.getText().isBlank() ||
-                 jTextFieldContrasena.getText().isBlank()||
-                 jTextFieldDireccion.getText().isBlank()||
-                 jTextFieldTelefono.getText().isBlank())
-         { 
+        Object tipoDeUsuario;
+        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        /**
+         * Se comprueba que todos los datos se introduzcan y sean validos
+         */
+        if( 
+                
+                (tipoDeUsuario=="Empresa" && (jTextFieldCIF.getText().isBlank()||jTextFieldWeb.getText().isBlank()))  
+                || (tipoDeUsuario=="Particular" && (jTextFieldDNI.getText().isBlank()))){
             JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jTextFieldDNI.getText().contains(" ")){  //Luego se comprueba que el dni sea correcto
+        if(    
+                 jTextFieldNombre.getText().isBlank()||
+                 jTextFieldCorreoElectronico.getText().isBlank() ||
+                 jTextFieldContrasena.getText().isBlank()|| 
+                 jTextFieldDireccion.getText().isBlank()||
+                 jTextFieldTelefono.getText().isBlank())
+                 
+         { 
+              JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(tipoDeUsuario=="Particular" && jTextFieldDNI.getText().contains(" ")){  //Luego se comprueba que el dni sea correcto
                 JOptionPane.showMessageDialog(this, "El DNI no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(tipoDeUsuario=="Empresa" &&jTextFieldCIF.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "El CIF no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(tipoDeUsuario=="Empresa" &&jTextFieldWeb.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "La web no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
         if(jTextFieldCorreoElectronico.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
@@ -187,9 +297,44 @@ public class Registro extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jToggleButtonSiguienteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDNIActionPerformed
+
+    private void jComboBoxAdministradorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAdministradorClienteActionPerformed
+        // TODO add your handling code here:
+        /**
+         * Asegura que dependiendo del tipo se activen las debidas cajas.
+         */
+        Object tipoDeUsuario;
+        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        if(tipoDeUsuario=="Empresa"){
+            jLabelDNI.setVisible(false);
+            jTextFieldDNI.setVisible(false);
+            jLabelCIF.setVisible(true);
+            jTextFieldCIF.setVisible(true);
+            jLabelWeb.setVisible(true);
+            jTextFieldWeb.setVisible(true);
+        }
+        else if(tipoDeUsuario == "Particular"){
+            jLabelDNI.setVisible(true);
+            jTextFieldDNI.setVisible(true);
+            jLabelCIF.setVisible(false);
+            jTextFieldCIF.setVisible(false);
+            jLabelWeb.setVisible(false);
+            jTextFieldWeb.setVisible(false);
+        }
+    }//GEN-LAST:event_jComboBoxAdministradorClienteActionPerformed
+
+    private void jTextFieldCIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCIFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCIFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +379,9 @@ public class Registro extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBoxAdministradorCliente;
+    private javax.swing.JLabel jLabelCIF;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelDNI;
@@ -241,12 +389,17 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelRegistro;
     private javax.swing.JLabel jLabelTelefono;
+    private javax.swing.JLabel jLabelTieneCuentaPregunta;
+    private javax.swing.JLabel jLabelTipoDeCuenta;
+    private javax.swing.JLabel jLabelWeb;
+    private javax.swing.JTextField jTextFieldCIF;
     private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDireccion;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JTextField jTextFieldWeb;
     private javax.swing.JToggleButton jToggleButtonSiguiente;
     // End of variables declaration//GEN-END:variables
 }

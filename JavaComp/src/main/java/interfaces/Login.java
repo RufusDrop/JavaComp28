@@ -71,7 +71,7 @@ public class Login extends javax.swing.JFrame {
         jLabelRegistradoPregunta.setForeground(new java.awt.Color(50, 150, 180));
         jLabelRegistradoPregunta.setText("¿Aún no estás registrado?");
 
-        jLabelLogIn.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabelLogIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelLogIn.setForeground(new java.awt.Color(44, 160, 201));
         jLabelLogIn.setText("LOG IN");
         jLabelLogIn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -94,10 +94,6 @@ public class Login extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelRegistradoPregunta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabelTipoDeUsuario)
                                     .addComponent(jLabel3)
@@ -106,7 +102,11 @@ public class Login extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jPasswordFieldContrasena)
                                     .addComponent(jTextFieldCorreoElectronico)
-                                    .addComponent(jComboBoxAdministradorCliente, 0, 120, Short.MAX_VALUE)))))
+                                    .addComponent(jComboBoxAdministradorCliente, 0, 120, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelRegistradoPregunta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(jLabelLogIn))
@@ -134,11 +134,11 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jPasswordFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(jToggleButtonIniciarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelRegistradoPregunta)
+                    .addComponent(jLabelRegistradoPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRegistrarse))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,9 +160,10 @@ public class Login extends javax.swing.JFrame {
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
         Object tipoDeUsuario;
         tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
-        if(tipoDeUsuario=="Cliente")
+        if(tipoDeUsuario=="Cliente"){
             new Registro(this,true).setVisible(true);
-
+           this.setVisible(false);
+        }
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
     private void jToggleButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarSesionActionPerformed

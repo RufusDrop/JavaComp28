@@ -23,10 +23,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDNI" min="-2" max="-2" attributes="0"/>
@@ -34,35 +34,58 @@
                           <Component id="jLabelContrasena" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDireccion" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelTelefono" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTipoDeCuenta" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelWeb" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelCIF" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldDNI" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jTextFieldNombre" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jTextFieldCorreoElectronico" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jTextFieldContrasena" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jTextFieldDireccion" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="jTextFieldTelefono" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextFieldDNI" max="32767" attributes="0"/>
+                          <Component id="jTextFieldNombre" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCorreoElectronico" max="32767" attributes="0"/>
+                          <Component id="jTextFieldContrasena" max="32767" attributes="0"/>
+                          <Component id="jTextFieldDireccion" max="32767" attributes="0"/>
+                          <Component id="jTextFieldTelefono" max="32767" attributes="0"/>
+                          <Component id="jComboBoxAdministradorCliente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldWeb" min="-2" pref="130" max="-2" attributes="0"/>
+                          <Component id="jTextFieldCIF" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelRegistro" min="-2" max="-2" attributes="0"/>
-                          <Component id="jToggleButtonSiguiente" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <Component id="jLabelTieneCuentaPregunta" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jButton1" min="-2" pref="130" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="46" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jLabelRegistro" min="-2" max="-2" attributes="0"/>
+                  <Component id="jToggleButtonSiguiente" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Component id="jLabelRegistro" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelTipoDeCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxAdministradorCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelCIF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldCIF" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelDNI" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldDNI" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -93,8 +116,18 @@
                   <Component id="jLabelTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextFieldWeb" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelWeb" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jToggleButtonSiguiente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="108" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTieneCuentaPregunta" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -103,7 +136,7 @@
     <Component class="javax.swing.JLabel" name="jLabelRegistro">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="24" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="99" red="33" type="rgb"/>
@@ -123,7 +156,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelCorreoElectronico">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Correo elctr&#xf3;nico:"/>
+        <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelContrasena">
@@ -149,6 +182,9 @@
     <Component class="javax.swing.JTextField" name="jTextFieldNombre">
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldCorreoElectronico">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ej: user@gmail.com"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldContrasena">
     </Component>
@@ -162,6 +198,60 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButtonSiguienteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTieneCuentaPregunta">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="b4" green="96" red="32" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&#xbf;Ya tiene una cuenta?"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Log In"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBoxAdministradorCliente">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Empresa"/>
+            <StringItem index="1" value="Particular"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAdministradorClienteActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTipoDeCuenta">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tipo de cuenta"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelWeb">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Web:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldWeb">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelCIF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CIF:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldCIF">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCIFActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
