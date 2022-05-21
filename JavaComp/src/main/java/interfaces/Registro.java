@@ -1,15 +1,18 @@
 
 package interfaces;
 
-public class Registro extends javax.swing.JDialog {
+import javax.swing.JOptionPane;
 
+public class Registro extends javax.swing.JDialog {
+    
     /**
      * Creates new form Registro
      */
     public Registro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
+        this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+    } 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -20,41 +23,49 @@ public class Registro extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jLabelRegistro = new javax.swing.JLabel();
+        jLabelDNI = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelCorreoElectronico = new javax.swing.JLabel();
+        jLabelContrasena = new javax.swing.JLabel();
+        jLabelDireccion = new javax.swing.JLabel();
+        jLabelTelefono = new javax.swing.JLabel();
+        jTextFieldDNI = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jTextFieldCorreoElectronico = new javax.swing.JTextField();
+        jTextFieldContrasena = new javax.swing.JTextField();
+        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldTelefono = new javax.swing.JTextField();
+        jToggleButtonSiguiente = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("REGISTRO");
+        jLabelRegistro.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelRegistro.setForeground(new java.awt.Color(51, 153, 255));
+        jLabelRegistro.setText("REGISTRO");
 
-        jLabel2.setText("DNI:");
+        jLabelDNI.setText("DNI:");
 
-        jLabel3.setText("Nombre:");
+        jLabelNombre.setText("Nombre:");
 
-        jLabel4.setText("Correo elctrónico:");
+        jLabelCorreoElectronico.setText("Correo elctrónico:");
 
-        jLabel5.setText("Contraseña");
+        jLabelContrasena.setText("Contraseña");
 
-        jLabel6.setText("Dirección");
+        jLabelDireccion.setText("Dirección");
 
-        jLabel7.setText("Teléfono:");
+        jLabelTelefono.setText("Teléfono:");
 
-        jToggleButton1.setText("SIGUIENTE");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jTextFieldDNIActionPerformed(evt);
+            }
+        });
+
+        jToggleButtonSiguiente.setText("SIGUIENTE");
+        jToggleButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButtonSiguienteActionPerformed(evt);
             }
         });
 
@@ -67,68 +78,118 @@ public class Registro extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabelNombre)
+                            .addComponent(jLabelDNI)
+                            .addComponent(jLabelCorreoElectronico)
+                            .addComponent(jLabelContrasena)
+                            .addComponent(jLabelDireccion)
+                            .addComponent(jLabelTelefono))
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(jToggleButton1))
+                            .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
-                        .addComponent(jLabel1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelRegistro)
+                            .addComponent(jToggleButtonSiguiente))))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGap(12, 12, 12)
+                .addComponent(jLabelRegistro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelDNI)
+                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNombre))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCorreoElectronico))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelContrasena))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelDireccion))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTelefono))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jToggleButtonSiguiente)
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jToggleButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonSiguienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        /**
+         * 
+         * Se comprueba que el numero de telefono sean numeros
+         */
+        boolean numInvalido = false;
+        try{
+            for (int i = 0; i < jTextFieldTelefono.getText().length(); i++) {
+                int telefonoInt = Integer.parseInt(jTextFieldTelefono.getText());
+        }
+        } catch(NumberFormatException e){
+            numInvalido = true;
+        }
+         if(jTextFieldDNI.getText().isBlank()||    //Se comprueba que los campos esten rellenos
+                 jTextFieldNombre.getText().isBlank()||
+                 jTextFieldCorreoElectronico.getText().isBlank() ||
+                 jTextFieldContrasena.getText().isBlank()||
+                 jTextFieldDireccion.getText().isBlank()||
+                 jTextFieldTelefono.getText().isBlank())
+         { 
+            JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(jTextFieldDNI.getText().contains(" ")){  //Luego se comprueba que el dni sea correcto
+                JOptionPane.showMessageDialog(this, "El DNI no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(jTextFieldCorreoElectronico.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "El correo no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(jTextFieldContrasena.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "La contraseña no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(jTextFieldDireccion.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "La dirección no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(jTextFieldTelefono.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "El teléfono no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        if(numInvalido || jTextFieldTelefono.getText().length()!=9){
+            JOptionPane.showMessageDialog(this, "El teléfono debe ser valido. Nueve numeros enteros seguidos", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_jToggleButtonSiguienteActionPerformed
+
+    private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDNIActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,19 +234,19 @@ public class Registro extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel jLabelContrasena;
+    private javax.swing.JLabel jLabelCorreoElectronico;
+    private javax.swing.JLabel jLabelDNI;
+    private javax.swing.JLabel jLabelDireccion;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelRegistro;
+    private javax.swing.JLabel jLabelTelefono;
+    private javax.swing.JTextField jTextFieldContrasena;
+    private javax.swing.JTextField jTextFieldCorreoElectronico;
+    private javax.swing.JTextField jTextFieldDNI;
+    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldTelefono;
+    private javax.swing.JToggleButton jToggleButtonSiguiente;
     // End of variables declaration//GEN-END:variables
 }
