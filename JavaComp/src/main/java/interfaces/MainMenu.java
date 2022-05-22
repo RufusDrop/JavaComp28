@@ -77,7 +77,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCuenta.setBackground(new java.awt.Color(51, 51, 51));
         jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoCuentaAzulMini.png"))); // NOI18N
+        jButtonCuenta.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\images\\IconoCuentaAzulMini.png")); // NOI18N
         jButtonCuenta.setText("Cuenta");
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCuenta.setIconTextGap(1);
@@ -92,7 +92,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCarrito.setBackground(new java.awt.Color(51, 51, 51));
         jButtonCarrito.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCarrito.setForeground(new java.awt.Color(204, 204, 204));
-        jButtonCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CarritoBlancoMini.png"))); // NOI18N
+        jButtonCarrito.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\images\\CarritoBlancoMini.png")); // NOI18N
         jButtonCarrito.setText("Tu carrito");
         jButtonCarrito.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCarrito.setIconTextGap(1);
