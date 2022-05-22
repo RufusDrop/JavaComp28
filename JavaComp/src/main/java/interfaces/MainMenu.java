@@ -24,6 +24,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelMainText = new javax.swing.JLabel();
         jButtonCuenta = new javax.swing.JButton();
         jLabelNombreCuenta = new javax.swing.JLabel();
+        jLabelNombreCuenta1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,7 +40,11 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelNombreCuenta.setText("Nombre");
+
+        jLabelNombreCuenta1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelNombreCuenta1.setText("Nombre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,7 +58,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelNombreCuenta)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombreCuenta)
+                    .addComponent(jLabelNombreCuenta1))
                 .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
@@ -62,8 +69,10 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelNombreCuenta)))
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabelNombreCuenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelNombreCuenta1)))
                 .addGap(60, 60, 60)
                 .addComponent(jLabelMainText)
                 .addContainerGap(437, Short.MAX_VALUE))
@@ -111,5 +120,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCuenta;
     private javax.swing.JLabel jLabelMainText;
     private javax.swing.JLabel jLabelNombreCuenta;
+    private javax.swing.JLabel jLabelNombreCuenta1;
     // End of variables declaration//GEN-END:variables
 }
