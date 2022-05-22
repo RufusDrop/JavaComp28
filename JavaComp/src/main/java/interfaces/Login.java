@@ -1,16 +1,44 @@
 
 package interfaces;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
+        /**
+         * Creates new form Login
      */
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+          try {
+        javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception e) {
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
+            }
+        }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
     }
 
     /**
@@ -24,9 +52,7 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordFieldContrasena = new javax.swing.JPasswordField();
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
-        jComboBoxAdministradorCliente = new javax.swing.JComboBox<>();
         jButtonRegistrarse = new javax.swing.JButton();
-        jLabelTipoDeUsuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelContrasena = new javax.swing.JLabel();
         jLabelRegistradoPregunta = new javax.swing.JLabel();
@@ -48,21 +74,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxAdministradorCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cliente" }));
-        jComboBoxAdministradorCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAdministradorClienteActionPerformed(evt);
-            }
-        });
-
         jButtonRegistrarse.setText("Registrarse");
         jButtonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegistrarseActionPerformed(evt);
             }
         });
-
-        jLabelTipoDeUsuario.setText("Tipo de usuario");
 
         jLabel3.setText("Correo electrónico");
 
@@ -91,40 +108,35 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelTipoDeUsuario)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabelContrasena))
-                                .addGap(88, 88, 88)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPasswordFieldContrasena)
-                                    .addComponent(jTextFieldCorreoElectronico)
-                                    .addComponent(jComboBoxAdministradorCliente, 0, 120, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelRegistradoPregunta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jToggleButtonIniciarSesion))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(182, 182, 182)
-                        .addComponent(jLabelLogIn)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                        .addComponent(jLabelLogIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabelContrasena))
+                                    .addGap(88, 88, 88)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jPasswordFieldContrasena)
+                                        .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelRegistradoPregunta)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(101, 101, 101)
+                                .addComponent(jToggleButtonIniciarSesion)))))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabelLogIn)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoDeUsuario)
-                    .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -138,7 +150,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelRegistradoPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRegistrarse))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,17 +165,9 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCorreoElectronicoActionPerformed
 
-    private void jComboBoxAdministradorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAdministradorClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxAdministradorClienteActionPerformed
-
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
-        Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
-        if(tipoDeUsuario=="Cliente"){
             new Registro(this,true).setVisible(true);
            this.setVisible(false);
-        }
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
     private void jToggleButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarSesionActionPerformed
@@ -203,14 +207,21 @@ public class Login extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+         */ try {
+        javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (Exception e) {
+        System.err.println("Failed to initialize LaF");
+        }
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
             }
+        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -221,7 +232,8 @@ public class Login extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -232,12 +244,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrarse;
-    private javax.swing.JComboBox<String> jComboBoxAdministradorCliente;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelLogIn;
     private javax.swing.JLabel jLabelRegistradoPregunta;
-    private javax.swing.JLabel jLabelTipoDeUsuario;
     private javax.swing.JPasswordField jPasswordFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     private javax.swing.JToggleButton jToggleButtonIniciarSesion;

@@ -26,7 +26,7 @@
           <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelDNI" min="-2" max="-2" attributes="0"/>
@@ -40,14 +40,14 @@
                       </Group>
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTextFieldDNI" max="32767" attributes="0"/>
-                          <Component id="jTextFieldNombre" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCorreoElectronico" max="32767" attributes="0"/>
-                          <Component id="jTextFieldContrasena" max="32767" attributes="0"/>
-                          <Component id="jTextFieldDireccion" max="32767" attributes="0"/>
-                          <Component id="jComboBoxAdministradorCliente" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldWeb" pref="130" max="32767" attributes="0"/>
-                          <Component id="jTextFieldCIF" max="32767" attributes="0"/>
+                          <Component id="jComboBoxAdministradorCliente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCIF" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldDNI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldContrasena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldDireccion" alignment="0" max="32767" attributes="0"/>
                           <Component id="jFormattedTextFieldTelefono" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -80,16 +80,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="jLabelRegistro" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelTipoDeCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxAdministradorCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelCIF" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCIF" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="jTextFieldCIF" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+              <Component id="jLabelCIF" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelDNI" alignment="3" min="-2" max="-2" attributes="0"/>

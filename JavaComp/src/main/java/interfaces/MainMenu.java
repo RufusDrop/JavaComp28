@@ -1,6 +1,9 @@
 
 package interfaces;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLightLaf;
+
 
 public class MainMenu extends javax.swing.JFrame {
 
@@ -10,6 +13,31 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
          this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+          try {
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
+            }
+        }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
     }
 
     /**
@@ -27,7 +55,8 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelCorreoElectronico = new javax.swing.JLabel();
         jButtonCuenta = new javax.swing.JButton();
         jButtonCarrito = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        jPanelBusqueda = new javax.swing.JPanel();
+        jTextFieldBusqueda = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,11 +77,11 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCuenta.setBackground(new java.awt.Color(51, 51, 51));
         jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCuenta.setForeground(new java.awt.Color(204, 204, 204));
-        jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconoCuentaAzulMini.png"))); // NOI18N
+        jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/IconoCuentaAzulMini.png"))); // NOI18N
         jButtonCuenta.setText("Cuenta");
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCuenta.setIconTextGap(1);
-        jButtonCuenta.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jButtonCuenta.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,11 +92,11 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCarrito.setBackground(new java.awt.Color(51, 51, 51));
         jButtonCarrito.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCarrito.setForeground(new java.awt.Color(204, 204, 204));
-        jButtonCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CarritoBlancoMini.png"))); // NOI18N
+        jButtonCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/CarritoBlancoMini.png"))); // NOI18N
         jButtonCarrito.setText("Tu carrito");
         jButtonCarrito.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCarrito.setIconTextGap(1);
-        jButtonCarrito.setMargin(new java.awt.Insets(0, 10, 0, 10));
+        jButtonCarrito.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButtonCarrito.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButtonCarrito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,8 +113,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNombreCuenta)
                     .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jButtonCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -100,42 +129,55 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(jButtonCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelBusqueda.setBackground(new java.awt.Color(51, 51, 51));
+        jPanelBusqueda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jTextFieldBusqueda.setText("jTextField1");
+        jTextFieldBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBusquedaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
+        jPanelBusqueda.setLayout(jPanelBusquedaLayout);
+        jPanelBusquedaLayout.setHorizontalGroup(
+            jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBusquedaLayout.createSequentialGroup()
+                .addContainerGap(196, Short.MAX_VALUE)
+                .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        jPanelBusquedaLayout.setVerticalGroup(
+            jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBusquedaLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jTextFieldBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabelMainText, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(86, 86, 86)
+                    .addComponent(jPanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(174, 174, 174)
                 .addComponent(jLabelMainText)
-                .addContainerGap(416, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,6 +191,10 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCarritoActionPerformed
 
+    private void jTextFieldBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBusquedaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -158,21 +204,29 @@ public class MainMenu extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+         try {
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+        System.err.println("Failed to initialize LaF");
+        }
+
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
             }
+        }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -190,7 +244,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelMainText;
     private javax.swing.JLabel jLabelNombreCuenta;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelBusqueda;
     private javax.swing.JPanel jPanelCuenta;
+    private javax.swing.JTextField jTextFieldBusqueda;
     // End of variables declaration//GEN-END:variables
 }
