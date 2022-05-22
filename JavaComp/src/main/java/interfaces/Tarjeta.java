@@ -18,10 +18,6 @@ public class Tarjeta extends javax.swing.JDialog {
         initComponents();
     }
 
-    private Tarjeta(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,41 +27,41 @@ public class Tarjeta extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
+        jLabel1DatosBancarios = new javax.swing.JLabel();
+        jLabel2TitularDeLaCuenta = new javax.swing.JLabel();
+        jLabel3NumeroTarjetaDeCrédito = new javax.swing.JLabel();
+        jLabel4FechaDeCaducidad = new javax.swing.JLabel();
+        jTextField1TitularDeLaCuenta = new javax.swing.JTextField();
+        jFormattedTextField1NumeroTarjetaDeCrédito = new javax.swing.JFormattedTextField();
+        jFormattedTextField2FechaDeCaducidad = new javax.swing.JFormattedTextField();
+        jButton1Validar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(44, 160, 201));
-        jLabel1.setText("DATOS BANCARIOS");
+        jLabel1DatosBancarios.setFont(new java.awt.Font("Microsoft YaHei", 1, 24)); // NOI18N
+        jLabel1DatosBancarios.setForeground(new java.awt.Color(44, 160, 201));
+        jLabel1DatosBancarios.setText("DATOS BANCARIOS");
 
-        jLabel2.setText("Titular de la cuenta:");
+        jLabel2TitularDeLaCuenta.setText("Titular de la cuenta:");
 
-        jLabel3.setText("Numero tarjeta de crédito:");
+        jLabel3NumeroTarjetaDeCrédito.setText("Numero tarjeta de crédito:");
 
-        jLabel4.setText("Fecha de caducidad:");
+        jLabel4FechaDeCaducidad.setText("Fecha de caducidad:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1TitularDeLaCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField1TitularDeLaCuentaActionPerformed(evt);
             }
         });
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextField1NumeroTarjetaDeCrédito.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("################"))));
+        jFormattedTextField2FechaDeCaducidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("################"))));
 
-        jButton1.setText("VALIDAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton1Validar.setText("VALIDAR");
+        jButton1Validar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton1ValidarActionPerformed(evt);
             }
         });
 
@@ -81,58 +77,57 @@ public class Tarjeta extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(175, 175, 175)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jFormattedTextField1)))
+                                    .addComponent(jFormattedTextField2FechaDeCaducidad, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jTextField1TitularDeLaCuenta)
+                                    .addComponent(jFormattedTextField1NumeroTarjetaDeCrédito)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(36, 36, 36)
-                                        .addComponent(jLabel1))
-                                    .addComponent(jLabel4))
+                                        .addComponent(jLabel1DatosBancarios))
+                                    .addComponent(jLabel4FechaDeCaducidad))
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3))
+                                        .addComponent(jLabel2TitularDeLaCuenta)
+                                        .addComponent(jLabel3NumeroTarjetaDeCrédito))
                                     .addGap(168, 168, 168)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jButton1)))
+                        .addGap(153, 153, 153)
+                        .addComponent(jButton1Validar)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabel1DatosBancarios)
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2TitularDeLaCuenta)
+                    .addComponent(jTextField1TitularDeLaCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3NumeroTarjetaDeCrédito)
+                    .addComponent(jFormattedTextField2FechaDeCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(33, 33, 33))
+                    .addComponent(jLabel4FechaDeCaducidad)
+                    .addComponent(jFormattedTextField1NumeroTarjetaDeCrédito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jButton1Validar)
+                .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField1TitularDeLaCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1TitularDeLaCuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextField1TitularDeLaCuentaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            new Tarjeta(true).setVisible(true);
-           this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton1ValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ValidarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ValidarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,13 +172,13 @@ public class Tarjeta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jButton1Validar;
+    private javax.swing.JFormattedTextField jFormattedTextField1NumeroTarjetaDeCrédito;
+    private javax.swing.JFormattedTextField jFormattedTextField2FechaDeCaducidad;
+    private javax.swing.JLabel jLabel1DatosBancarios;
+    private javax.swing.JLabel jLabel2TitularDeLaCuenta;
+    private javax.swing.JLabel jLabel3NumeroTarjetaDeCrédito;
+    private javax.swing.JLabel jLabel4FechaDeCaducidad;
+    private javax.swing.JTextField jTextField1TitularDeLaCuenta;
     // End of variables declaration//GEN-END:variables
 }
