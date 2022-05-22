@@ -1,3 +1,5 @@
+package classes;
+
 import java.time.LocalDate; 
 public class Opinion {
     private int calificacion; //Del 1 al 5

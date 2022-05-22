@@ -1,3 +1,5 @@
+package classes;
+
 
 public class ClienteEmpresa extends Cliente{
     private String CIF;

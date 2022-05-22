@@ -1,3 +1,5 @@
+package classes;
+
 
 public class ClienteParticular extends Cliente{
     private String DNI;
