@@ -23,6 +23,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabelMainText = new javax.swing.JLabel();
         jButtonCuenta = new javax.swing.JButton();
+        jLabelNombreCuenta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -30,12 +31,15 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelMainText.setText("MainText");
         jLabelMainText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButtonCuenta.setForeground(new java.awt.Color(51, 51, 255));
+        jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconoCuenta.png"))); // NOI18N
         jButtonCuenta.setText("Cuenta");
+        jButtonCuenta.setToolTipText("Configuración de la cuenta");
+        jButtonCuenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jLabelNombreCuenta.setText("Nombre");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,14 +51,20 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGap(543, 543, 543))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCuenta)
-                .addGap(192, 192, 192))
+                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabelNombreCuenta)
+                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelNombreCuenta)))
+                .addGap(60, 60, 60)
                 .addComponent(jLabelMainText)
                 .addContainerGap(437, Short.MAX_VALUE))
         );
@@ -100,5 +110,6 @@ public class MainMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCuenta;
     private javax.swing.JLabel jLabelMainText;
+    private javax.swing.JLabel jLabelNombreCuenta;
     // End of variables declaration//GEN-END:variables
 }
