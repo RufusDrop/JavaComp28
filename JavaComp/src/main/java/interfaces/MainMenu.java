@@ -22,9 +22,10 @@ public class MainMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabelMainText = new javax.swing.JLabel();
+        jPanelCuenta = new javax.swing.JPanel();
         jButtonCuenta = new javax.swing.JButton();
+        jLabelCorreoElectronico = new javax.swing.JLabel();
         jLabelNombreCuenta = new javax.swing.JLabel();
-        jLabelNombreCuenta1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -32,49 +33,64 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelMainText.setText("MainText");
         jLabelMainText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jPanelCuenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconoCuenta.png"))); // NOI18N
         jButtonCuenta.setText("Cuenta");
         jButtonCuenta.setToolTipText("Configuración de la cuenta");
         jButtonCuenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCuenta.setIconTextGap(1);
         jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jLabelCorreoElectronico.setText("Correo electronico");
 
         jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelNombreCuenta.setText("Nombre");
 
-        jLabelNombreCuenta1.setText("Correo");
+        javax.swing.GroupLayout jPanelCuentaLayout = new javax.swing.GroupLayout(jPanelCuenta);
+        jPanelCuenta.setLayout(jPanelCuentaLayout);
+        jPanelCuentaLayout.setHorizontalGroup(
+            jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCuentaLayout.createSequentialGroup()
+                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelNombreCuenta)
+                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE))
+        );
+        jPanelCuentaLayout.setVerticalGroup(
+            jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCuentaLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabelNombreCuenta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelCorreoElectronico))
+            .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabelMainText, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                .addGap(543, 543, 543))
+                .addGap(19, 19, 19)
+                .addComponent(jLabelMainText, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(349, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelNombreCuenta)
-                    .addComponent(jLabelNombreCuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabelNombreCuenta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelNombreCuenta1)))
-                .addGap(60, 60, 60)
+                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelMainText)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addContainerGap(477, Short.MAX_VALUE))
         );
 
         pack();
@@ -117,8 +133,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCuenta;
+    private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelMainText;
     private javax.swing.JLabel jLabelNombreCuenta;
-    private javax.swing.JLabel jLabelNombreCuenta1;
+    private javax.swing.JPanel jPanelCuenta;
     // End of variables declaration//GEN-END:variables
 }
