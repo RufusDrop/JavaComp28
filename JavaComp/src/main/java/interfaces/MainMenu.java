@@ -23,52 +23,95 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLabelMainText = new javax.swing.JLabel();
         jPanelCuenta = new javax.swing.JPanel();
-        jButtonCuenta = new javax.swing.JButton();
-        jLabelCorreoElectronico = new javax.swing.JLabel();
         jLabelNombreCuenta = new javax.swing.JLabel();
+        jLabelCorreoElectronico = new javax.swing.JLabel();
+        jButtonCuenta = new javax.swing.JButton();
+        jButtonCarrito = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabelMainText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelMainText.setText("MainText");
+        jLabelMainText.setText("Buenos días _nombre estas son algunas recomendaciones para ti:");
         jLabelMainText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
+        jPanelCuenta.setBackground(new java.awt.Color(51, 51, 51));
         jPanelCuenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconoCuenta.png"))); // NOI18N
-        jButtonCuenta.setText("Cuenta");
-        jButtonCuenta.setToolTipText("Configuración de la cuenta");
-        jButtonCuenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButtonCuenta.setIconTextGap(1);
-        jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelNombreCuenta.setForeground(new java.awt.Color(204, 204, 204));
+        jLabelNombreCuenta.setText("Nombre");
 
+        jLabelCorreoElectronico.setForeground(new java.awt.Color(204, 204, 204));
         jLabelCorreoElectronico.setText("Correo electronico");
 
-        jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelNombreCuenta.setText("Nombre");
+        jButtonCuenta.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonCuenta.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonCuenta.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/IconoCuentaAzulMini.png"))); // NOI18N
+        jButtonCuenta.setText("Cuenta");
+        jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCuenta.setIconTextGap(1);
+        jButtonCuenta.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCuentaActionPerformed(evt);
+            }
+        });
+
+        jButtonCarrito.setBackground(new java.awt.Color(51, 51, 51));
+        jButtonCarrito.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButtonCarrito.setForeground(new java.awt.Color(204, 204, 204));
+        jButtonCarrito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/CarritoBlancoMini.png"))); // NOI18N
+        jButtonCarrito.setText("Tu carrito");
+        jButtonCarrito.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButtonCarrito.setIconTextGap(1);
+        jButtonCarrito.setMargin(new java.awt.Insets(0, 10, 0, 10));
+        jButtonCarrito.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButtonCarrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCarritoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelCuentaLayout = new javax.swing.GroupLayout(jPanelCuenta);
         jPanelCuenta.setLayout(jPanelCuentaLayout);
         jPanelCuentaLayout.setHorizontalGroup(
             jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
                 .addGroup(jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNombreCuenta)
-                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 23, Short.MAX_VALUE))
+                    .addComponent(jLabelCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jButtonCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelCuentaLayout.setVerticalGroup(
             jPanelCuentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelCuentaLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addContainerGap()
                 .addComponent(jLabelNombreCuenta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelCorreoElectronico))
-            .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButtonCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButtonCarrito, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -76,25 +119,35 @@ public class MainMenu extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(17, 17, 17)
                 .addComponent(jLabelMainText, javax.swing.GroupLayout.PREFERRED_SIZE, 799, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(349, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(86, 86, 86)
                 .addComponent(jLabelMainText)
-                .addContainerGap(477, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCuentaActionPerformed
+
+    private void jButtonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarritoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCarritoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,10 +185,12 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCarrito;
     private javax.swing.JButton jButtonCuenta;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelMainText;
     private javax.swing.JLabel jLabelNombreCuenta;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelCuenta;
     // End of variables declaration//GEN-END:variables
 }
