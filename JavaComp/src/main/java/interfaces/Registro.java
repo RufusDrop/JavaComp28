@@ -57,7 +57,6 @@ public class Registro extends javax.swing.JDialog {
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
         jTextFieldContrasena = new javax.swing.JTextField();
         jTextFieldDireccion = new javax.swing.JTextField();
-        jTextFieldTelefono = new javax.swing.JTextField();
         jToggleButtonSiguiente = new javax.swing.JToggleButton();
         jLabelTieneCuentaPregunta = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -67,6 +66,7 @@ public class Registro extends javax.swing.JDialog {
         jTextFieldWeb = new javax.swing.JTextField();
         jLabelCIF = new javax.swing.JLabel();
         jTextFieldCIF = new javax.swing.JTextField();
+        jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,7 +92,11 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
-        jTextFieldCorreoElectronico.setText("Ej: user@gmail.com");
+        jTextFieldCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCorreoElectronicoActionPerformed(evt);
+            }
+        });
 
         jToggleButtonSiguiente.setText("SIGUIENTE");
         jToggleButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +134,13 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
+        jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldTelefonoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,10 +166,10 @@ public class Registro extends javax.swing.JDialog {
                             .addComponent(jTextFieldCorreoElectronico)
                             .addComponent(jTextFieldContrasena)
                             .addComponent(jTextFieldDireccion)
-                            .addComponent(jTextFieldTelefono)
                             .addComponent(jComboBoxAdministradorCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldCIF)))
+                            .addComponent(jTextFieldWeb, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCIF)
+                            .addComponent(jFormattedTextFieldTelefono)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jLabelTieneCuentaPregunta)
@@ -166,18 +177,21 @@ public class Registro extends javax.swing.JDialog {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelRegistro)
-                    .addComponent(jToggleButtonSiguiente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabelRegistro))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(jToggleButtonSiguiente)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabelRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipoDeCuenta)
                     .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,8 +221,8 @@ public class Registro extends javax.swing.JDialog {
                     .addComponent(jLabelDireccion))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelTelefono))
+                    .addComponent(jLabelTelefono)
+                    .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,8 +247,8 @@ public class Registro extends javax.swing.JDialog {
          */
         boolean numInvalido = false;
         try{
-            for (int i = 0; i < jTextFieldTelefono.getText().length(); i++) {
-                int telefonoInt = Integer.parseInt(jTextFieldTelefono.getText());
+            for (int i = 0; i < jFormattedTextFieldTelefono.getText().length(); i++) {
+                int telefonoInt = Integer.parseInt(jFormattedTextFieldTelefono.getText());
         }
         } catch(NumberFormatException e){
             numInvalido = true;
@@ -256,7 +270,7 @@ public class Registro extends javax.swing.JDialog {
                  jTextFieldCorreoElectronico.getText().isBlank() ||
                  jTextFieldContrasena.getText().isBlank()|| 
                  jTextFieldDireccion.getText().isBlank()||
-                 jTextFieldTelefono.getText().isBlank())
+                 jFormattedTextFieldTelefono.getText().isBlank())
                  
          { 
               JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
@@ -286,11 +300,11 @@ public class Registro extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "La dirección no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jTextFieldTelefono.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+        if(jFormattedTextFieldTelefono.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
                 JOptionPane.showMessageDialog(this, "El teléfono no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(numInvalido || jTextFieldTelefono.getText().length()!=9){
+        if(numInvalido || jFormattedTextFieldTelefono.getText().length()!=9){
             JOptionPane.showMessageDialog(this, "El teléfono debe ser valido. Nueve numeros enteros seguidos", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
@@ -335,6 +349,14 @@ public class Registro extends javax.swing.JDialog {
     private void jTextFieldCIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCIFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCIFActionPerformed
+
+    private void jTextFieldCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoElectronicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCorreoElectronicoActionPerformed
+
+    private void jFormattedTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldTelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,6 +403,7 @@ public class Registro extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxAdministradorCliente;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelCIF;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelCorreoElectronico;
@@ -398,7 +421,6 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDNI;
     private javax.swing.JTextField jTextFieldDireccion;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldTelefono;
     private javax.swing.JTextField jTextFieldWeb;
     private javax.swing.JToggleButton jToggleButtonSiguiente;
     // End of variables declaration//GEN-END:variables

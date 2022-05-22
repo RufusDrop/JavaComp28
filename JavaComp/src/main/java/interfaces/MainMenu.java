@@ -40,11 +40,10 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonCuenta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonCuenta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelNombreCuenta.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelNombreCuenta.setText("Nombre");
 
-        jLabelNombreCuenta1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelNombreCuenta1.setText("Nombre");
+        jLabelNombreCuenta1.setText("Correo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,8 +59,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelNombreCuenta)
-                    .addComponent(jLabelNombreCuenta1))
-                .addGap(122, 122, 122))
+                    .addComponent(jLabelNombreCuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
