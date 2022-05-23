@@ -3,7 +3,8 @@ package classes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.Image;
-public class Producto {
+import java.io.Serializable;
+public class Producto implements Serializable {
     private String titulo;
     private String caracteristicas;
     private Categorias categoria; //Toma valores del 0 al 4 que corresponden a una categoria distinta
