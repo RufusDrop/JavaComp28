@@ -6,17 +6,17 @@ import java.awt.Image;
 public class Producto {
     private String titulo;
     private String caracteristicas;
-    private int categoriaID; //Toma valores del 0 al 4 que corresponden a una categoria distinta
+    private Categorias categoria; //Toma valores del 0 al 4 que corresponden a una categoria distinta
     private double precio;
     private Image fotoProducto;
     private int stock;
     private LocalDate fechaDeEntrada;
     private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 
-    public Producto(String titulo, String caracteristicas, int categoriaID, double precio, Image fotoProducto, int stock, LocalDate fechaDeEntrada) {
+    public Producto(String titulo, String caracteristicas, Categorias categoria, double precio, Image fotoProducto, int stock, LocalDate fechaDeEntrada) {
         this.titulo = titulo;
         this.caracteristicas = caracteristicas;
-        this.categoriaID = categoriaID;
+        this.categoria = categoria;
         this.precio = precio;
         this.fotoProducto = fotoProducto;
         this.stock = stock;
@@ -25,7 +25,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + caracteristicas + ", categoriaID=" + categoriaID + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
+        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + caracteristicas + ", categoriaID=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
     }
     
     
@@ -46,12 +46,12 @@ public class Producto {
         this.caracteristicas = caracteristicas;
     }
 
-    public int getCategoriaID() {
-        return categoriaID;
+    public Categorias getCategoriaID() {
+        return categoria;
     }
 
-    public void setCategoriaID(int categoriaID) {
-        this.categoriaID = categoriaID;
+    public void setCategoriaID(Categorias categoria) {
+        this.categoria = categoria;
     }
 
     public double getPrecio() {
