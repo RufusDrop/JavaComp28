@@ -4,6 +4,8 @@ package interfaces;
 import classes.ClienteParticular;
 import classes.ClienteEmpresa;
 import classes.Direccion;
+import classes.MiObjectOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
@@ -380,13 +382,23 @@ public class Registro extends javax.swing.JDialog {
             empresa1.setCIF(jTextFieldCIF.getText());
             empresa1.setWeb(jTextFieldWeb.getText());
             
-            //A continuación almacenamos este objeto en AlmacenamientoEmpresas.TXT
-            
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTeto\\AlmacenamientoEmpresas.TXT"))){
-                //Escribimos el fichero
+            File almacenamientoEmpresas=new File("\"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Documentos\\\\GitHub\\\\JavaComp28\\\\JavaComp\\\\src\\\\main\\\\resources\\\\documentosDeTexto\\\\AlmacenamientoEmpresas.TXT\"");
+            if(almacenamientoEmpresas.length()==0){ //Verificamos si el archivo está vacío
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
+                //Escribimos el fichero con cabecera incluída
                 oos.writeObject(empresa1);            
             }catch(IOException e){
                 System.out.println(e.getMessage());
+            }
+            }
+            else{ //Si el archivo ya tiene elementos dentro, como siempre se añaden
+                //Objetos de la misma clase no hace falta poner cabecera
+                try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
+                //Escribimos el fichero sin cabecera
+                oos.writeObject(empresa1);            
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+                }
             }
         }
         else{
@@ -397,13 +409,26 @@ public class Registro extends javax.swing.JDialog {
             particular1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));                        
         }
         //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
-            
+            File almacenamientoParticulares=new File("\"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Documentos\\\\GitHub\\\\JavaComp28\\\\JavaComp\\\\src\\\\main\\\\resources\\\\documentosDeTexto\\\\AlmacenamientoParticulares.TXT\"");
+            if(almacenamientoParticulares.length()==0){ //Verificamos si el archivo está vacío
             try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
-                //Escribimos el fichero
+                //Escribimos el fichero con cabecera
                 oos.writeObject(particular1);            
             }catch(IOException e){
                 System.out.println(e.getMessage());
             }
+            }else{
+                try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
+                //Escribimos el fichero sin cabecera ya que esta ya esta puesta en un objeto anterior de la misma clase
+                oos.writeObject(particular1);            
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }
+            }
+            
+            //Una vez registrado mostrar pantalla LogIn para acceder
+        new Login().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
