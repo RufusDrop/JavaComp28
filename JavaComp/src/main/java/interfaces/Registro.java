@@ -346,10 +346,6 @@ public class Registro extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "La contraseña no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jTextFieldCalle.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
-                JOptionPane.showMessageDialog(this, "La dirección no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
-        }
-        else
         if(jFormattedTextFieldTelefono.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
                 JOptionPane.showMessageDialog(this, "El teléfono no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
@@ -365,28 +361,28 @@ public class Registro extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "El código postal no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if((int)jFormattedTextFieldNumero.getValue()>99999 || (int)jFormattedTextFieldNumero.getValue()<1000 ){  
+        if((int)jFormattedTextFieldCodigoPostal.getText().length()!=5){  
                 JOptionPane.showMessageDialog(this, "Introduzca un codigo postal correcto", "Error", JOptionPane.WARNING_MESSAGE);
         }
         /**
          * Se crean los objetos direccion y particular o empresa en funcion del tipo de Usuario:
          */
         direccion1.setCalle(jTextFieldCalle.getText());
-        direccion1.setNumero((int) jFormattedTextFieldNumero.getValue());
-        direccion1.setCodigoPostal((int)jFormattedTextFieldCodigoPostal.getValue());
+        direccion1.setNumero(Integer.valueOf(jFormattedTextFieldNumero.getText()));
+        direccion1.setCodigoPostal(Integer.valueOf(jFormattedTextFieldCodigoPostal.getText()));
         direccion1.setCiudad(jTextFieldCiudad.getText());
         if(tipoDeUsuario=="Empresa"){
             empresa1.setNombre(jTextFieldNombre.getText());
             empresa1.setCorreo(jTextFieldCorreoElectronico.getText());
             empresa1.setClave(jTextFieldContrasena.getText());
             empresa1.setDireccion(direccion1);
-            empresa1.setTelefono((int)jFormattedTextFieldTelefono.getValue());
+            empresa1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));
             empresa1.setCIF(jTextFieldCIF.getText());
             empresa1.setWeb(jTextFieldWeb.getText());
             
             //A continuación almacenamos este objeto en AlmacenamientoEmpresas.TXT
             
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTeto\\AlmacenamientoEmpresas.TXT"))){
                 //Escribimos el fichero
                 oos.writeObject(empresa1);            
             }catch(IOException e){
@@ -398,11 +394,11 @@ public class Registro extends javax.swing.JDialog {
             particular1.setCorreo(jTextFieldCorreoElectronico.getText());
             particular1.setClave(jTextFieldContrasena.getText());
             particular1.setDireccion(direccion1);
-            particular1.setTelefono((int)jFormattedTextFieldTelefono.getValue());                        
+            particular1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));                        
         }
         //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
             
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
                 //Escribimos el fichero
                 oos.writeObject(particular1);            
             }catch(IOException e){
