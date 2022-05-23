@@ -1,7 +1,8 @@
 package classes;
 
+import java.io.Serializable;
 import java.time.LocalDate; 
-public class Tarjeta {
+public class Tarjeta implements Serializable{
     private String nombreTitular;
     private int numero;
     private LocalDate fecha;

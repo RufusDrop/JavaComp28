@@ -1,6 +1,7 @@
 
 package interfaces;
 
+import classes.Cliente;
 import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JDialog {
@@ -17,7 +18,7 @@ public class Registro extends javax.swing.JDialog {
          * Asegura que todas las cajas empiecen con la visibilidad esperada
          */
         Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        tipoDeUsuario = jComboBoxEmpresaParticular.getSelectedItem();
         if(tipoDeUsuario=="Empresa"){
             jLabelDNI.setVisible(false);
             jTextFieldDNI.setVisible(false);
@@ -57,10 +58,10 @@ public class Registro extends javax.swing.JDialog {
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
         jTextFieldContrasena = new javax.swing.JTextField();
         jTextFieldDireccion = new javax.swing.JTextField();
-        jToggleButtonSiguiente = new javax.swing.JToggleButton();
+        jToggleButtonGuardar = new javax.swing.JToggleButton();
         jLabelTieneCuentaPregunta = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jComboBoxAdministradorCliente = new javax.swing.JComboBox<>();
+        jComboBoxEmpresaParticular = new javax.swing.JComboBox<>();
         jLabelTipoDeCuenta = new javax.swing.JLabel();
         jLabelWeb = new javax.swing.JLabel();
         jTextFieldWeb = new javax.swing.JTextField();
@@ -98,10 +99,10 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
-        jToggleButtonSiguiente.setText("SIGUIENTE");
-        jToggleButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        jToggleButtonGuardar.setText("GUARDAR");
+        jToggleButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButtonSiguienteActionPerformed(evt);
+                jToggleButtonGuardarActionPerformed(evt);
             }
         });
 
@@ -115,10 +116,10 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxAdministradorCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
-        jComboBoxAdministradorCliente.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxEmpresaParticular.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
+        jComboBoxEmpresaParticular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAdministradorClienteActionPerformed(evt);
+                jComboBoxEmpresaParticularActionPerformed(evt);
             }
         });
 
@@ -162,7 +163,7 @@ public class Registro extends javax.swing.JDialog {
                         .addGap(104, 104, 104)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextFieldWeb, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jComboBoxAdministradorCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEmpresaParticular, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldCIF)
                             .addComponent(jTextFieldDNI)
                             .addComponent(jTextFieldNombre)
@@ -180,7 +181,7 @@ public class Registro extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(156, 156, 156)
-                        .addComponent(jToggleButtonSiguiente))
+                        .addComponent(jToggleButtonGuardar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabelRegistro)))
@@ -194,7 +195,7 @@ public class Registro extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipoDeCuenta)
-                    .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEmpresaParticular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCIF)
@@ -228,7 +229,7 @@ public class Registro extends javax.swing.JDialog {
                     .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelWeb))
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButtonSiguiente)
+                .addComponent(jToggleButtonGuardar)
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -239,7 +240,7 @@ public class Registro extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonSiguienteActionPerformed
+    private void jToggleButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonGuardarActionPerformed
         // TODO add your handling code here:
         /**
          * 
@@ -254,7 +255,7 @@ public class Registro extends javax.swing.JDialog {
             numInvalido = true;
         }
         Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        tipoDeUsuario = jComboBoxEmpresaParticular.getSelectedItem();
         /**
          * Se comprueba que todos los datos se introduzcan y sean validos
          */
@@ -308,8 +309,14 @@ public class Registro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "El teléfono debe ser valido. Nueve numeros enteros seguidos", "Error", JOptionPane.WARNING_MESSAGE);
         }
         
+        /**
+         * Se crea un objeto cliente y se serializa a un documento .txt
+         */
+        if(tipoDeUsuario=="Empresa")
+            System.out.print("hola");
+
         
-    }//GEN-LAST:event_jToggleButtonSiguienteActionPerformed
+    }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -321,13 +328,13 @@ public class Registro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDNIActionPerformed
 
-    private void jComboBoxAdministradorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAdministradorClienteActionPerformed
+    private void jComboBoxEmpresaParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEmpresaParticularActionPerformed
         // TODO add your handling code here:
         /**
          * Asegura que dependiendo del tipo se activen las debidas cajas.
          */
         Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
+        tipoDeUsuario = jComboBoxEmpresaParticular.getSelectedItem();
         if(tipoDeUsuario=="Empresa"){
             jLabelDNI.setVisible(false);
             jTextFieldDNI.setVisible(false);
@@ -344,7 +351,7 @@ public class Registro extends javax.swing.JDialog {
             jLabelWeb.setVisible(false);
             jTextFieldWeb.setVisible(false);
         }
-    }//GEN-LAST:event_jComboBoxAdministradorClienteActionPerformed
+    }//GEN-LAST:event_jComboBoxEmpresaParticularActionPerformed
 
     private void jTextFieldCIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCIFActionPerformed
         // TODO add your handling code here:
@@ -402,7 +409,7 @@ public class Registro extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBoxAdministradorCliente;
+    private javax.swing.JComboBox<String> jComboBoxEmpresaParticular;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelCIF;
     private javax.swing.JLabel jLabelContrasena;
@@ -422,6 +429,6 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDireccion;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldWeb;
-    private javax.swing.JToggleButton jToggleButtonSiguiente;
+    private javax.swing.JToggleButton jToggleButtonGuardar;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,7 @@
                       <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jTextFieldWeb" pref="130" max="32767" attributes="0"/>
-                          <Component id="jComboBoxAdministradorCliente" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBoxEmpresaParticular" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldCIF" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldDNI" alignment="0" max="32767" attributes="0"/>
                           <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
@@ -64,7 +64,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                      <Component id="jToggleButtonSiguiente" min="-2" max="-2" attributes="0"/>
+                      <Component id="jToggleButtonGuardar" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
               <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelTipoDeCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jComboBoxAdministradorCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBoxEmpresaParticular" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -126,7 +126,7 @@
                   <Component id="jLabelWeb" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jToggleButtonSiguiente" min="-2" max="-2" attributes="0"/>
+              <Component id="jToggleButtonGuardar" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -195,12 +195,12 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldDireccion">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="jToggleButtonSiguiente">
+    <Component class="javax.swing.JToggleButton" name="jToggleButtonGuardar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="SIGUIENTE"/>
+        <Property name="text" type="java.lang.String" value="GUARDAR"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButtonSiguienteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButtonGuardarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelTieneCuentaPregunta">
@@ -219,7 +219,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxAdministradorCliente">
+    <Component class="javax.swing.JComboBox" name="jComboBoxEmpresaParticular">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
@@ -229,7 +229,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAdministradorClienteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxEmpresaParticularActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

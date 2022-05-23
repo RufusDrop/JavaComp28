@@ -1,7 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 
-public abstract class Cliente {
+
+public abstract class Cliente implements Serializable{
     private String nombre;
     private String correo;
     private String clave;
