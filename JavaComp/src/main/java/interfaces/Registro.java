@@ -4,9 +4,16 @@ package interfaces;
 import classes.ClienteParticular;
 import classes.ClienteEmpresa;
 import classes.Direccion;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
+import java.io.FileOutputStream;
 
 public class Registro extends javax.swing.JDialog {
+    
+    Direccion direccion1=new Direccion("",0,0,"");
+    ClienteParticular particular1=new ClienteParticular("","","",null,null,0,"");
+    ClienteEmpresa empresa1=new ClienteEmpresa("","","",null,null,0,"","");
     
     /**
      * Creates new form Registro
@@ -339,10 +346,10 @@ public class Registro extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "La contraseña no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-       // if(jTextFieldCalle.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
-        //        JOptionPane.showMessageDialog(this, "La dirección no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
-       // }
-        //else
+        if(jTextFieldCalle.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+                JOptionPane.showMessageDialog(this, "La dirección no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        else
         if(jFormattedTextFieldTelefono.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
                 JOptionPane.showMessageDialog(this, "El teléfono no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
@@ -350,17 +357,57 @@ public class Registro extends javax.swing.JDialog {
         if(numInvalido || jFormattedTextFieldTelefono.getText().length()!=9){
             JOptionPane.showMessageDialog(this, "El teléfono debe ser valido. Nueve numeros enteros seguidos", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        if(jFormattedTextFieldNumero.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+        if(jFormattedTextFieldNumero.getText().contains(" ")){  
                 JOptionPane.showMessageDialog(this, "El número no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jFormattedTextFieldCodigoPostal.getText().contains(" ")){  //Luego se comprueba que el correo sea correcto
+        if(jFormattedTextFieldCodigoPostal.getText().contains(" ")){  
                 JOptionPane.showMessageDialog(this, "El código postal no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jFormattedTextFieldNumero.getText().length()!=4){  //Luego se comprueba que el correo sea correcto
-                JOptionPane.showMessageDialog(this, "El código postal debe contener 5 cifras", "Error", JOptionPane.WARNING_MESSAGE);
-        }       
+        if((int)jFormattedTextFieldNumero.getValue()>99999 || (int)jFormattedTextFieldNumero.getValue()<1000 ){  
+                JOptionPane.showMessageDialog(this, "Introduzca un codigo postal correcto", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+        /**
+         * Se crean los objetos direccion y particular o empresa en funcion del tipo de Usuario:
+         */
+        direccion1.setCalle(jTextFieldCalle.getText());
+        direccion1.setNumero((int) jFormattedTextFieldNumero.getValue());
+        direccion1.setCodigoPostal((int)jFormattedTextFieldCodigoPostal.getValue());
+        direccion1.setCiudad(jTextFieldCiudad.getText());
+        if(tipoDeUsuario=="Empresa"){
+            empresa1.setNombre(jTextFieldNombre.getText());
+            empresa1.setCorreo(jTextFieldCorreoElectronico.getText());
+            empresa1.setClave(jTextFieldContrasena.getText());
+            empresa1.setDireccion(direccion1);
+            empresa1.setTelefono((int)jFormattedTextFieldTelefono.getValue());
+            empresa1.setCIF(jTextFieldCIF.getText());
+            empresa1.setWeb(jTextFieldWeb.getText());
+            
+            //A continuación almacenamos este objeto en AlmacenamientoEmpresas.TXT
+            
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
+                //Escribimos el fichero
+                oos.writeObject(empresa1);            
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        else{
+            particular1.setNombre(jTextFieldNombre.getText());
+            particular1.setCorreo(jTextFieldCorreoElectronico.getText());
+            particular1.setClave(jTextFieldContrasena.getText());
+            particular1.setDireccion(direccion1);
+            particular1.setTelefono((int)jFormattedTextFieldTelefono.getValue());                        
+        }
+        //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
+            
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
+                //Escribimos el fichero
+                oos.writeObject(particular1);            
+            }catch(IOException e){
+                System.out.println(e.getMessage());
+            }
     }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed

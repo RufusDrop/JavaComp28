@@ -1,7 +1,9 @@
         package classes;
 
+import java.io.Serializable;
 
-public class ClienteEmpresa extends Cliente{
+
+public class ClienteEmpresa extends Cliente implements Serializable{
     private String CIF;
     private String web;
 

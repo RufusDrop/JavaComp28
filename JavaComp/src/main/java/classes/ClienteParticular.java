@@ -1,7 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 
-public class ClienteParticular extends Cliente{
+
+public class ClienteParticular extends Cliente implements Serializable{
     private String DNI;
 
     public ClienteParticular(String nombre, String correo, String clave, Direccion direccion, Tarjeta tarjeta, int telefono,String DNI){

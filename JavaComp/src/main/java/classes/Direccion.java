@@ -1,7 +1,9 @@
 package classes;
 
+import java.io.Serializable;
 
-public class Direccion {
+
+public class Direccion implements Serializable {
     private String calle;
     private int numero;
     private int codigoPostal;
