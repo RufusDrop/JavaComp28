@@ -382,7 +382,7 @@ public class Registro extends javax.swing.JDialog {
             
             //A continuación almacenamos este objeto en AlmacenamientoEmpresas.TXT
             
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTeto\\AlmacenamientoEmpresas.TXT"))){
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTeto\\AlmacenamientoEmpresas.TXT"))){
                 //Escribimos el fichero
                 oos.writeObject(empresa1);            
             }catch(IOException e){
@@ -398,7 +398,7 @@ public class Registro extends javax.swing.JDialog {
         }
         //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
             
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
+            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
                 //Escribimos el fichero
                 oos.writeObject(particular1);            
             }catch(IOException e){
