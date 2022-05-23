@@ -13,4 +13,10 @@ public enum Categorias {
         this.categoria = categoria;
         this.index = index;
     }
+    public String getCategoria(){
+        return categoria;
+    }
+    public int getIndex(){
+        return index;
+    }   
 }

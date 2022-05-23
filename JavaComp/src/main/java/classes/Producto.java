@@ -9,12 +9,12 @@ public class Producto implements Serializable {
     private String caracteristicas;
     private Categorias categoria; //Toma valores del 0 al 4 que corresponden a una categoria distinta
     private double precio;
-    private Image fotoProducto;
+    private String fotoProducto;
     private int stock;
     private LocalDate fechaDeEntrada;
     private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 
-    public Producto(String titulo, String caracteristicas, Categorias categoria, double precio, Image fotoProducto, int stock, LocalDate fechaDeEntrada) {
+    public Producto(String titulo, String caracteristicas, Categorias categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada) {
         this.titulo = titulo;
         this.caracteristicas = caracteristicas;
         this.categoria = categoria;
@@ -63,11 +63,11 @@ public class Producto implements Serializable {
         this.precio = precio;
     }
 
-    public Image getFotoProducto() {
+    public String getFotoProducto() {
         return fotoProducto;
     }
 
-    public void setFotoProducto(Image fotoProducto) {
+    public void setFotoProducto(String fotoProducto) {
         this.fotoProducto = fotoProducto;
     }
 
