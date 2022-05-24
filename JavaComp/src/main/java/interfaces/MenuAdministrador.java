@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfaces;
 
-/**
- *
- * @author nicol
- */
+import com.formdev.flatlaf.FlatDarkLaf;
+
 public class MenuAdministrador extends javax.swing.JFrame {
 
     /**
@@ -15,6 +10,36 @@ public class MenuAdministrador extends javax.swing.JFrame {
      */
     public MenuAdministrador() {
         initComponents();
+        this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        jPanelConsultaProductos.setVisible(true);
+        jPanelNuevoProducto.setVisible(false);
+        
+        //Para el tema oscuro///
+         try {
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) { 
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
+            }
+        }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
     }
 
     /**
@@ -26,66 +51,236 @@ public class MenuAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1Administrador = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jComboBox1UsuariosProductosVentas = new javax.swing.JComboBox<>();
+        jPanelAdministrador = new javax.swing.JPanel();
+        jLabelAdministrador = new javax.swing.JLabel();
+        jPanelConsultar = new javax.swing.JPanel();
+        jComboBoxUsuariosProductosVentas = new javax.swing.JComboBox<>();
         jButton1Consultar = new javax.swing.JButton();
+        jPanelProductos = new javax.swing.JPanel();
+        jPanelNuevoProducto = new javax.swing.JPanel();
+        jButtonBorrar = new javax.swing.JButton();
+        jButtonConsultarExistentes = new javax.swing.JButton();
+        jButtonAnadirProductos = new javax.swing.JButton();
+        jPanelConsultaProductos = new javax.swing.JPanel();
+        jButtonAnterior = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
+        jButtonModificar = new javax.swing.JButton();
+        jButtonSiguiente = new javax.swing.JButton();
+        jButtonNuevoProducto = new javax.swing.JButton();
+        productoPanelAdmin1 = new interfaces.ProductoPanelAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelAdministrador.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel1Administrador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1Administrador.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1Administrador.setText("ADMINISTRADOR");
+        jLabelAdministrador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelAdministrador.setForeground(new java.awt.Color(204, 204, 204));
+        jLabelAdministrador.setText("ADMINISTRADOR");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1Administrador)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelAdministradorLayout = new javax.swing.GroupLayout(jPanelAdministrador);
+        jPanelAdministrador.setLayout(jPanelAdministradorLayout);
+        jPanelAdministradorLayout.setHorizontalGroup(
+            jPanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdministradorLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabelAdministrador)
+                .addGap(16, 16, 16))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1Administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jPanelAdministradorLayout.setVerticalGroup(
+            jPanelAdministradorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAdministradorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanelConsultar.setBackground(new java.awt.Color(51, 51, 51));
 
-        jComboBox1UsuariosProductosVentas.setBackground(new java.awt.Color(204, 204, 204));
-        jComboBox1UsuariosProductosVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1UsuariosProductosVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Productos", "Ventas Realizadas" }));
+        jComboBoxUsuariosProductosVentas.setBackground(new java.awt.Color(204, 204, 204));
+        jComboBoxUsuariosProductosVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBoxUsuariosProductosVentas.setForeground(new java.awt.Color(51, 51, 51));
+        jComboBoxUsuariosProductosVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Productos", "Ventas", " " }));
+        jComboBoxUsuariosProductosVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxUsuariosProductosVentasActionPerformed(evt);
+            }
+        });
 
         jButton1Consultar.setText("Consultar");
+        jButton1Consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ConsultarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(jComboBox1UsuariosProductosVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+        javax.swing.GroupLayout jPanelConsultarLayout = new javax.swing.GroupLayout(jPanelConsultar);
+        jPanelConsultar.setLayout(jPanelConsultarLayout);
+        jPanelConsultarLayout.setHorizontalGroup(
+            jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultarLayout.createSequentialGroup()
+                .addGap(193, 193, 193)
+                .addComponent(jComboBoxUsuariosProductosVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(jButton1Consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(99, 99, 99))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanelConsultarLayout.setVerticalGroup(
+            jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultarLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1Consultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jComboBoxUsuariosProductosVentas))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButtonBorrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonBorrar.setText("Borrar");
+        jButtonBorrar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBorrarActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultarExistentes.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonConsultarExistentes.setText("Consultar existentes");
+        jButtonConsultarExistentes.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonConsultarExistentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarExistentesActionPerformed(evt);
+            }
+        });
+
+        jButtonAnadirProductos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnadirProductos.setText("Añadir producto");
+
+        javax.swing.GroupLayout jPanelNuevoProductoLayout = new javax.swing.GroupLayout(jPanelNuevoProducto);
+        jPanelNuevoProducto.setLayout(jPanelNuevoProductoLayout);
+        jPanelNuevoProductoLayout.setHorizontalGroup(
+            jPanelNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNuevoProductoLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jButtonConsultarExistentes, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAnadirProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
+        jPanelNuevoProductoLayout.setVerticalGroup(
+            jPanelNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNuevoProductoLayout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addGroup(jPanelNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonBorrar)
+                    .addComponent(jButtonAnadirProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonConsultarExistentes)))
+        );
+
+        jButtonAnterior.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnterior.setText("<--");
+        jButtonAnterior.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
+        jButtonModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonModificar.setText("Modificar");
+        jButtonModificar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonModificarActionPerformed(evt);
+            }
+        });
+
+        jButtonSiguiente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguiente.setText("-->");
+        jButtonSiguiente.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteActionPerformed(evt);
+            }
+        });
+
+        jButtonNuevoProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonNuevoProducto.setText("Nuevo producto");
+        jButtonNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoProductoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelConsultaProductosLayout = new javax.swing.GroupLayout(jPanelConsultaProductos);
+        jPanelConsultaProductos.setLayout(jPanelConsultaProductosLayout);
+        jPanelConsultaProductosLayout.setHorizontalGroup(
+            jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jButton1Consultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jComboBox1UsuariosProductosVentas))
-                .addContainerGap())
+                .addGroup(jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jButtonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
+                        .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(230, 230, 230)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
+        jPanelConsultaProductosLayout.setVerticalGroup(
+            jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonSiguiente)
+                        .addComponent(jButtonModificar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonAnterior)
+                        .addComponent(jButtonEliminar)
+                        .addComponent(jButtonNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        productoPanelAdmin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
+        jPanelProductos.setLayout(jPanelProductosLayout);
+        jPanelProductosLayout.setHorizontalGroup(
+            jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProductosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
+        jPanelProductosLayout.setVerticalGroup(
+            jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProductosLayout.createSequentialGroup()
+                .addContainerGap(7, Short.MAX_VALUE)
+                .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,21 +288,87 @@ public class MenuAdministrador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelAdministrador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanelConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(129, 129, 129)
+                .addComponent(jPanelProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 489, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelAdministrador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBoxUsuariosProductosVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUsuariosProductosVentasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBoxUsuariosProductosVentasActionPerformed
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonModificarActionPerformed
+
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonConsultarExistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarExistentesActionPerformed
+        // TODO add your handling code here:
+        jPanelConsultaProductos.setVisible(true);
+        jPanelNuevoProducto.setVisible(false);
+    }//GEN-LAST:event_jButtonConsultarExistentesActionPerformed
+
+    private void jButton1ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ConsultarActionPerformed
+        // TODO add your handling code here:
+        Object tipoDeBusqueda;
+        tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
+        if(tipoDeBusqueda.equals("Usuarios")){
+             jPanelProductos.setVisible(false);
+            //jPanelUsuarios.setVisible(true);
+            //jPanelVentas.setVisible(false);
+        }
+        else
+        if(tipoDeBusqueda.equals("Productos")){
+            jPanelProductos.setVisible(true);
+            //jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(false);
+        }
+        else
+        if(tipoDeBusqueda.equals("Ventas")){
+             jPanelProductos.setVisible(false);
+            //jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton1ConsultarActionPerformed
+
+    private void jButtonNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProductoActionPerformed
+        // TODO add your handling code here:
+        jPanelConsultaProductos.setVisible(false);
+        jPanelNuevoProducto.setVisible(true);
+    }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,20 +380,28 @@ public class MenuAdministrador extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) { 
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
             }
+        }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -146,9 +415,21 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1Consultar;
-    private javax.swing.JComboBox<String> jComboBox1UsuariosProductosVentas;
-    private javax.swing.JLabel jLabel1Administrador;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton jButtonAnadirProductos;
+    private javax.swing.JButton jButtonAnterior;
+    private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonConsultarExistentes;
+    private javax.swing.JButton jButtonEliminar;
+    private javax.swing.JButton jButtonModificar;
+    private javax.swing.JButton jButtonNuevoProducto;
+    private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JComboBox<String> jComboBoxUsuariosProductosVentas;
+    private javax.swing.JLabel jLabelAdministrador;
+    private javax.swing.JPanel jPanelAdministrador;
+    private javax.swing.JPanel jPanelConsultaProductos;
+    private javax.swing.JPanel jPanelConsultar;
+    private javax.swing.JPanel jPanelNuevoProducto;
+    private javax.swing.JPanel jPanelProductos;
+    private interfaces.ProductoPanelAdmin productoPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package interfaces;
 
-/**
- *
- * @author ruben
- */
 public class OpinionPanel extends javax.swing.JPanel {
 
     /**
@@ -15,6 +8,19 @@ public class OpinionPanel extends javax.swing.JPanel {
      */
     public OpinionPanel() {
         initComponents();
+    }
+    public String getjLabelOpinion(){
+        return jLabelOpinion.getText();
+    }
+    public void setjLabelOpinion(String txt){
+        jLabelOpinion.setText(txt);
+    }
+    public int getjLabelPuntuacion(){
+        return Integer.parseInt(jLabelPuntuacion.getText());
+    }
+    public void setjLabelPuntuacion(int num){
+        jLabelPuntuacion.setText(String.valueOf(num));
+        jProgressBarPuntuacion.setValue(num);
     }
 
     /**
@@ -26,19 +32,23 @@ public class OpinionPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBar1 = new javax.swing.JProgressBar();
+        jProgressBarPuntuacion = new javax.swing.JProgressBar();
         jLabelOpinion = new javax.swing.JLabel();
         jLabelPuntuacion = new javax.swing.JLabel();
+        jLabelPuntuacionMaxima = new javax.swing.JLabel();
 
-        jProgressBar1.setBackground(new java.awt.Color(204, 204, 204));
-        jProgressBar1.setForeground(new java.awt.Color(255, 204, 0));
-        jProgressBar1.setMaximum(5);
-        jProgressBar1.setValue(2);
+        jProgressBarPuntuacion.setBackground(new java.awt.Color(204, 204, 204));
+        jProgressBarPuntuacion.setForeground(new java.awt.Color(255, 204, 0));
+        jProgressBarPuntuacion.setMaximum(5);
+        jProgressBarPuntuacion.setValue(4);
 
         jLabelOpinion.setText("\"BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabl\"");
 
         jLabelPuntuacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelPuntuacion.setText("4/5");
+        jLabelPuntuacion.setText("4");
+
+        jLabelPuntuacionMaxima.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabelPuntuacionMaxima.setText("/ 5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -49,9 +59,11 @@ public class OpinionPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelOpinion, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jProgressBarPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelPuntuacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPuntuacionMaxima)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -60,8 +72,10 @@ public class OpinionPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
-                    .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jProgressBarPuntuacion, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jLabelPuntuacionMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -72,6 +86,7 @@ public class OpinionPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabelOpinion;
     private javax.swing.JLabel jLabelPuntuacion;
-    private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JLabel jLabelPuntuacionMaxima;
+    private javax.swing.JProgressBar jProgressBarPuntuacion;
     // End of variables declaration//GEN-END:variables
 }
