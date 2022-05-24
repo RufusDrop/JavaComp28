@@ -24,6 +24,7 @@ public class MainMenu extends javax.swing.JFrame {
             categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
          this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
          jScrollPaneCategorias.setVisible(false);
+         ///////Look and feel
           try {
         javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) { 

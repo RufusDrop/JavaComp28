@@ -6,6 +6,7 @@ import classes.ClienteEmpresa;
 import classes.ClienteParticular;
 import classes.Direccion;
 import classes.UtilRegistro;
+import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.JOptionPane;
 
 
@@ -21,6 +22,8 @@ public class Registro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        UtilRegistro.cargarDatos();
+        
         
         /**
          * Asegura que todas las cajas empiecen con la visibilidad esperada
@@ -43,6 +46,31 @@ public class Registro extends javax.swing.JDialog {
             jLabelWeb.setVisible(false);
             jTextFieldWeb.setVisible(false);
         }
+         try {
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) { 
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
+            }
+        }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
     } 
 
     /**
@@ -346,6 +374,7 @@ public class Registro extends javax.swing.JDialog {
         if((int)jFormattedTextFieldCodigoPostal.getText().length()!=5){  
                 JOptionPane.showMessageDialog(this, "Introduzca un codigo postal correcto", "Error", JOptionPane.WARNING_MESSAGE);
         }
+        else{
         /**
          * Se atribuyen variables a la informacion introducida por el usuario
          */
@@ -361,7 +390,7 @@ public class Registro extends javax.swing.JDialog {
             
             dir = new Direccion(direccion,codigoPostal,ciudad);
             
-            if (tipoDeUsuario=="Empresa") {
+            if (tipoDeUsuario.equals("Empresa")) {
                 String cif = jTextFieldCIF.getText();
                 String web = jTextFieldWeb.getText();
                 cli = new ClienteEmpresa(nombre , correo , clave , dir , null , telefono , cif , web);
@@ -383,7 +412,8 @@ public class Registro extends javax.swing.JDialog {
         }
         
         UtilRegistro.guardarDatos();
-
+        }
+        System.out.println(UtilRegistro.getClientes().toString());
     }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
@@ -443,20 +473,28 @@ public class Registro extends javax.swing.JDialog {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) { 
+        System.err.println("Failed to initialize LaF");
+        }
+
+        try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            System.out.println(info.getName());
+            if ("Flatlaf".equals(info.getName())) {
+            System.out.println("Flatlaf look and feel stablished");
+            javax.swing.UIManager.setLookAndFeel(info.getClassName());
+            break;
             }
+        }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
