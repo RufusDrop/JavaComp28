@@ -55,7 +55,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jLabelAdministrador = new javax.swing.JLabel();
         jPanelConsultar = new javax.swing.JPanel();
         jComboBoxUsuariosProductosVentas = new javax.swing.JComboBox<>();
-        jButton1Consultar = new javax.swing.JButton();
+        jButtonConsultar = new javax.swing.JButton();
         jPanelProductos = new javax.swing.JPanel();
         jPanelNuevoProducto = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
@@ -106,10 +106,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton1Consultar.setText("Consultar");
-        jButton1Consultar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConsultar.setText("Consultar");
+        jButtonConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ConsultarActionPerformed(evt);
+                jButtonConsultarActionPerformed(evt);
             }
         });
 
@@ -120,8 +120,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
             .addGroup(jPanelConsultarLayout.createSequentialGroup()
                 .addGap(193, 193, 193)
                 .addComponent(jComboBoxUsuariosProductosVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                .addComponent(jButton1Consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(jButtonConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(99, 99, 99))
         );
         jPanelConsultarLayout.setVerticalGroup(
@@ -129,7 +129,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
             .addGroup(jPanelConsultarLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanelConsultarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1Consultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBoxUsuariosProductosVentas))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -257,19 +257,18 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        productoPanelAdmin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
         jPanelProductos.setLayout(jPanelProductosLayout);
         jPanelProductosLayout.setHorizontalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProductosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanelProductosLayout.setVerticalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,9 +277,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(27, 27, 27)
                 .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -294,7 +293,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addComponent(jPanelProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,9 +338,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelConsultaProductos.setVisible(true);
         jPanelNuevoProducto.setVisible(false);
+        productoPanelAdmin1.setModificarConsultarProducto("/images/Ps5.jpg");
     }//GEN-LAST:event_jButtonConsultarExistentesActionPerformed
 
-    private void jButton1ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ConsultarActionPerformed
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
         Object tipoDeBusqueda;
         tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
@@ -362,12 +362,15 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //jPanelUsuarios.setVisible(false);
             //jPanelVentas.setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ConsultarActionPerformed
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
     private void jButtonNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProductoActionPerformed
         // TODO add your handling code here:
         jPanelConsultaProductos.setVisible(false);
         jPanelNuevoProducto.setVisible(true);
+        productoPanelAdmin1.setNuevoProducto();
+      
+        
     }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
 
     /**
@@ -414,10 +417,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1Consultar;
     private javax.swing.JButton jButtonAnadirProductos;
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonBorrar;
+    private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonConsultarExistentes;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonModificar;
