@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Producto implements Serializable {
     private String titulo;
     private String caracteristicas;
-    private Categorias categoria; //Toma valores del 0 al 4 que corresponden a una categoria distinta
+    private Categorias categoria; 
     private double precio;
     private String fotoProducto;
     private int stock;

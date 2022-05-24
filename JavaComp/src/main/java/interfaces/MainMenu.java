@@ -75,7 +75,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButtonBusqueda = new javax.swing.JButton();
         jScrollPaneProductos = new javax.swing.JScrollPane();
         jPanelProductos = new javax.swing.JPanel();
-        jPanelProductoX = new javax.swing.JPanel();
+        productoPanel1 = new interfaces.ProductoPanel();
         jPanelRecomendaciones = new javax.swing.JPanel();
         jLabelMainText = new javax.swing.JLabel();
 
@@ -238,39 +238,21 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanelProductos.setBackground(new java.awt.Color(102, 102, 102));
 
-        jPanelProductoX.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanelProductoX.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelProductoXMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelProductoXLayout = new javax.swing.GroupLayout(jPanelProductoX);
-        jPanelProductoX.setLayout(jPanelProductoXLayout);
-        jPanelProductoXLayout.setHorizontalGroup(
-            jPanelProductoXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 919, Short.MAX_VALUE)
-        );
-        jPanelProductoXLayout.setVerticalGroup(
-            jPanelProductoXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
         jPanelProductos.setLayout(jPanelProductosLayout);
         jPanelProductosLayout.setHorizontalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProductosLayout.createSequentialGroup()
-                .addContainerGap(372, Short.MAX_VALUE)
-                .addComponent(jPanelProductoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(productoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanelProductosLayout.setVerticalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProductosLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jPanelProductoX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(productoPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(402, Short.MAX_VALUE))
         );
 
         jScrollPaneProductos.setViewportView(jPanelProductos);
@@ -357,10 +339,6 @@ public class MainMenu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonBusquedaActionPerformed
 
-    private void jPanelProductoXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProductoXMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPanelProductoXMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -417,11 +395,11 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JList<String> jListCategorias;
     private javax.swing.JPanel jPanelBusqueda;
     private javax.swing.JPanel jPanelCuenta;
-    private javax.swing.JPanel jPanelProductoX;
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelRecomendaciones;
     private javax.swing.JScrollPane jScrollPaneCategorias;
     private javax.swing.JScrollPane jScrollPaneProductos;
     private javax.swing.JTextField jTextFieldBusqueda;
+    private interfaces.ProductoPanel productoPanel1;
     // End of variables declaration//GEN-END:variables
 }
