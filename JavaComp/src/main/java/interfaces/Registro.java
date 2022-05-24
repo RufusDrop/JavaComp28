@@ -1,21 +1,19 @@
 
 package interfaces;
 
-import classes.ClienteParticular;
+import classes.Cliente;
 import classes.ClienteEmpresa;
+import classes.ClienteParticular;
 import classes.Direccion;
-import classes.MiObjectOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import classes.UtilRegistro;
 import javax.swing.JOptionPane;
-import java.io.FileOutputStream;
+
 
 public class Registro extends javax.swing.JDialog {
     
-    Direccion direccion1=new Direccion("",0,0,"");
-    ClienteParticular particular1=new ClienteParticular("","","",null,null,0,"");
-    ClienteEmpresa empresa1=new ClienteEmpresa("","","",null,null,0,"","");
+    private String tipo = "";
+    private Cliente cli = null;
+    private Direccion dir = null;
     
     /**
      * Creates new form Registro
@@ -367,73 +365,40 @@ public class Registro extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Introduzca un codigo postal correcto", "Error", JOptionPane.WARNING_MESSAGE);
         }
         /**
-         * Se crean los objetos direccion y particular o empresa en funcion del tipo de Usuario:
+         * Se atribuyen variables a la informacion introducida por el usuario
          */
-        direccion1.setCalle(jTextFieldCalle.getText());
-        direccion1.setNumero(Integer.valueOf(jFormattedTextFieldNumero.getText()));
-        direccion1.setCodigoPostal(Integer.valueOf(jFormattedTextFieldCodigoPostal.getText()));
-        direccion1.setCiudad(jTextFieldCiudad.getText());
-        if(tipoDeUsuario=="Empresa"){
-            empresa1.setNombre(jTextFieldNombre.getText());
-            empresa1.setCorreo(jTextFieldCorreoElectronico.getText());
-            empresa1.setClave(jTextFieldContrasena.getText());
-            empresa1.setDireccion(direccion1);
-            empresa1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));
-            empresa1.setCIF(jTextFieldCIF.getText());
-            empresa1.setWeb(jTextFieldWeb.getText());
-            
-            File almacenamientoEmpresas=new File("\"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Documentos\\\\GitHub\\\\JavaComp28\\\\JavaComp\\\\src\\\\main\\\\resources\\\\documentosDeTexto\\\\AlmacenamientoEmpresas.TXT\"");
-            if(almacenamientoEmpresas.length()==0){ //Verificamos si el archivo está vacío
-                System.out.println("Vacio");
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
-                //Escribimos el fichero con cabecera incluída
-                oos.writeObject(empresa1);
-                oos.close();
-            }catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-            }
-            else{ //Si el archivo ya tiene elementos dentro, como siempre se añaden
-                //Objetos de la misma clase no hace falta poner cabecera
-                try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
-                //Escribimos el fichero sin cabecera
-                oos.writeObject(empresa1);
-                oos.close();
-            }catch(IOException e){
-                System.out.println(e.getMessage());
-                }
-            }
-        }
-        else{
-            particular1.setNombre(jTextFieldNombre.getText());
-            particular1.setCorreo(jTextFieldCorreoElectronico.getText());
-            particular1.setClave(jTextFieldContrasena.getText());
-            particular1.setDireccion(direccion1);
-            particular1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));                        
+        try {
+            String direccion = jTextFieldCalle.getText();
+            String ciudad = jTextFieldCiudad.getText();
+            int codigoPostal = (int) jFormattedTextFieldCodigoPostal.getValue();
         
-        //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
-            File almacenamientoParticulares=new File("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT");
-            if(almacenamientoParticulares.length()==0){ //Verificamos si el archivo está vacío
-            try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
-                //Escribimos el fichero con cabecera
-                oos.writeObject(particular1);
-                oos.close();
-            }catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-            }else{
-                try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
-                //Escribimos el fichero sin cabecera ya que esta ya esta puesta en un objeto anterior de la misma clase
-                oos.writeObject(particular1);
-                oos.close();
-            }catch(IOException e){
-                System.out.println(e.getMessage());
-            }
-            }
+            String nombre = jTextFieldNombre.getText();
+            String correo = jTextFieldCorreoElectronico.getText();
+            String clave = jTextFieldContrasena.getText();
+            int telefono = (int) jFormattedTextFieldTelefono.getValue();
+            
+            dir = new Direccion(direccion,0,codigoPostal,ciudad);
+            
+            if (tipo.equals("ClienteEmpresa")) {
+                String cif = jTextFieldCIF.getText();
+                String web = jTextFieldWeb.getText();
+                cli = new ClienteEmpresa(nombre , correo , clave , dir , null , telefono , cif , web);
+        } else {
+                String dni = jTextFieldDNI.getText();
+            cli = new ClienteParticular(nombre , correo , clave , dir , null , telefono , dni);
+        }           
+        //lo insertamos en el array
+        if (UtilRegistro.registroCliente(cli)) {
+            JOptionPane.showMessageDialog(this, "Ha sido registrado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            new Login().setVisible(true);
+            this.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al registrarse.", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
-            //Una vez registrado mostrar pantalla LogIn para acceder
-        new Login().setVisible(true);
-        this.setVisible(false);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Excepción al registrarse.", "Mensaje", JOptionPane.ERROR_MESSAGE);        
+        }
+
     }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
