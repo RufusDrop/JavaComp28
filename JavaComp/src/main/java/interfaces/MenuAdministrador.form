@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
               <Component id="jPanelProductos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="196" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -104,8 +104,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
                   <Component id="jComboBoxUsuariosProductosVentas" min="-2" pref="247" max="-2" attributes="0"/>
-                  <EmptySpace pref="169" max="32767" attributes="0"/>
-                  <Component id="jButton1Consultar" min="-2" pref="114" max="-2" attributes="0"/>
+                  <EmptySpace pref="157" max="32767" attributes="0"/>
+                  <Component id="jButtonConsultar" min="-2" pref="114" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -115,7 +115,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jButton1Consultar" max="32767" attributes="0"/>
+                      <Component id="jButtonConsultar" max="32767" attributes="0"/>
                       <Component id="jComboBoxUsuariosProductosVentas" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -151,12 +151,12 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1Consultar">
+        <Component class="javax.swing.JButton" name="jButtonConsultar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ConsultarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonConsultarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -168,12 +168,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanelConsultaProductos" alignment="0" max="32767" attributes="0"/>
-                      <Component id="productoPanelAdmin1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanelNuevoProducto" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jPanelConsultaProductos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jPanelNuevoProducto" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="productoPanelAdmin1" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -184,9 +186,9 @@
                   <Component id="jPanelConsultaProductos" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanelNuevoProducto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="productoPanelAdmin1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="34" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -377,13 +379,6 @@
           </SubComponents>
         </Container>
         <Component class="interfaces.ProductoPanelAdmin" name="productoPanelAdmin1">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
