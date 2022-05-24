@@ -74,7 +74,7 @@ public class Registro extends javax.swing.JDialog {
         jLabelTieneCuentaPregunta = new javax.swing.JLabel();
         jButtonLogIn = new javax.swing.JButton();
         jComboBoxEmpresaParticular = new javax.swing.JComboBox<>();
-        jLabelTipoDeCuenta = new javax.swing.JLabel();
+        jLabelTipoDeUsuario = new javax.swing.JLabel();
         jLabelWeb = new javax.swing.JLabel();
         jTextFieldWeb = new javax.swing.JTextField();
         jLabelCIF = new javax.swing.JLabel();
@@ -142,7 +142,7 @@ public class Registro extends javax.swing.JDialog {
             }
         });
 
-        jLabelTipoDeCuenta.setText("Tipo de cuenta");
+        jLabelTipoDeUsuario.setText("Tipo de usuario");
 
         jLabelWeb.setText("Web:");
 
@@ -189,7 +189,7 @@ public class Registro extends javax.swing.JDialog {
                             .addComponent(jLabelContrasena)
                             .addComponent(jLabelCalle)
                             .addComponent(jLabelTelefono)
-                            .addComponent(jLabelTipoDeCuenta)
+                            .addComponent(jLabelTipoDeUsuario)
                             .addComponent(jLabelNombre)
                             .addComponent(jLabelNumero)
                             .addComponent(jLabelCodigoPostal)
@@ -230,7 +230,7 @@ public class Registro extends javax.swing.JDialog {
                 .addComponent(jLabelRegistro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTipoDeCuenta)
+                    .addComponent(jLabelTipoDeUsuario)
                     .addComponent(jComboBoxEmpresaParticular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -386,7 +386,8 @@ public class Registro extends javax.swing.JDialog {
             if(almacenamientoEmpresas.length()==0){ //Verificamos si el archivo está vacío
             try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
                 //Escribimos el fichero con cabecera incluída
-                oos.writeObject(empresa1);            
+                oos.writeObject(empresa1);
+                oos.close();
             }catch(IOException e){
                 System.out.println(e.getMessage());
             }
@@ -395,7 +396,8 @@ public class Registro extends javax.swing.JDialog {
                 //Objetos de la misma clase no hace falta poner cabecera
                 try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
                 //Escribimos el fichero sin cabecera
-                oos.writeObject(empresa1);            
+                oos.writeObject(empresa1);
+                oos.close();
             }catch(IOException e){
                 System.out.println(e.getMessage());
                 }
@@ -413,14 +415,16 @@ public class Registro extends javax.swing.JDialog {
             if(almacenamientoParticulares.length()==0){ //Verificamos si el archivo está vacío
             try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
                 //Escribimos el fichero con cabecera
-                oos.writeObject(particular1);            
+                oos.writeObject(particular1);
+                oos.close();
             }catch(IOException e){
                 System.out.println(e.getMessage());
             }
             }else{
                 try(MiObjectOutputStream oos=new MiObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
                 //Escribimos el fichero sin cabecera ya que esta ya esta puesta en un objeto anterior de la misma clase
-                oos.writeObject(particular1);            
+                oos.writeObject(particular1);
+                oos.close();
             }catch(IOException e){
                 System.out.println(e.getMessage());
             }
@@ -538,7 +542,7 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelRegistro;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JLabel jLabelTieneCuentaPregunta;
-    private javax.swing.JLabel jLabelTipoDeCuenta;
+    private javax.swing.JLabel jLabelTipoDeUsuario;
     private javax.swing.JLabel jLabelWeb;
     private javax.swing.JTextField jTextFieldCIF;
     private javax.swing.JTextField jTextFieldCalle;

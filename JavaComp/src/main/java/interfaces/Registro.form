@@ -38,7 +38,7 @@
                           <Component id="jLabelContrasena" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelCalle" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelTelefono" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTipoDeCuenta" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelTipoDeUsuario" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelNumero" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelCodigoPostal" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
               <Component id="jLabelRegistro" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabelTipoDeCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTipoDeUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxEmpresaParticular" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -263,9 +263,9 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelTipoDeCuenta">
+    <Component class="javax.swing.JLabel" name="jLabelTipoDeUsuario">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tipo de cuenta"/>
+        <Property name="text" type="java.lang.String" value="Tipo de usuario"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelWeb">
