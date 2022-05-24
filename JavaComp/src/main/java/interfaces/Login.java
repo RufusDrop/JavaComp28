@@ -1,17 +1,65 @@
 
 package interfaces;
 
-import classes.ClienteEmpresa;
-import classes.ClienteParticular;
+import classes.Cliente;
+import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.JOptionPane;
-import java.io.*;
+import java.util.ArrayList;
+import java.util.ListIterator;
 public class Login extends javax.swing.JFrame {
 
         /**
          * Creates new form Login
      */
+    private ArrayList<Cliente> cliaux; //Referencia al ArrayList de personas de la clase UtilCenso
+    private ListIterator<Cliente> li; //Iterador para recorrer el ArrayList en ambas direcciones
+    private Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
+    
+        private void verificacion() {
+        try {
+            //referenciamos al ArrayList de UtilCenso
+            cliaux = UtilRegistro.getClientes();
+            //creamos el iterador sobre el ArrayList
+            li = cliaux.listIterator();
+            //si no hay personas...
+            if (cliaux.size() < 1) {
+                JOptionPane.showMessageDialog(this, "No está registrado.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            //presentamos la primera persona
+            if (li.hasNext()) {
+                objcli = (Cliente) li.next();
+            }
+            if (objcli != null) {
+                if(todoCorrecto(objcli)){
+                    new MainMenu().setVisible(true);
+                    this.setVisible(false);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No está registrado.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.toString());
+        }
+    }//fin consultarTodo
+  
+    private boolean todoCorrecto(Cliente cli) {
+        String correoIntroducido = jTextFieldCorreoElectronico.getText();
+        String claveIntroducida = String.valueOf(jPasswordFieldContrasena.getPassword());
+        String correo = cli.getCorreo();
+        String clave = cli.getClave();
+        if(correoIntroducido.equals(correo)&&claveIntroducida.equals(clave)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
@@ -60,8 +108,6 @@ public class Login extends javax.swing.JFrame {
         jLabelRegistradoPregunta = new javax.swing.JLabel();
         jLabelLogIn = new javax.swing.JLabel();
         jToggleButtonIniciarSesion = new javax.swing.JToggleButton();
-        jLabelTipoDeCuenta = new javax.swing.JLabel();
-        jComboBoxEmpresaParticular = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(203, 203, 203));
@@ -105,70 +151,55 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabelTipoDeCuenta.setText("Tipo de usuario");
-
-        jComboBoxEmpresaParticular.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
-        jComboBoxEmpresaParticular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxEmpresaParticularActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(jLabelLogIn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jToggleButtonIniciarSesion))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(59, 59, 59)
                             .addComponent(jLabelRegistradoPregunta)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                             .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(101, 101, 101)
-                            .addComponent(jToggleButtonIniciarSesion)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabelContrasena)
-                            .addComponent(jLabelTipoDeCuenta))
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordFieldContrasena)
-                            .addComponent(jComboBoxEmpresaParticular, 0, 130, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCorreoElectronico))))
+                            .addGap(72, 72, 72)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabelContrasena))
+                            .addGap(88, 88, 88)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPasswordFieldContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCorreoElectronico)))))
                 .addContainerGap(73, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(jLabelLogIn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabelLogIn)
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabelTipoDeCuenta)
-                    .addComponent(jComboBoxEmpresaParticular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(36, 36, 36)
                 .addComponent(jToggleButtonIniciarSesion)
-                .addGap(31, 31, 31)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelRegistradoPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonRegistrarse))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,52 +244,10 @@ public class Login extends javax.swing.JFrame {
         if(ContrasenaConEspacios){
             JOptionPane.showMessageDialog(this, "La contraseña no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE); //Luego se comprueba la contraseña con la booleana anterior
         }
-        /*En funcion del tipo de usuario se busca en el
-        archivo correspondiente la cuenta y se verifica si la contraseña 
-        es la correspondiente:
-        */
-        Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxEmpresaParticular.getSelectedItem();
-        if(tipoDeUsuario=="Empresa"){
-            try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
-            //Cuando no haya mas objetos saltara la excepcion EOFException
-            while(true){
-                ClienteEmpresa aux=(ClienteEmpresa)ois.readObject();
-                if(aux.getCorreo().equals(jTextFieldCorreoElectronico.getText())&&aux.getClave().equals(String.valueOf(jPasswordFieldContrasena.getPassword()))){
-                    MainMenu abrir=new MainMenu();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }else{
-                    JOptionPane.showMessageDialog(this, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        }catch(ClassNotFoundException e){
-        }catch(EOFException e){
-        }catch(IOException e){
-        }                                         
-        }else{
-            try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
-            //Cuando no haya mas objetos saltara la excepcion EOFException
-            while(true){
-                ClienteParticular aux=(ClienteParticular)ois.readObject();               
-                if(aux.getCorreo().equals(jTextFieldCorreoElectronico.getText())&&aux.getClave().equals(String.valueOf(jPasswordFieldContrasena.getPassword()))){
-                    MainMenu abrir=new MainMenu();
-                    abrir.setVisible(true);
-                    this.setVisible(false);
-                }else{
-                    JOptionPane.showMessageDialog(this, "El usuario o la contraseña son incorrectos", "Error", JOptionPane.WARNING_MESSAGE);
-                }
-            }
-        }catch(ClassNotFoundException e){
-        }catch(EOFException e){
-        }catch(IOException e){
-        }
-        }
-    }//GEN-LAST:event_jToggleButtonIniciarSesionActionPerformed
+        
+       verificacion();
 
-    private void jComboBoxEmpresaParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEmpresaParticularActionPerformed
-       
-    }//GEN-LAST:event_jComboBoxEmpresaParticularActionPerformed
+    }//GEN-LAST:event_jToggleButtonIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -305,12 +294,10 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrarse;
-    private javax.swing.JComboBox<String> jComboBoxEmpresaParticular;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelLogIn;
     private javax.swing.JLabel jLabelRegistradoPregunta;
-    private javax.swing.JLabel jLabelTipoDeCuenta;
     private javax.swing.JPasswordField jPasswordFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     private javax.swing.JToggleButton jToggleButtonIniciarSesion;

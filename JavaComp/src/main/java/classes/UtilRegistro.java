@@ -14,7 +14,7 @@ import java.util.*;
 
 public class UtilRegistro {
     
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     private static Cliente objcli;
 
     /** Establece el ArrayList de clientes
@@ -94,6 +94,7 @@ public class UtilRegistro {
         }
         return true;
     }
+
     
     /** Carga los datos de personas del fichero */
     public static void cargarDatos() {
