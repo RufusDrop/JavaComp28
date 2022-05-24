@@ -63,6 +63,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        //CARGAMOS LOS DATOS
+        UtilRegistro.cargarDatos();
+        
           try {
         javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception e) {

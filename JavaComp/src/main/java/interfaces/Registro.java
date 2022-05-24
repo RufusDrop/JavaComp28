@@ -22,7 +22,7 @@ public class Registro extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        UtilRegistro.cargarDatos();
+        
         
         
         /**
