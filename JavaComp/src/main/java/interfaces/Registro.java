@@ -384,6 +384,7 @@ public class Registro extends javax.swing.JDialog {
             
             File almacenamientoEmpresas=new File("\"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Documentos\\\\GitHub\\\\JavaComp28\\\\JavaComp\\\\src\\\\main\\\\resources\\\\documentosDeTexto\\\\AlmacenamientoEmpresas.TXT\"");
             if(almacenamientoEmpresas.length()==0){ //Verificamos si el archivo está vacío
+                System.out.println("Vacio");
             try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoEmpresas.TXT"))){
                 //Escribimos el fichero con cabecera incluída
                 oos.writeObject(empresa1);
@@ -409,9 +410,9 @@ public class Registro extends javax.swing.JDialog {
             particular1.setClave(jTextFieldContrasena.getText());
             particular1.setDireccion(direccion1);
             particular1.setTelefono(Integer.valueOf(jFormattedTextFieldTelefono.getText()));                        
-        }
+        
         //A continuación almacenamos este objeto en AlmacenamientoParticulares.TXT
-            File almacenamientoParticulares=new File("\"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Documentos\\\\GitHub\\\\JavaComp28\\\\JavaComp\\\\src\\\\main\\\\resources\\\\documentosDeTexto\\\\AlmacenamientoParticulares.TXT\"");
+            File almacenamientoParticulares=new File("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT");
             if(almacenamientoParticulares.length()==0){ //Verificamos si el archivo está vacío
             try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\documentosDeTexto\\AlmacenamientoParticulares.TXT"))){
                 //Escribimos el fichero con cabecera
@@ -429,7 +430,7 @@ public class Registro extends javax.swing.JDialog {
                 System.out.println(e.getMessage());
             }
             }
-            
+        }
             //Una vez registrado mostrar pantalla LogIn para acceder
         new Login().setVisible(true);
         this.setVisible(false);
