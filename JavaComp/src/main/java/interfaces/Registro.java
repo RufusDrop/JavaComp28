@@ -417,7 +417,7 @@ public class Registro extends javax.swing.JDialog {
             jLabelCIF.setVisible(false);
             jTextFieldCIF.setVisible(false);
             jLabelWeb.setVisible(false);
-            jTextFieldWeb.setVisible(false);
+            jTextFieldWeb.setVisible(false); 
         }
     }//GEN-LAST:event_jComboBoxEmpresaParticularActionPerformed
 
