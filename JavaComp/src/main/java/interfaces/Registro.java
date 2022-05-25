@@ -401,7 +401,7 @@ public class Registro extends javax.swing.JDialog {
         //lo insertamos en el array
         if (UtilRegistro.registroCliente(cli)) {
             JOptionPane.showMessageDialog(this, "Ha sido registrado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            new Login().setVisible(true);
+            super.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Ya estás registrado. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -418,7 +418,7 @@ public class Registro extends javax.swing.JDialog {
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed
         // TODO add your handling code here:
-        new Login().setVisible(true);
+        super.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonLogInActionPerformed
 
