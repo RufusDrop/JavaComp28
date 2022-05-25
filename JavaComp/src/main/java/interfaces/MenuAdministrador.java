@@ -60,11 +60,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultar = new javax.swing.JPanel();
         jComboBoxUsuariosProductosVentas = new javax.swing.JComboBox<>();
         jButtonConsultar = new javax.swing.JButton();
-        jPanelUsuarios = new javax.swing.JPanel();
-        jPanelConsultaUsuarios = new javax.swing.JPanel();
-        jButtonAnteriorUsuario = new javax.swing.JButton();
-        jButtonSiguienteUsuario = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
         jPanelProductos = new javax.swing.JPanel();
         jPanelNuevoProducto = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
@@ -77,6 +72,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jButtonSiguienteProducto = new javax.swing.JButton();
         jButtonNuevoProducto = new javax.swing.JButton();
         productoPanelAdmin1 = new interfaces.ProductoPanelAdmin();
+        jPanelUsuarios = new javax.swing.JPanel();
+        jPanelConsultaUsuarios = new javax.swing.JPanel();
+        jButtonAnteriorUsuario = new javax.swing.JButton();
+        jButtonSiguienteUsuario = new javax.swing.JButton();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,7 +111,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jComboBoxUsuariosProductosVentas.setBackground(new java.awt.Color(204, 204, 204));
         jComboBoxUsuariosProductosVentas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jComboBoxUsuariosProductosVentas.setForeground(new java.awt.Color(51, 51, 51));
-        jComboBoxUsuariosProductosVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Productos", "Ventas", " " }));
+        jComboBoxUsuariosProductosVentas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuarios", "Productos", "Ventas" }));
         jComboBoxUsuariosProductosVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxUsuariosProductosVentasActionPerformed(evt);
@@ -148,70 +148,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         getContentPane().add(jPanelConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, -1, 54));
 
-        jButtonAnteriorUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonAnteriorUsuario.setText("<--");
-        jButtonAnteriorUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonAnteriorUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorUsuarioActionPerformed(evt);
-            }
-        });
-
-        jButtonSiguienteUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSiguienteUsuario.setText("-->");
-        jButtonSiguienteUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonSiguienteUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteUsuarioActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
-        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
-        jPanelConsultaUsuariosLayout.setHorizontalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
-                .addComponent(jButtonAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154)
-                .addComponent(jButtonSiguienteUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199))
-        );
-        jPanelConsultaUsuariosLayout.setVerticalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnteriorUsuario)
-                    .addComponent(jButtonSiguienteUsuario))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
-        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
-        jPanelUsuariosLayout.setHorizontalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuariosLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelUsuariosLayout.setVerticalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
-
         jButtonBorrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonBorrar.setText("Borrar");
         jButtonBorrar.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -232,6 +168,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         jButtonAnadirProductos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonAnadirProductos.setText("Añadir producto");
+        jButtonAnadirProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnadirProductosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelNuevoProductoLayout = new javax.swing.GroupLayout(jPanelNuevoProducto);
         jPanelNuevoProducto.setLayout(jPanelNuevoProductoLayout);
@@ -335,6 +276,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        productoPanelAdmin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
         jPanelProductos.setLayout(jPanelProductosLayout);
         jPanelProductosLayout.setHorizontalGroup(
@@ -351,7 +294,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelProductosLayout.setVerticalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProductosLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelConsultaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,6 +304,72 @@ public class MenuAdministrador extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+
+        jButtonAnteriorUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnteriorUsuario.setText("<--");
+        jButtonAnteriorUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnteriorUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonSiguienteUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguienteUsuario.setText("-->");
+        jButtonSiguienteUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguienteUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
+        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
+        jPanelConsultaUsuariosLayout.setHorizontalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addContainerGap(196, Short.MAX_VALUE)
+                .addComponent(jButtonAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(jButtonSiguienteUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+        );
+        jPanelConsultaUsuariosLayout.setVerticalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAnteriorUsuario)
+                    .addComponent(jButtonSiguienteUsuario))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        usuarioPanelAdmin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
+        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
+        jPanelUsuariosLayout.setHorizontalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelUsuariosLayout.setVerticalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(160, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -408,6 +417,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultaProductos.setVisible(false);
         jPanelNuevoProducto.setVisible(true);
         productoPanelAdmin1.setNuevoProducto();
+        
 
     }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
 
@@ -436,7 +446,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
+        productoPanelAdmin1.clearAll();
     }//GEN-LAST:event_jButtonBorrarActionPerformed
+
+    private void jButtonAnadirProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAnadirProductosActionPerformed
 
     /**
      * @param args the command line arguments

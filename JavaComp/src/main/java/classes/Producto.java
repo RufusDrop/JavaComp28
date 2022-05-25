@@ -6,17 +6,17 @@ import java.awt.Image;
 import java.io.Serializable;
 public class Producto implements Serializable {
     private String titulo;
-    private String caracteristicas;
-    private Categorias categoria; 
+    private String descripcion;
+    private String categoria; 
     private double precio;
     private String fotoProducto;
     private int stock;
     private LocalDate fechaDeEntrada;
     private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 
-    public Producto(String titulo, String caracteristicas, Categorias categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada) {
+    public Producto(String titulo, String descripcion, String categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada) {
         this.titulo = titulo;
-        this.caracteristicas = caracteristicas;
+        this.descripcion= descripcion;
         this.categoria = categoria;
         this.precio = precio;
         this.fotoProducto = fotoProducto;
@@ -26,7 +26,7 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + caracteristicas + ", categoriaID=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
+        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + descripcion + ", categoriaID=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
     }
     
     
@@ -39,19 +39,19 @@ public class Producto implements Serializable {
         this.titulo = titulo;
     }
 
-    public String getCaracteristicas() {
-        return caracteristicas;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setCaracteristicas(String caracteristicas) {
-        this.caracteristicas = caracteristicas;
+    public void setDescripcion(String caracteristicas) {
+        this.descripcion = caracteristicas;
     }
 
-    public Categorias getCategoriaID() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoriaID(Categorias categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -89,6 +89,10 @@ public class Producto implements Serializable {
      
     public ArrayList<Opinion> getOpiniones() {
         return opiniones;
+    }
+
+    public void setOpiniones(ArrayList<Opinion> opiniones) {
+        this.opiniones = opiniones;
     }
     /**
      * 

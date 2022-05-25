@@ -38,8 +38,8 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     public float getjFormattedTextFieldPrecio(){
         return Float.parseFloat(jFormattedTextFieldPrecio.getText());
     }
-    public void setjFormattedTextFieldPrecio(float num){
-        jTextFieldNombreProducto.setText(String.valueOf(num));
+    public void setjFormattedTextFieldPrecio(double num){
+        jFormattedTextFieldPrecio.setText(String.valueOf(num));
     }
     public String getjTextFieldFotoProducto(){
         return jTextFieldFotoProducto.getText();
@@ -58,7 +58,8 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     }
     public void setNuevoProducto(){
         jPanelOpiniones.setVisible(false);
-        jLabelFotoProducto.setIcon(null);
+        clearAll();
+        
     }
     public void setModificarConsultarProducto(String URL){  
         jPanelOpiniones.setVisible(true);
@@ -67,6 +68,15 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         catch(Exception e){
             JOptionPane.showMessageDialog(this, "No se encuentra una imagen valida en la url introducida", "Error", JOptionPane.WARNING_MESSAGE);
         }
+    }
+    public void clearAll(){
+        jTextFieldNombreProducto.setText(null);
+        jTextFieldDescripcion.setText(null);
+        jComboBoxCategoria.setSelectedIndex(0);
+        jFormattedTextFieldPrecio.setText(null);
+        jTextFieldFotoProducto.setText(null);
+        jFormattedTextFieldStock.setText(null);
+        jLabelFotoProducto.setIcon(null);
     }
     
    
