@@ -188,6 +188,10 @@
           <Format subtype="0" type="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jFormattedTextFieldPrecioMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldPrecioActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldStock">
       <Properties>

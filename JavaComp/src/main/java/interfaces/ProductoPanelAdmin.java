@@ -30,13 +30,14 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jTextFieldDescripcion.setText(txt);
     }
     public String getjComboBoxCategoria(){
-        return String.valueOf(jComboBoxCategoria.getSelectedIndex());
+        return String.valueOf(jComboBoxCategoria.getSelectedItem());
     }
     public void setjComboBoxCategoria(String txt){
         jComboBoxCategoria.setSelectedItem(txt);
     }
-    public float getjFormattedTextFieldPrecio(){
-        return Float.parseFloat(jFormattedTextFieldPrecio.getText());
+    public Double getjFormattedTextFieldPrecio(){
+        String str = String.valueOf(jFormattedTextFieldPrecio.getValue());
+        return Double.parseDouble(str);
     }
     public void setjFormattedTextFieldPrecio(double num){
         jFormattedTextFieldPrecio.setText(String.valueOf(num));
@@ -47,7 +48,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     public void setjTextFieldFotoProducto(String txt){
        jTextFieldFotoProducto.setText(txt);
     }
-    public float getjFormattedTextFieldStock(){
+    public int getjFormattedTextFieldStock(){
         return Integer.parseInt(jFormattedTextFieldStock.getText());
     }
     public void setjFormattedTextFieldStock(int num){
@@ -157,6 +158,16 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         });
 
         jFormattedTextFieldPrecio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        jFormattedTextFieldPrecio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jFormattedTextFieldPrecioMouseClicked(evt);
+            }
+        });
+        jFormattedTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldPrecioActionPerformed(evt);
+            }
+        });
 
         jFormattedTextFieldStock.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
@@ -385,6 +396,14 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     private void jButtonAñadirOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirOpinionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAñadirOpinionActionPerformed
+
+    private void jFormattedTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldPrecioActionPerformed
+
+    private void jFormattedTextFieldPrecioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jFormattedTextFieldPrecioMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldPrecioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

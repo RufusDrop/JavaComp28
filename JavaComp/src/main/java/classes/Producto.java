@@ -14,7 +14,7 @@ public class Producto implements Serializable {
     private LocalDate fechaDeEntrada;
     private ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
 
-    public Producto(String titulo, String descripcion, String categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada) {
+    public Producto(String titulo, String descripcion, String categoria, double precio, String fotoProducto, int stock, LocalDate fechaDeEntrada,ArrayList<Opinion> opiniones) {
         this.titulo = titulo;
         this.descripcion= descripcion;
         this.categoria = categoria;
@@ -22,11 +22,12 @@ public class Producto implements Serializable {
         this.fotoProducto = fotoProducto;
         this.stock = stock;
         this.fechaDeEntrada = fechaDeEntrada;
+        this.opiniones = opiniones;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + descripcion + ", categoriaID=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
+        return "Producto{" + "titulo=" + titulo + ", caracteristicas=" + descripcion + ", categoria=" + categoria + ", precio=" + precio + ", fotoProducto=" + fotoProducto + ", stock=" + stock + ", fechaDeEntrada=" + fechaDeEntrada + ", opiniones=" + opiniones + '}';
     }
     
     
@@ -98,21 +99,25 @@ public class Producto implements Serializable {
      * 
      * Se añade una opinion a la lista asegurandose de que no se repita
      */
-    public void addOpiniones(Opinion opinion) {
+    public boolean addOpinion(Opinion opinion) {
         if(!opiniones.contains(opinion)){
             opiniones.add(opinion);
+            return true;
         }
         else
         {
+            return false;
             //La opinion esta repetida
         }
     }
-    public void removeOpiniones(Opinion opinion) {
+    public boolean removeOpinion(Opinion opinion) {
         if(opiniones.contains(opinion)){
-            opiniones.add(opinion);
+            opiniones.remove(opinion);
+            return true;
         }
         else
         {
+            return false;
             //La opinion no existe
         }
     }

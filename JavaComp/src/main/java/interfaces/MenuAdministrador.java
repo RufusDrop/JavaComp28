@@ -1,9 +1,18 @@
-
 package interfaces;
 
+import classes.Opinion;
+import classes.Producto;
+import classes.UtilProducto;
+import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class MenuAdministrador extends javax.swing.JFrame {
+
+    //Inializamos el producto actual
+    private Producto cli = null;
 
     /**
      * Creates new form MenuAdministrador
@@ -11,29 +20,28 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        
+
         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
-         jPanelProductos.setVisible(false);
-         jPanelUsuarios.setVisible(true);
-         //jPanelVentas.setVisible(false);
-        
-        
+        jPanelProductos.setVisible(false);
+        jPanelUsuarios.setVisible(true);
+        //jPanelVentas.setVisible(false);
+
         //Para el tema oscuro///
-         try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) { 
-        System.err.println("Failed to initialize LaF");
+        try {
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -376,29 +384,25 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jComboBoxUsuariosProductosVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUsuariosProductosVentasActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jComboBoxUsuariosProductosVentasActionPerformed
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
         Object tipoDeBusqueda;
         tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
-        if(tipoDeBusqueda.equals("Usuarios")){
-             jPanelProductos.setVisible(false);
+        if (tipoDeBusqueda.equals("Usuarios")) {
+            jPanelProductos.setVisible(false);
             jPanelUsuarios.setVisible(true);
             //jPanelVentas.setVisible(false);
-        }
-        else
-        if(tipoDeBusqueda.equals("Productos")){
+        } else if (tipoDeBusqueda.equals("Productos")) {
             jPanelProductos.setVisible(true);
             jPanelUsuarios.setVisible(false);
             //jPanelVentas.setVisible(false);
             jPanelConsultaProductos.setVisible(true);
-        jPanelNuevoProducto.setVisible(false);
-        }
-        else
-        if(tipoDeBusqueda.equals("Ventas")){
-             jPanelProductos.setVisible(false);
+            jPanelNuevoProducto.setVisible(false);
+        } else if (tipoDeBusqueda.equals("Ventas")) {
+            jPanelProductos.setVisible(false);
             jPanelUsuarios.setVisible(false);
             //jPanelVentas.setVisible(true);
         }
@@ -417,7 +421,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultaProductos.setVisible(false);
         jPanelNuevoProducto.setVisible(true);
         productoPanelAdmin1.setNuevoProducto();
-        
+
 
     }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
 
@@ -441,7 +445,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelConsultaProductos.setVisible(true);
         jPanelNuevoProducto.setVisible(false);
-        productoPanelAdmin1.setModificarConsultarProducto("/images/Ps5.jpg");
+        //productoPanelAdmin1.setModificarConsultarProducto("/images/Ps5.jpg");
     }//GEN-LAST:event_jButtonConsultarExistentesActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
@@ -451,6 +455,33 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jButtonAnadirProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnadirProductosActionPerformed
         // TODO add your handling code here:
+        try {
+            String nombreProducto = productoPanelAdmin1.getjTextFieldNombreProducto();
+            String descripcion = productoPanelAdmin1.getjTextFieldDescripcion();
+            String categoria = productoPanelAdmin1.getjComboBoxCategoria();
+            double precio = productoPanelAdmin1.getjFormattedTextFieldPrecio();
+            String fotoProducto = productoPanelAdmin1.getjTextFieldFotoProducto();
+            int stock = productoPanelAdmin1.getjFormattedTextFieldStock();
+            //Establecemos el dia actual del alta como fecha entrada
+            LocalDate fechaActual = LocalDate.now();
+            LocalDate fechaDeEntrada = fechaActual;
+            //ArrayList<Opinion> opiniones = null;
+            cli = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, null);
+            //lo insertamos en el array
+            if (UtilProducto.altaProducto(cli)) {
+                JOptionPane.showMessageDialog(this, "El producto ha sido dado de alta correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                productoPanelAdmin1.clearAll();
+            } else {
+                JOptionPane.showMessageDialog(this, "El producto ya existe. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Excepción al registrarse.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        UtilProducto.guardarDatos();
+        System.out.println(UtilProducto.getProductos().toString());
+
     }//GEN-LAST:event_jButtonAnadirProductosActionPerformed
 
     /**
@@ -463,20 +494,20 @@ public class MenuAdministrador extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) { 
-        System.err.println("Failed to initialize LaF");
+            javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception e) {
+            System.err.println("Failed to initialize LaF");
         }
 
         try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            System.out.println(info.getName());
-            if ("Flatlaf".equals(info.getName())) {
-            System.out.println("Flatlaf look and feel stablished");
-            javax.swing.UIManager.setLookAndFeel(info.getClassName());
-            break;
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info.getName());
+                if ("Flatlaf".equals(info.getName())) {
+                    System.out.println("Flatlaf look and feel stablished");
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

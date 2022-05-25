@@ -66,7 +66,7 @@ public class Login extends javax.swing.JFrame {
         UtilRegistro.cargarDatos();
         
           try {
-        javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
         System.err.println("Failed to initialize LaF");
         }
@@ -261,7 +261,7 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */ try {
-        javax.swing.UIManager.setLookAndFeel(new FlatLightLaf());
+        javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (Exception e) {
         System.err.println("Failed to initialize LaF");
         }

@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JDialog {
     
+    //Inializamos el cliente
     private Cliente cli = null;
     private Direccion dir = null;
     
