@@ -29,22 +29,20 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
             //presentamos la primera persona
-            
-            if (li.hasNext()) {
-                objcli = (Cliente) li.next();
-            }
-            if (objcli != null) {
+            objcli = (Cliente) li.next();
+            int i=0;
+            while(i<=cliaux.size()){           
                 if(todoCorrecto(objcli)){
                     new MainMenu().setVisible(true);
                     this.setVisible(false);
+                    break;
                 }else{
-                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    objcli = (Cliente) li.next(); 
+                    i+=1;
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "No está registrado.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            }
+            }            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error: Correo o contraseña incorrectos", "Mensaje", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.toString());
         }
     }//fin consultarTodo
