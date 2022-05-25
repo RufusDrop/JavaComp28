@@ -11,8 +11,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        jPanelConsultaProductos.setVisible(true);
-        jPanelNuevoProducto.setVisible(false);
+        
+        //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
+         jPanelProductos.setVisible(false);
+         jPanelUsuarios.setVisible(true);
+         //jPanelVentas.setVisible(false);
+        
         
         //Para el tema oscuro///
          try {
@@ -56,25 +60,23 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultar = new javax.swing.JPanel();
         jComboBoxUsuariosProductosVentas = new javax.swing.JComboBox<>();
         jButtonConsultar = new javax.swing.JButton();
+        jPanelUsuarios = new javax.swing.JPanel();
+        jPanelConsultaUsuarios = new javax.swing.JPanel();
+        jButtonAnteriorUsuario = new javax.swing.JButton();
+        jButtonSiguienteUsuario = new javax.swing.JButton();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
         jPanelProductos = new javax.swing.JPanel();
         jPanelNuevoProducto = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
         jButtonConsultarExistentes = new javax.swing.JButton();
         jButtonAnadirProductos = new javax.swing.JButton();
         jPanelConsultaProductos = new javax.swing.JPanel();
-        jButtonAnterior = new javax.swing.JButton();
-        jButtonEliminar = new javax.swing.JButton();
-        jButtonModificar = new javax.swing.JButton();
-        jButtonSiguiente = new javax.swing.JButton();
+        jButtonAnteriorProducto = new javax.swing.JButton();
+        jButtonEliminarProducto = new javax.swing.JButton();
+        jButtonModificarProducto = new javax.swing.JButton();
+        jButtonSiguienteProducto = new javax.swing.JButton();
         jButtonNuevoProducto = new javax.swing.JButton();
         productoPanelAdmin1 = new interfaces.ProductoPanelAdmin();
-        jPanelUsuarios = new javax.swing.JPanel();
-        jPanelConsultaUsuarios = new javax.swing.JPanel();
-        jButtonAnterior1 = new javax.swing.JButton();
-        jButtonEliminar1 = new javax.swing.JButton();
-        jButtonModificar1 = new javax.swing.JButton();
-        jButtonSiguiente1 = new javax.swing.JButton();
-        jButtonNuevoProducto1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -146,6 +148,70 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         getContentPane().add(jPanelConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, -1, 54));
 
+        jButtonAnteriorUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnteriorUsuario.setText("<--");
+        jButtonAnteriorUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnteriorUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonSiguienteUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguienteUsuario.setText("-->");
+        jButtonSiguienteUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguienteUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
+        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
+        jPanelConsultaUsuariosLayout.setHorizontalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addContainerGap(196, Short.MAX_VALUE)
+                .addComponent(jButtonAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(jButtonSiguienteUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+        );
+        jPanelConsultaUsuariosLayout.setVerticalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAnteriorUsuario)
+                    .addComponent(jButtonSiguienteUsuario))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
+        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
+        jPanelUsuariosLayout.setHorizontalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(75, Short.MAX_VALUE)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelUsuariosLayout.setVerticalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(46, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+
         jButtonBorrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonBorrar.setText("Borrar");
         jButtonBorrar.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -190,39 +256,39 @@ public class MenuAdministrador extends javax.swing.JFrame {
                     .addComponent(jButtonConsultarExistentes)))
         );
 
-        jButtonAnterior.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonAnterior.setText("<--");
-        jButtonAnterior.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAnteriorProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnteriorProducto.setText("<--");
+        jButtonAnteriorProducto.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnteriorProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorActionPerformed(evt);
+                jButtonAnteriorProductoActionPerformed(evt);
             }
         });
 
-        jButtonEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonEliminar.setText("Eliminar");
-        jButtonEliminar.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminarProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonEliminarProducto.setText("Eliminar");
+        jButtonEliminarProducto.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminarActionPerformed(evt);
+                jButtonEliminarProductoActionPerformed(evt);
             }
         });
 
-        jButtonModificar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonModificar.setText("Modificar");
-        jButtonModificar.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonModificar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonModificarProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonModificarProducto.setText("Modificar");
+        jButtonModificarProducto.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonModificarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificarActionPerformed(evt);
+                jButtonModificarProductoActionPerformed(evt);
             }
         });
 
-        jButtonSiguiente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSiguiente.setText("-->");
-        jButtonSiguiente.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSiguienteProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguienteProducto.setText("-->");
+        jButtonSiguienteProducto.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguienteProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteActionPerformed(evt);
+                jButtonSiguienteProductoActionPerformed(evt);
             }
         });
 
@@ -243,13 +309,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addGroup(jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jButtonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonSiguienteProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jButtonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelConsultaProductosLayout.createSequentialGroup()
-                        .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAnteriorProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(230, 230, 230)
-                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
@@ -260,109 +326,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSiguiente)
-                        .addComponent(jButtonModificar))
+                        .addComponent(jButtonSiguienteProducto)
+                        .addComponent(jButtonModificarProducto))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAnterior)
-                        .addComponent(jButtonEliminar)
+                        .addComponent(jButtonAnteriorProducto)
+                        .addComponent(jButtonEliminarProducto)
                         .addComponent(jButtonNuevoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        jButtonAnterior1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonAnterior1.setText("<--");
-        jButtonAnterior1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonAnterior1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnterior1ActionPerformed(evt);
-            }
-        });
-
-        jButtonEliminar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonEliminar1.setText("Eliminar");
-        jButtonEliminar1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonEliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEliminar1ActionPerformed(evt);
-            }
-        });
-
-        jButtonModificar1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonModificar1.setText("Modificar");
-        jButtonModificar1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonModificar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonModificar1ActionPerformed(evt);
-            }
-        });
-
-        jButtonSiguiente1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSiguiente1.setText("-->");
-        jButtonSiguiente1.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonSiguiente1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguiente1ActionPerformed(evt);
-            }
-        });
-
-        jButtonNuevoProducto1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonNuevoProducto1.setText("Nuevo producto");
-        jButtonNuevoProducto1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoProducto1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
-        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
-        jPanelConsultaUsuariosLayout.setHorizontalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jButtonSiguiente1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButtonModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                        .addComponent(jButtonAnterior1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(230, 230, 230)
-                        .addComponent(jButtonEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonNuevoProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
-        jPanelConsultaUsuariosLayout.setVerticalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSiguiente1)
-                        .addComponent(jButtonModificar1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAnterior1)
-                        .addComponent(jButtonEliminar1)
-                        .addComponent(jButtonNuevoProducto1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
-        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
-        jPanelUsuariosLayout.setHorizontalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
-        );
-        jPanelUsuariosLayout.setVerticalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addContainerGap(7, Short.MAX_VALUE)
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(794, 794, 794))
         );
 
         javax.swing.GroupLayout jPanelProductosLayout = new javax.swing.GroupLayout(jPanelProductos);
@@ -377,11 +347,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
                         .addComponent(jPanelNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(83, Short.MAX_VALUE))
-            .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelProductosLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanelProductosLayout.setVerticalGroup(
             jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,14 +358,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(productoPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelProductosLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanelUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 72, -1, -1));
+        getContentPane().add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -410,25 +370,62 @@ public class MenuAdministrador extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jComboBoxUsuariosProductosVentasActionPerformed
 
-    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+        Object tipoDeBusqueda;
+        tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
+        if(tipoDeBusqueda.equals("Usuarios")){
+             jPanelProductos.setVisible(false);
+            jPanelUsuarios.setVisible(true);
+            //jPanelVentas.setVisible(false);
+        }
+        else
+        if(tipoDeBusqueda.equals("Productos")){
+            jPanelProductos.setVisible(true);
+            jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(false);
+            jPanelConsultaProductos.setVisible(true);
+        jPanelNuevoProducto.setVisible(false);
+        }
+        else
+        if(tipoDeBusqueda.equals("Ventas")){
+             jPanelProductos.setVisible(false);
+            jPanelUsuarios.setVisible(false);
+            //jPanelVentas.setVisible(true);
+        }
+    }//GEN-LAST:event_jButtonConsultarActionPerformed
 
-    private void jButtonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarActionPerformed
+    private void jButtonAnteriorUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonModificarActionPerformed
+    }//GEN-LAST:event_jButtonAnteriorUsuarioActionPerformed
 
-    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+    private void jButtonSiguienteUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+    }//GEN-LAST:event_jButtonSiguienteUsuarioActionPerformed
 
-    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+    private void jButtonNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEliminarActionPerformed
+        jPanelConsultaProductos.setVisible(false);
+        jPanelNuevoProducto.setVisible(true);
+        productoPanelAdmin1.setNuevoProducto();
 
-    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
+    }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
+
+    private void jButtonSiguienteProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBorrarActionPerformed
+    }//GEN-LAST:event_jButtonSiguienteProductoActionPerformed
+
+    private void jButtonModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonModificarProductoActionPerformed
+
+    private void jButtonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEliminarProductoActionPerformed
+
+    private void jButtonAnteriorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAnteriorProductoActionPerformed
 
     private void jButtonConsultarExistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarExistentesActionPerformed
         // TODO add your handling code here:
@@ -437,57 +434,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         productoPanelAdmin1.setModificarConsultarProducto("/images/Ps5.jpg");
     }//GEN-LAST:event_jButtonConsultarExistentesActionPerformed
 
-    private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
+    private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
         // TODO add your handling code here:
-        Object tipoDeBusqueda;
-        tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
-        if(tipoDeBusqueda.equals("Usuarios")){
-             jPanelProductos.setVisible(false);
-            //jPanelUsuarios.setVisible(true);
-            //jPanelVentas.setVisible(false);
-        }
-        else
-        if(tipoDeBusqueda.equals("Productos")){
-            jPanelProductos.setVisible(true);
-            //jPanelUsuarios.setVisible(false);
-            //jPanelVentas.setVisible(false);
-        }
-        else
-        if(tipoDeBusqueda.equals("Ventas")){
-             jPanelProductos.setVisible(false);
-            //jPanelUsuarios.setVisible(false);
-            //jPanelVentas.setVisible(true);
-        }
-    }//GEN-LAST:event_jButtonConsultarActionPerformed
-
-    private void jButtonNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProductoActionPerformed
-        // TODO add your handling code here:
-        jPanelConsultaProductos.setVisible(false);
-        jPanelNuevoProducto.setVisible(true);
-        productoPanelAdmin1.setNuevoProducto();
-      
-        
-    }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
-
-    private void jButtonAnterior1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnterior1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAnterior1ActionPerformed
-
-    private void jButtonEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonEliminar1ActionPerformed
-
-    private void jButtonModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonModificar1ActionPerformed
-
-    private void jButtonSiguiente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguiente1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguiente1ActionPerformed
-
-    private void jButtonNuevoProducto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProducto1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonNuevoProducto1ActionPerformed
+    }//GEN-LAST:event_jButtonBorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -534,19 +483,16 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnadirProductos;
-    private javax.swing.JButton jButtonAnterior;
-    private javax.swing.JButton jButtonAnterior1;
+    private javax.swing.JButton jButtonAnteriorProducto;
+    private javax.swing.JButton jButtonAnteriorUsuario;
     private javax.swing.JButton jButtonBorrar;
     private javax.swing.JButton jButtonConsultar;
     private javax.swing.JButton jButtonConsultarExistentes;
-    private javax.swing.JButton jButtonEliminar;
-    private javax.swing.JButton jButtonEliminar1;
-    private javax.swing.JButton jButtonModificar;
-    private javax.swing.JButton jButtonModificar1;
+    private javax.swing.JButton jButtonEliminarProducto;
+    private javax.swing.JButton jButtonModificarProducto;
     private javax.swing.JButton jButtonNuevoProducto;
-    private javax.swing.JButton jButtonNuevoProducto1;
-    private javax.swing.JButton jButtonSiguiente;
-    private javax.swing.JButton jButtonSiguiente1;
+    private javax.swing.JButton jButtonSiguienteProducto;
+    private javax.swing.JButton jButtonSiguienteUsuario;
     private javax.swing.JComboBox<String> jComboBoxUsuariosProductosVentas;
     private javax.swing.JLabel jLabelAdministrador;
     private javax.swing.JPanel jPanelAdministrador;
@@ -557,5 +503,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelUsuarios;
     private interfaces.ProductoPanelAdmin productoPanelAdmin1;
+    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }

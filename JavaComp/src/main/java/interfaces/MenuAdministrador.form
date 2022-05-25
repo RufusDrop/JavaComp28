@@ -18,6 +18,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,-85,0,0,4,34"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -145,10 +146,107 @@
         </Component>
       </SubComponents>
     </Container>
+    <Container class="javax.swing.JPanel" name="jPanelUsuarios">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="130" y="80" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="75" max="32767" attributes="0"/>
+                  <Component id="jPanelConsultaUsuarios" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="usuarioPanelAdmin1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                  <Component id="jPanelConsultaUsuarios" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                  <Component id="usuarioPanelAdmin1" min="-2" pref="485" max="-2" attributes="0"/>
+                  <EmptySpace pref="46" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanelConsultaUsuarios">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace pref="196" max="32767" attributes="0"/>
+                      <Component id="jButtonAnteriorUsuario" min="-2" pref="52" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+                      <Component id="jButtonSiguienteUsuario" min="-2" pref="52" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="199" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButtonAnteriorUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSiguienteUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="jButtonAnteriorUsuario">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&lt;--"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnteriorUsuarioActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonSiguienteUsuario">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="--&gt;"/>
+                <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                  <Insets value="[0, 0, 0, 0]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSiguienteUsuarioActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="interfaces.UsuarioPanelAdmin" name="usuarioPanelAdmin1">
+        </Component>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JPanel" name="jPanelProductos">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="129" y="72" width="-1" height="-1"/>
+          <AbsoluteConstraints x="130" y="80" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
 
@@ -166,13 +264,6 @@
                   </Group>
                   <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jPanelUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -185,13 +276,6 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="productoPanelAdmin1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jPanelUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -275,14 +359,14 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                              <Component id="jButtonSiguiente" min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="jButtonSiguienteProducto" min="-2" pref="52" max="-2" attributes="0"/>
                               <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                              <Component id="jButtonModificar" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="jButtonModificarProducto" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButtonAnterior" min="-2" pref="52" max="-2" attributes="0"/>
+                              <Component id="jButtonAnteriorProducto" min="-2" pref="52" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                              <Component id="jButtonEliminar" min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="jButtonEliminarProducto" min="-2" pref="115" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -297,12 +381,12 @@
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jButtonSiguiente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonSiguienteProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonModificarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                              <Component id="jButtonAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButtonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonAnteriorProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEliminarProducto" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonNuevoProducto" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -312,7 +396,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButtonAnterior">
+            <Component class="javax.swing.JButton" name="jButtonAnteriorProducto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
@@ -323,10 +407,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnteriorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnteriorProductoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonEliminar">
+            <Component class="javax.swing.JButton" name="jButtonEliminarProducto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
@@ -337,10 +421,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarProductoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonModificar">
+            <Component class="javax.swing.JButton" name="jButtonModificarProducto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
@@ -351,10 +435,10 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModificarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModificarProductoActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonSiguiente">
+            <Component class="javax.swing.JButton" name="jButtonSiguienteProducto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="1"/>
@@ -365,7 +449,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSiguienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSiguienteProductoActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonNuevoProducto">
@@ -383,147 +467,6 @@
         </Container>
         <Component class="interfaces.ProductoPanelAdmin" name="productoPanelAdmin1">
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanelUsuarios">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelConsultaUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="141" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="7" max="32767" attributes="0"/>
-                      <Component id="jPanelConsultaUsuarios" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="794" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JPanel" name="jPanelConsultaUsuarios">
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-                                  <Component id="jButtonSiguiente1" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <EmptySpace min="33" pref="33" max="-2" attributes="0"/>
-                                  <Component id="jButtonModificar1" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jButtonAnterior1" min="-2" pref="52" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                                  <Component id="jButtonEliminar1" min="-2" pref="115" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jButtonNuevoProducto1" min="-2" pref="188" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonSiguiente1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonModificar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="jButtonAnterior1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonEliminar1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonNuevoProducto1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="14" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JButton" name="jButtonAnterior1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="&lt;--"/>
-                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                      <Insets value="[0, 0, 0, 0]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnterior1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonEliminar1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Eliminar"/>
-                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                      <Insets value="[0, 0, 0, 0]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminar1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonModificar1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Modificar"/>
-                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                      <Insets value="[0, 0, 0, 0]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonModificar1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonSiguiente1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="--&gt;"/>
-                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-                      <Insets value="[0, 0, 0, 0]"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSiguiente1ActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="jButtonNuevoProducto1">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="18" style="1"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Nuevo producto"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonNuevoProducto1ActionPerformed"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
-          </SubComponents>
-        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

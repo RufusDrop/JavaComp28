@@ -27,224 +27,37 @@ public class Usuario extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextFieldContrasena = new javax.swing.JTextField();
-        jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
-        jTextFieldDireccion = new javax.swing.JTextField();
-        jLabelDNI = new javax.swing.JLabel();
-        jLabelNombre = new javax.swing.JLabel();
-        jLabelCorreoElectronico = new javax.swing.JLabel();
-        jLabelContrasena = new javax.swing.JLabel();
-        jComboBoxAdministradorCliente = new javax.swing.JComboBox<>();
-        jLabelDireccion = new javax.swing.JLabel();
-        jLabelTipoDeCuenta = new javax.swing.JLabel();
-        jLabelTelefono = new javax.swing.JLabel();
-        jLabelWeb = new javax.swing.JLabel();
-        jTextFieldDNI = new javax.swing.JTextField();
-        jTextFieldWeb = new javax.swing.JTextField();
-        jTextFieldNombre = new javax.swing.JTextField();
-        jTextFieldCorreoElectronico = new javax.swing.JTextField();
-        jTextFieldCIF = new javax.swing.JTextField();
-        jLabelCIF = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButtonGuardarCambios = new javax.swing.JButton();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldTelefonoActionPerformed(evt);
-            }
-        });
-
-        jLabelDNI.setText("DNI:");
-
-        jLabelNombre.setText("Nombre:");
-
-        jLabelCorreoElectronico.setText("Correo electrónico:");
-
-        jLabelContrasena.setText("Contraseña");
-
-        jComboBoxAdministradorCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
-        jComboBoxAdministradorCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxAdministradorClienteActionPerformed(evt);
-            }
-        });
-
-        jLabelDireccion.setText("Dirección");
-
-        jLabelTipoDeCuenta.setText("Tipo de cuenta");
-
-        jLabelTelefono.setText("Teléfono:");
-
-        jLabelWeb.setText("Web:");
-
-        jTextFieldDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDNIActionPerformed(evt);
-            }
-        });
-
-        jTextFieldCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCorreoElectronicoActionPerformed(evt);
-            }
-        });
-
-        jTextFieldCIF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCIFActionPerformed(evt);
-            }
-        });
-
-        jLabelCIF.setText("CIF:");
-
-        jButton1.setText("Guardar cambios");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\nicol\\OneDrive\\Documentos\\GitHub\\JavaComp28\\JavaComp\\src\\main\\resources\\images\\IconoCuentaAzulFull.png")); // NOI18N
+        jButtonGuardarCambios.setText("Guardar cambios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelDNI)
-                            .addComponent(jLabelCIF))
-                        .addGap(182, 182, 182)
-                        .addComponent(jTextFieldCIF, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelNombre)
-                            .addComponent(jLabelCorreoElectronico)
-                            .addComponent(jLabelContrasena)
-                            .addComponent(jLabelDireccion)
-                            .addComponent(jLabelTelefono)
-                            .addComponent(jLabelTipoDeCuenta)
-                            .addComponent(jLabelWeb))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldWeb)
-                                    .addComponent(jTextFieldDNI)
-                                    .addComponent(jTextFieldNombre)
-                                    .addComponent(jTextFieldCorreoElectronico)
-                                    .addComponent(jTextFieldContrasena)
-                                    .addComponent(jTextFieldDireccion)
-                                    .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTipoDeCuenta)
-                            .addComponent(jComboBoxAdministradorCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelDNI)
-                                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextFieldCIF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelCIF)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelNombre))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelCorreoElectronico))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelContrasena)))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDireccion))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTelefono)
-                            .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelWeb)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jFormattedTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldTelefonoActionPerformed
-
-    private void jComboBoxAdministradorClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAdministradorClienteActionPerformed
-        // TODO add your handling code here:
-        /**
-        * Asegura que dependiendo del tipo se activen las debidas cajas.
-        */
-        Object tipoDeUsuario;
-        tipoDeUsuario = jComboBoxAdministradorCliente.getSelectedItem();
-        if(tipoDeUsuario=="Empresa"){
-            jLabelDNI.setVisible(false);
-            jTextFieldDNI.setVisible(false);
-            jLabelCIF.setVisible(true);
-            jTextFieldCIF.setVisible(true);
-            jLabelWeb.setVisible(true);
-            jTextFieldWeb.setVisible(true);
-        }
-        else if(tipoDeUsuario == "Particular"){
-            jLabelDNI.setVisible(true);
-            jTextFieldDNI.setVisible(true);
-            jLabelCIF.setVisible(false);
-            jTextFieldCIF.setVisible(false);
-            jLabelWeb.setVisible(false);
-            jTextFieldWeb.setVisible(false);
-        }
-    }//GEN-LAST:event_jComboBoxAdministradorClienteActionPerformed
-
-    private void jTextFieldDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDNIActionPerformed
-
-    private void jTextFieldCorreoElectronicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoElectronicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCorreoElectronicoActionPerformed
-
-    private void jTextFieldCIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCIFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCIFActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,25 +102,7 @@ public class Usuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBoxAdministradorCliente;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelCIF;
-    private javax.swing.JLabel jLabelContrasena;
-    private javax.swing.JLabel jLabelCorreoElectronico;
-    private javax.swing.JLabel jLabelDNI;
-    private javax.swing.JLabel jLabelDireccion;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelTelefono;
-    private javax.swing.JLabel jLabelTipoDeCuenta;
-    private javax.swing.JLabel jLabelWeb;
-    private javax.swing.JTextField jTextFieldCIF;
-    private javax.swing.JTextField jTextFieldContrasena;
-    private javax.swing.JTextField jTextFieldCorreoElectronico;
-    private javax.swing.JTextField jTextFieldDNI;
-    private javax.swing.JTextField jTextFieldDireccion;
-    private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldWeb;
+    private javax.swing.JButton jButtonGuardarCambios;
+    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }
