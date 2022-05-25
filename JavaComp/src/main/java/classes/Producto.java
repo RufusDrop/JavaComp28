@@ -97,6 +97,23 @@ public class Producto implements Serializable {
     }
     /**
      * 
+     * @return DEvuelve la media de las calificaciones de las opiniones
+     */
+    public double getOpinionMedia(){
+        double suma=0;
+        for (int i = 0; i < opiniones.size(); i++) {
+            suma = suma + opiniones.get(i).getCalificacion();
+        }
+        String sumaStr = String.valueOf(suma);
+        if(opiniones.size()!=0){
+            return (Double.parseDouble(sumaStr)/opiniones.size());
+        }else{
+            return 0;
+        }
+        
+    }
+    /**
+     * 
      * Se añade una opinion a la lista asegurandose de que no se repita
      */
     public boolean addOpinion(Opinion opinion) {

@@ -1,6 +1,7 @@
 
 package interfaces;
 
+import java.time.LocalDate;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -57,18 +58,28 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     public void setjLabelFotoProducto(String URL){
         jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource(URL)));
     }
+    public String getjTextFieldFechaDeEntrada(){
+        return  jTextFieldFechaDeEntrada.getText();
+    }
+    public void setjTextFieldFechaDeEntrada(LocalDate date){
+       jTextFieldFechaDeEntrada.setText(date.toString());
+    }
+    
     public void setNuevoProducto(){
         jPanelOpiniones.setVisible(false);
+        jLabelFechaDeEntrada.setVisible(false);
+        jTextFieldFechaDeEntrada.setVisible(false);
         clearAll();
         
     }
-    public void setModificarConsultarProducto(String URL){  
+    public void setModificarConsultarProducto(){  
         jPanelOpiniones.setVisible(true);
-        try{
-        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource(URL)));}
-        catch(Exception e){
-            JOptionPane.showMessageDialog(this, "No se encuentra una imagen valida en la url introducida", "Error", JOptionPane.WARNING_MESSAGE);
-        }
+        jLabelFechaDeEntrada.setVisible(true);
+        jTextFieldFechaDeEntrada.setVisible(true);
+        
+    }
+    public void setFotoProducto(String URL){
+        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource(URL)));
     }
     public void clearAll(){
         jTextFieldNombreProducto.setText(null);
@@ -78,6 +89,10 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jTextFieldFotoProducto.setText(null);
         jFormattedTextFieldStock.setText(null);
         jLabelFotoProducto.setIcon(null);
+    }
+    public void setBarraValue(double value){
+        int valueInt = ((int)(value+0.5))*100;
+        jProgressBarPuntuacion.setValue(valueInt);
     }
     
    
@@ -104,11 +119,12 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jTextFieldFotoProducto = new javax.swing.JTextField();
         jFormattedTextFieldPrecio = new javax.swing.JFormattedTextField();
         jFormattedTextFieldStock = new javax.swing.JFormattedTextField();
+        jLabelFechaDeEntrada = new javax.swing.JLabel();
         jPanelOpiniones = new javax.swing.JPanel();
-        jLabelStock1 = new javax.swing.JLabel();
+        jLabelStockOpiniones = new javax.swing.JLabel();
         opinionPanel1 = new interfaces.OpinionPanel();
         jButtonAnterior = new javax.swing.JButton();
-        jButtonSiguiente = new javax.swing.JButton();
+        jButtonSiguienteOpinion = new javax.swing.JButton();
         jLabelStockTextoPuntuacionMedia = new javax.swing.JLabel();
         jLabelStockTextoPuntuacionMediaValor = new javax.swing.JLabel();
         jProgressBarPuntuacion = new javax.swing.JProgressBar();
@@ -117,6 +133,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jTextFIeldTextoOpinion = new javax.swing.JTextField();
         jLabelStockTextoOpinion = new javax.swing.JLabel();
         jButtonAñadirOpinion = new javax.swing.JButton();
+        jTextFieldFechaDeEntrada = new javax.swing.JTextField();
 
         jLabelNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelNombreProducto.setText("Nombre");
@@ -171,8 +188,11 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
         jFormattedTextFieldStock.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
-        jLabelStock1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabelStock1.setText("Opiniones:");
+        jLabelFechaDeEntrada.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelFechaDeEntrada.setText("FechaDeEntrada");
+
+        jLabelStockOpiniones.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabelStockOpiniones.setText("Opiniones:");
 
         opinionPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -185,12 +205,12 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
             }
         });
 
-        jButtonSiguiente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSiguiente.setText("-->");
-        jButtonSiguiente.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSiguienteOpinion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguienteOpinion.setText("-->");
+        jButtonSiguienteOpinion.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguienteOpinion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteActionPerformed(evt);
+                jButtonSiguienteOpinionActionPerformed(evt);
             }
         });
 
@@ -202,8 +222,8 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
         jProgressBarPuntuacion.setBackground(new java.awt.Color(204, 204, 204));
         jProgressBarPuntuacion.setForeground(new java.awt.Color(255, 204, 0));
-        jProgressBarPuntuacion.setMaximum(5);
-        jProgressBarPuntuacion.setValue(2);
+        jProgressBarPuntuacion.setMaximum(500);
+        jProgressBarPuntuacion.setValue(200);
 
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -231,49 +251,54 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
             jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                 .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelStockOpiniones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                     .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                .addComponent(jLabelStockTextoPuntuacionMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap()
+                                .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                        .addComponent(jLabelStockTextoPuntuacionMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabelStockTextoPuntuacionMediaValor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jProgressBarPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                        .addComponent(jLabelStockTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFIeldTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                        .addGap(160, 160, 160)
+                                        .addComponent(jLabelStockNuevaOpinion))
+                                    .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                        .addGap(178, 178, 178)
+                                        .addComponent(jButtonEliminar))))
+                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                .addGap(193, 193, 193)
+                                .addComponent(jButtonAñadirOpinion))
+                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                                .addGap(161, 161, 161)
+                                .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabelStockTextoPuntuacionMediaValor, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jProgressBarPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                .addComponent(jLabelStockTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFIeldTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                .addGap(160, 160, 160)
-                                .addComponent(jLabelStockNuevaOpinion))
-                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                .addGap(178, 178, 178)
-                                .addComponent(jButtonEliminar))))
-                    .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
-                        .addComponent(jButtonAñadirOpinion)))
-                .addContainerGap(98, Short.MAX_VALUE))
+                                .addComponent(jButtonSiguienteOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 92, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelStock1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                        .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                            .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                    .addGap(161, 161, 161)
-                                    .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButtonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(opinionPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(0, 75, Short.MAX_VALUE)))
-                    .addContainerGap()))
+                    .addComponent(opinionPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(81, Short.MAX_VALUE)))
         );
         jPanelOpinionesLayout.setVerticalGroup(
             jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOpinionesLayout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAnterior)
+                    .addComponent(jButtonSiguienteOpinion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelStockOpiniones)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addComponent(jButtonEliminar)
                 .addGap(26, 26, 26)
                 .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -292,16 +317,12 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                 .addGap(46, 46, 46))
             .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonAnterior)
-                        .addComponent(jButtonSiguiente))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(jLabelStock1)
-                    .addGap(28, 28, 28)
+                    .addGap(87, 87, 87)
                     .addComponent(opinionPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(269, Short.MAX_VALUE)))
         );
+
+        jTextFieldFechaDeEntrada.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -314,24 +335,24 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelFotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabelNombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelStockCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelStockFotoPRoducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelFechaDeEntrada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jFormattedTextFieldStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabelNombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelStockCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabelStockFotoPRoducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextFieldDescripcion)
-                                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.Alignment.LEADING, 0, 354, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldFotoProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextFieldNombreProducto)
-                                    .addComponent(jFormattedTextFieldPrecio))))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(jTextFieldDescripcion, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jComboBoxCategoria, 0, 354, Short.MAX_VALUE)
+                            .addComponent(jTextFieldFotoProducto)
+                            .addComponent(jTextFieldNombreProducto, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFormattedTextFieldPrecio, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jFormattedTextFieldStock)
+                            .addComponent(jTextFieldFechaDeEntrada))))
+                .addGap(9, 9, 9))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,11 +382,15 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelStock)
-                            .addComponent(jFormattedTextFieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jFormattedTextFieldStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelFechaDeEntrada)
+                            .addComponent(jTextFieldFechaDeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabelFotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelOpiniones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -385,9 +410,9 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
-    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+    private void jButtonSiguienteOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteOpinionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+    }//GEN-LAST:event_jButtonSiguienteOpinionActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
@@ -410,19 +435,20 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     private javax.swing.JButton jButtonAnterior;
     private javax.swing.JButton jButtonAñadirOpinion;
     private javax.swing.JButton jButtonEliminar;
-    private javax.swing.JButton jButtonSiguiente;
+    private javax.swing.JButton jButtonSiguienteOpinion;
     private javax.swing.JComboBox<String> jComboBoxCategoria;
     private javax.swing.JFormattedTextField jFormattedTextFieldPrecio;
     private javax.swing.JFormattedTextField jFormattedTextFieldStock;
     private javax.swing.JLabel jLabelDescripcion;
+    private javax.swing.JLabel jLabelFechaDeEntrada;
     private javax.swing.JLabel jLabelFotoProducto;
     private javax.swing.JLabel jLabelNombreProducto;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelStock;
-    private javax.swing.JLabel jLabelStock1;
     private javax.swing.JLabel jLabelStockCategoria;
     private javax.swing.JLabel jLabelStockFotoPRoducto;
     private javax.swing.JLabel jLabelStockNuevaOpinion;
+    private javax.swing.JLabel jLabelStockOpiniones;
     private javax.swing.JLabel jLabelStockTextoOpinion;
     private javax.swing.JLabel jLabelStockTextoPuntuacionMedia;
     private javax.swing.JLabel jLabelStockTextoPuntuacionMediaValor;
@@ -430,6 +456,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     private javax.swing.JProgressBar jProgressBarPuntuacion;
     private javax.swing.JTextField jTextFIeldTextoOpinion;
     private javax.swing.JTextField jTextFieldDescripcion;
+    private javax.swing.JTextField jTextFieldFechaDeEntrada;
     private javax.swing.JTextField jTextFieldFotoProducto;
     private javax.swing.JTextField jTextFieldNombreProducto;
     private interfaces.OpinionPanel opinionPanel1;

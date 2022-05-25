@@ -39,8 +39,8 @@ public class OpinionPanel extends javax.swing.JPanel {
 
         jProgressBarPuntuacion.setBackground(new java.awt.Color(204, 204, 204));
         jProgressBarPuntuacion.setForeground(new java.awt.Color(255, 204, 0));
-        jProgressBarPuntuacion.setMaximum(5);
-        jProgressBarPuntuacion.setValue(4);
+        jProgressBarPuntuacion.setMaximum(500);
+        jProgressBarPuntuacion.setValue(400);
 
         jLabelOpinion.setText("\"BlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlablaBlabl\"");
 

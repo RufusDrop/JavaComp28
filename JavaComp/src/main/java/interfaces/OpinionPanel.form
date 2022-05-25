@@ -60,8 +60,8 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="cc" red="ff" type="rgb"/>
         </Property>
-        <Property name="maximum" type="int" value="5"/>
-        <Property name="value" type="int" value="4"/>
+        <Property name="maximum" type="int" value="500"/>
+        <Property name="value" type="int" value="400"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelOpinion">

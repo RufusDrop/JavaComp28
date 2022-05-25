@@ -7,12 +7,16 @@ import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
 public class MenuAdministrador extends javax.swing.JFrame {
 
     //Inializamos el producto actual
     private Producto cli = null;
+    private ArrayList<Producto> procaux; //Referencia al ArrayList de personas de la clase UtilCenso
+    private ListIterator<Producto> li; //Iterador para recorrer el ArrayList en ambas direcciones
+    private Producto objproc; //Referencia a un objeto de tipo persona del ArrayList
 
     /**
      * Creates new form MenuAdministrador
@@ -20,9 +24,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        
+
         //CARGAR LOS DATOS
         UtilProducto.cargarDatos();
+        System.out.println(UtilProducto.getProductos());
+        ///CONSULTAR 
+        consultarTodo();
 
         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
         jPanelProductos.setVisible(false);
@@ -55,6 +62,62 @@ public class MenuAdministrador extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+    }
+
+    /**
+     * Consulta las personas del ArrayList ordenadas para su presentación
+     */
+    private void consultarTodo() {
+        try {
+            //referenciamos al ArrayList de UtilCenso
+            procaux = UtilProducto.getProductos();
+            //creamos el iterador sobre el ArrayList
+            li = procaux.listIterator();
+            //si no hay personas...
+            if (procaux.size() < 1) {
+                JOptionPane.showMessageDialog(this, "No hay productos1.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                
+                jButtonModificarProducto.setEnabled(false);
+                jButtonEliminarProducto.setEnabled(false);
+                jButtonSiguienteProducto.setEnabled(false);
+                jButtonAnteriorProducto.setEnabled(false);
+                productoPanelAdmin1.setVisible(false);
+                return;
+            } else {
+                jButtonModificarProducto.setEnabled(true);
+                jButtonEliminarProducto.setEnabled(true);
+                jButtonSiguienteProducto.setEnabled(true);
+                jButtonAnteriorProducto.setEnabled(true);
+            }
+            //presentamos la primera persona
+            if (li.hasNext()) {
+                objproc = (Producto) li.next();
+            }
+            if (objproc != null) {
+                presenta(objproc);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay productos2.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.toString());
+        }
+    }//fin consultarTodo
+
+    /**
+     * Presenta los datos de una persona en el panel de datos
+     */
+    private void presenta(Producto proc) {
+        productoPanelAdmin1.setjTextFieldNombreProducto(proc.getTitulo());
+        productoPanelAdmin1.setjTextFieldDescripcion(proc.getDescripcion());
+        productoPanelAdmin1.setjComboBoxCategoria(proc.getCategoria());
+        productoPanelAdmin1.setjFormattedTextFieldPrecio(proc.getPrecio());
+        productoPanelAdmin1.setjTextFieldFotoProducto(proc.getFotoProducto());
+        productoPanelAdmin1.setFotoProducto(proc.getFotoProducto());
+        productoPanelAdmin1.setjFormattedTextFieldStock(proc.getStock());
+        productoPanelAdmin1.setjTextFieldFechaDeEntrada(proc.getFechaDeEntrada());
+        //productoPanelAdmin1.set
+
     }
 
     /**
@@ -404,6 +467,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //jPanelVentas.setVisible(false);
             jPanelConsultaProductos.setVisible(true);
             jPanelNuevoProducto.setVisible(false);
+            consultarTodo();
         } else if (tipoDeBusqueda.equals("Ventas")) {
             jPanelProductos.setVisible(false);
             jPanelUsuarios.setVisible(false);
@@ -423,6 +487,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanelConsultaProductos.setVisible(false);
         jPanelNuevoProducto.setVisible(true);
+        productoPanelAdmin1.setVisible(true);
         productoPanelAdmin1.setNuevoProducto();
 
 
@@ -430,10 +495,27 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jButtonSiguienteProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteProductoActionPerformed
         // TODO add your handling code here:
+        //Comprobamos el rango del ArrayList...
+        if (li.hasNext()) {
+            objproc = li.next();
+            if (objproc != null) {
+                presenta(objproc);
+            } else {
+                System.out.println("Wow");
+                JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonSiguienteProductoActionPerformed
 
     private void jButtonModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarProductoActionPerformed
         // TODO add your handling code here:
+        //MODIFICA EL PRODUCTO ACTUAL
+
+
     }//GEN-LAST:event_jButtonModificarProductoActionPerformed
 
     private void jButtonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarProductoActionPerformed
@@ -442,13 +524,27 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jButtonAnteriorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorProductoActionPerformed
         // TODO add your handling code here:
+        //Comprobamos el rango del ArrayList...
+        if (li.hasPrevious()) {
+            objproc = li.previous();
+            if (objproc != null) {
+                presenta(objproc);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonAnteriorProductoActionPerformed
 
     private void jButtonConsultarExistentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarExistentesActionPerformed
         // TODO add your handling code here:
         jPanelConsultaProductos.setVisible(true);
         jPanelNuevoProducto.setVisible(false);
-        //productoPanelAdmin1.setModificarConsultarProducto("/images/Ps5.jpg");
+        productoPanelAdmin1.setModificarConsultarProducto();
+        consultarTodo();
     }//GEN-LAST:event_jButtonConsultarExistentesActionPerformed
 
     private void jButtonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarActionPerformed
