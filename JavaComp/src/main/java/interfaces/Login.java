@@ -29,6 +29,7 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
             //presentamos la primera persona
+            
             if (li.hasNext()) {
                 objcli = (Cliente) li.next();
             }
@@ -37,7 +38,7 @@ public class Login extends javax.swing.JFrame {
                     new MainMenu().setVisible(true);
                     this.setVisible(false);
                 }else{
-                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrecos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "No está registrado.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -106,7 +107,7 @@ public class Login extends javax.swing.JFrame {
         jPasswordFieldContrasena = new javax.swing.JPasswordField();
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
         jButtonRegistrarse = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelCorreoElectronico = new javax.swing.JLabel();
         jLabelContrasena = new javax.swing.JLabel();
         jLabelRegistradoPregunta = new javax.swing.JLabel();
         jLabelLogIn = new javax.swing.JLabel();
@@ -134,7 +135,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Correo electrónico");
+        jLabelCorreoElectronico.setText("Correo electrónico");
 
         jLabelContrasena.setText("Contraseña");
 
@@ -175,7 +176,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(72, 72, 72)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
+                                .addComponent(jLabelCorreoElectronico)
                                 .addComponent(jLabelContrasena))
                             .addGap(88, 88, 88)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -190,7 +191,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabelLogIn)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabelCorreoElectronico)
                     .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,7 +220,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
             new Registro(this,true).setVisible(true);
-           this.setVisible(false);
+           //this.setVisible(false);
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
     private void jToggleButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonIniciarSesionActionPerformed
@@ -249,6 +250,7 @@ public class Login extends javax.swing.JFrame {
         }
         
        verificacion();
+        System.out.println(UtilRegistro.getClientes().toString());
 
     }//GEN-LAST:event_jToggleButtonIniciarSesionActionPerformed
 
@@ -297,8 +299,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrarse;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelContrasena;
+    private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelLogIn;
     private javax.swing.JLabel jLabelRegistradoPregunta;
     private javax.swing.JPasswordField jPasswordFieldContrasena;

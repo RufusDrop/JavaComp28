@@ -46,7 +46,7 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelCorreoElectronico" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelContrasena" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
@@ -68,7 +68,7 @@
               <Component id="jLabelLogIn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelCorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldCorreoElectronico" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonRegistrarseActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="jLabelCorreoElectronico">
       <Properties>
         <Property name="text" type="java.lang.String" value="Correo electr&#xf3;nico"/>
       </Properties>
