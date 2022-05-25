@@ -20,6 +20,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        
+        //CARGAR LOS DATOS
+        UtilProducto.cargarDatos();
 
         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
         jPanelProductos.setVisible(false);
