@@ -1,22 +1,90 @@
 
 package interfaces;
 
+import classes.Opinion;
+import classes.Producto;
+import classes.UtilProducto;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ListIterator;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ruben
- */
+
 public class ProductoPanelAdmin extends javax.swing.JPanel {
 
+    
+    private Opinion opi = null;
+    private ArrayList<Opinion> opiaux = new ArrayList<Opinion>();
+    private ListIterator<Opinion> lio;
+    private Opinion objopi;
     /**
      * Creates new form ProductoPanelAdmin
      */
     public ProductoPanelAdmin() {
         initComponents();
+         consultarTodo();
+        
     }
+    public void consultarTodo() {
+        try {
+            //referenciamos al ArrayList de UtilCenso
+            opiaux = UtilProducto.getOpiniones();
+            
+            //creamos el iterador sobre el ArrayList
+            lio = opiaux.listIterator();
+            
+            //si no hay personas...
+            if (opiaux.size() < 1) {
+                JOptionPane.showMessageDialog(this, "No hay productos1.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                opinionPanel1.setVisible(false);
+                jButtonEliminar.setVisible(false);
+                jLabelStockTextoPuntuacionMedia.setVisible(false);
+                jLabelStockTextoPuntuacionMediaValor.setVisible(false);
+                jProgressBarPuntuacion.setVisible(false);
+                return;
+            } else {
+                opinionPanel1.setVisible(true);
+                jButtonEliminar.setVisible(true);
+                jLabelStockTextoPuntuacionMedia.setVisible(true);
+                jLabelStockTextoPuntuacionMediaValor.setVisible(true);
+                jProgressBarPuntuacion.setVisible(true);
+            }
+            
+            
+            
+            
+            //presentamos la primera persona
+            if (lio.hasNext()) {
+                objopi = (Opinion) lio.next();
+            }
+            if (objopi != null) {
+                presenta(objopi);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay opiniones2.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e);
+            e.printStackTrace();
+        }
+        
+        
+    }//fin consultarTodo
+
+    /**
+     * Presenta los datos de una persona en el panel de datos
+     */
+    private void presenta(Opinion opi) {
+        opinionPanel1.setjLabelOpinion(opi.getComentario());
+        opinionPanel1.setPuntuacion(opi.getCalificacion());
+        opinionPanel1.setjLabelFecha(opi.getFechaRealizacion().toString());
+        //productoPanelAdmin1.set
+
+    }
+    
+    
+    
     
     public String getjTextFieldNombreProducto(){
         return jTextFieldNombreProducto.getText();
@@ -94,7 +162,13 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         int valueInt = ((int)(value+0.5))*100;
         jProgressBarPuntuacion.setValue(valueInt);
     }
-    
+    public void setPuntuacion(double puntuacion){
+        jLabelStockTextoPuntuacionMediaValor.setText(String.valueOf(puntuacion));
+        setBarraValue(puntuacion);
+    }
+    public void clearNuevaOpinion(){
+        jTextFieldTextoOpinion.setText(null);
+    }
    
 
     /**
@@ -123,14 +197,14 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         jPanelOpiniones = new javax.swing.JPanel();
         jLabelStockOpiniones = new javax.swing.JLabel();
         opinionPanel1 = new interfaces.OpinionPanel();
-        jButtonAnterior = new javax.swing.JButton();
+        jButtonAnteriorOpinion = new javax.swing.JButton();
         jButtonSiguienteOpinion = new javax.swing.JButton();
         jLabelStockTextoPuntuacionMedia = new javax.swing.JLabel();
         jLabelStockTextoPuntuacionMediaValor = new javax.swing.JLabel();
         jProgressBarPuntuacion = new javax.swing.JProgressBar();
         jButtonEliminar = new javax.swing.JButton();
         jLabelStockNuevaOpinion = new javax.swing.JLabel();
-        jTextFIeldTextoOpinion = new javax.swing.JTextField();
+        jTextFieldTextoOpinion = new javax.swing.JTextField();
         jLabelStockTextoOpinion = new javax.swing.JLabel();
         jButtonAñadirOpinion = new javax.swing.JButton();
         jTextFieldFechaDeEntrada = new javax.swing.JTextField();
@@ -196,12 +270,12 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
         opinionPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButtonAnterior.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonAnterior.setText("<--");
-        jButtonAnterior.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAnteriorOpinion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnteriorOpinion.setText("<--");
+        jButtonAnteriorOpinion.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnteriorOpinion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorActionPerformed(evt);
+                jButtonAnteriorOpinionActionPerformed(evt);
             }
         });
 
@@ -266,7 +340,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                                     .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                                         .addComponent(jLabelStockTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFIeldTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldTextoOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                                         .addGap(160, 160, 160)
                                         .addComponent(jLabelStockNuevaOpinion))
@@ -274,15 +348,16 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                                         .addGap(178, 178, 178)
                                         .addComponent(jButtonEliminar))))
                             .addGroup(jPanelOpinionesLayout.createSequentialGroup()
-                                .addGap(193, 193, 193)
-                                .addComponent(jButtonAñadirOpinion))
-                            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                                 .addGap(161, 161, 161)
-                                .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonAnteriorOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButtonSiguienteOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 92, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanelOpinionesLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jButtonAñadirOpinion)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                     .addContainerGap()
@@ -294,7 +369,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOpinionesLayout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnterior)
+                    .addComponent(jButtonAnteriorOpinion)
                     .addComponent(jButtonSiguienteOpinion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelStockOpiniones)
@@ -311,10 +386,10 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelStockTextoOpinion, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFIeldTextoOpinion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jButtonAñadirOpinion)
-                .addGap(46, 46, 46))
+                    .addComponent(jTextFieldTextoOpinion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(jButtonAñadirOpinion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
             .addGroup(jPanelOpinionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOpinionesLayout.createSequentialGroup()
                     .addGap(87, 87, 87)
@@ -406,12 +481,36 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldFotoProductoActionPerformed
 
-    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
+    private void jButtonAnteriorOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorOpinionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAnteriorActionPerformed
+        if (lio.hasPrevious()) {
+           objopi = lio.previous();
+            if (objopi != null) {
+                presenta(objopi);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay más opiniones.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No hay más opiniones.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonAnteriorOpinionActionPerformed
 
     private void jButtonSiguienteOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteOpinionActionPerformed
         // TODO add your handling code here:
+        
+         if (lio.hasNext()) {
+            objopi= lio.next();
+            if (objopi != null) {
+                presenta(objopi);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "No hay más opiniones", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButtonSiguienteOpinionActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -420,6 +519,31 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
     private void jButtonAñadirOpinionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAñadirOpinionActionPerformed
         // TODO add your handling code here:
+        
+        try {
+            String comentario = "@ADMIN:" +jTextFieldTextoOpinion.getText();
+            int puntuacion = -1;
+            //Establecemos el dia actual del alta como fecha entrada
+            LocalDate fechaActual = LocalDate.now();
+            LocalDate fechaDeEntrada = fechaActual;
+            //ArrayList<Opinion> opiniones = null;
+            opi = new Opinion(puntuacion,comentario,fechaActual);
+            //lo insertamos en el array
+            if (UtilProducto.altaOpinion(opi)) {
+                JOptionPane.showMessageDialog(this, "La opinion se ha publicado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                clearNuevaOpinion();
+                consultarTodo();
+            } else {
+                JOptionPane.showMessageDialog(this, "La opinion ya existia", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Excepción al opinar", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        UtilProducto.guardarDatos();
+        System.out.println(UtilProducto.getProductos().toString());
+                                               
     }//GEN-LAST:event_jButtonAñadirOpinionActionPerformed
 
     private void jFormattedTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldPrecioActionPerformed
@@ -432,7 +556,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAnterior;
+    private javax.swing.JButton jButtonAnteriorOpinion;
     private javax.swing.JButton jButtonAñadirOpinion;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonSiguienteOpinion;
@@ -454,11 +578,11 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelStockTextoPuntuacionMediaValor;
     private javax.swing.JPanel jPanelOpiniones;
     private javax.swing.JProgressBar jProgressBarPuntuacion;
-    private javax.swing.JTextField jTextFIeldTextoOpinion;
     private javax.swing.JTextField jTextFieldDescripcion;
     private javax.swing.JTextField jTextFieldFechaDeEntrada;
     private javax.swing.JTextField jTextFieldFotoProducto;
     private javax.swing.JTextField jTextFieldNombreProducto;
+    private javax.swing.JTextField jTextFieldTextoOpinion;
     private interfaces.OpinionPanel opinionPanel1;
     // End of variables declaration//GEN-END:variables
 }

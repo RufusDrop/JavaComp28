@@ -234,7 +234,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabelStockTextoOpinion" min="-2" pref="103" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextFIeldTextoOpinion" min="-2" pref="323" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldTextoOpinion" min="-2" pref="323" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
@@ -247,12 +247,8 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="193" max="-2" attributes="0"/>
-                                  <Component id="jButtonAñadirOpinion" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-                                  <Component id="jButtonAnterior" min="-2" pref="52" max="-2" attributes="0"/>
+                                  <Component id="jButtonAnteriorOpinion" min="-2" pref="52" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jButtonSiguienteOpinion" min="-2" pref="52" max="-2" attributes="0"/>
                               </Group>
@@ -261,6 +257,11 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                  <Component id="jButtonAñadirOpinion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -276,7 +277,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonAnteriorOpinion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonSiguienteOpinion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -296,11 +297,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelStockTextoOpinion" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFIeldTextoOpinion" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldTextoOpinion" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                  <Component id="jButtonAñadirOpinion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jButtonAñadirOpinion" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
@@ -330,7 +331,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButtonAnterior">
+        <Component class="javax.swing.JButton" name="jButtonAnteriorOpinion">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -341,7 +342,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnteriorActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonAnteriorOpinionActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonSiguienteOpinion">
@@ -402,7 +403,7 @@
             <Property name="text" type="java.lang.String" value="NuevaOpinion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFIeldTextoOpinion">
+        <Component class="javax.swing.JTextField" name="jTextFieldTextoOpinion">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelStockTextoOpinion">
           <Properties>

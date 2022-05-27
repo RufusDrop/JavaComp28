@@ -5,10 +5,10 @@ import java.time.LocalDate;
 import java.util.*;
 public class UtilProducto {
     private static ArrayList<Producto> productos = new ArrayList<Producto>();
-    private static Producto objcli;
+    private static Producto objproc;
     /** Establece el ArrayList de productos
      * @param p */
-    public static void setClientes(ArrayList<Producto> p) {
+    public static void setProductos(ArrayList<Producto> p) {
         productos = p;
     }
     /**@return Devuelve el ArrayList de productos */
@@ -30,9 +30,9 @@ public class UtilProducto {
     /** Da de alta un producto
      * @param objcli
      * @return  boolean */
-    public static boolean altaProducto(Producto objcli) {
-        if (!productos.contains(objcli)) {
-            productos.add(objcli);
+    public static boolean altaProducto(Producto objproc) {
+        if (!productos.contains(objproc)) {
+            productos.add(objproc);
             return true;
         } else {
             return false;
@@ -43,8 +43,8 @@ public class UtilProducto {
      * @param indice
      * @return objcli */
     public static Producto consultaProducto(int indice) {
-        objcli = productos.get(indice);
-        return objcli;
+        objproc = productos.get(indice);
+        return objproc;
     }
     /** Modifica los datos de una persona
      * @param cli     
@@ -110,7 +110,55 @@ public class UtilProducto {
             System.out.println("Error: " + e.getMessage());
         }
     }//fin guardarDatos
+       
+    
+    
+    /////OPINIONEs
+     
+    
+     private static ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
+    private static Opinion objopi;
+    /** Establece el ArrayList de productos
+     * @param p */
+    public static void setOpiniones(ArrayList<Opinion> o) {
+        opiniones = o;
+        objproc.setOpiniones(o);
+    }
+    /**@return Devuelve el ArrayList de productos */
+    public static ArrayList<Opinion> getOpiniones() {
+        //Comparador para ordenar los clientes por su nombre
+        Comparator NomCliComp = new Comparator() {
 
+            @Override
+            public int compare(Object o1, Object o2) {
+                Opinion p1 = (Opinion) o1;
+                Opinion p2 = (Opinion) o2;
+                return p1.getFechaRealizacion().compareTo(p2.getFechaRealizacion());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(opiniones, NomCliComp);
+        return opiniones;
+    }
+    /** Da de alta un producto
+     * @param objcli
+     * @return  boolean */
+    public static boolean altaOpinion(Opinion objopi) {
+        if (!opiniones.contains(objopi)) {
+            opiniones.add(objopi);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    /** Devuelve una producto por la posición dentro del ArrayList
+     * @param indice
+     * @return objcli */
+    public static Opinion consultaOpinion(int indice) {
+        objopi = opiniones.get(indice);
+        return objopi;
+    }
 
 
 }

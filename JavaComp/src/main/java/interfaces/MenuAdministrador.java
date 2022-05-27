@@ -13,11 +13,12 @@ import javax.swing.JOptionPane;
 public class MenuAdministrador extends javax.swing.JFrame {
 
     //Inializamos el producto actual
-    private Producto cli = null;
+    private Producto proc = null;
     private ArrayList<Producto> procaux; //Referencia al ArrayList de personas de la clase UtilCenso
     private ListIterator<Producto> li; //Iterador para recorrer el ArrayList en ambas direcciones
     private Producto objproc; //Referencia a un objeto de tipo persona del ArrayList
-
+    
+    
     /**
      * Creates new form MenuAdministrador
      */
@@ -69,10 +70,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
      */
     private void consultarTodo() {
         try {
+            ///productoPanelAdmin1.consultarTodo();
+            
             //referenciamos al ArrayList de UtilCenso
             procaux = UtilProducto.getProductos();
+            
             //creamos el iterador sobre el ArrayList
             li = procaux.listIterator();
+            
             //si no hay personas...
             if (procaux.size() < 1) {
                 JOptionPane.showMessageDialog(this, "No hay productos1.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -89,6 +94,10 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 jButtonSiguienteProducto.setEnabled(true);
                 jButtonAnteriorProducto.setEnabled(true);
             }
+            
+            
+            
+            
             //presentamos la primera persona
             if (li.hasNext()) {
                 objproc = (Producto) li.next();
@@ -102,6 +111,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             System.out.println("Error: " + e.toString());
         }
+        
+        
     }//fin consultarTodo
 
     /**
@@ -116,6 +127,8 @@ public class MenuAdministrador extends javax.swing.JFrame {
         productoPanelAdmin1.setFotoProducto(proc.getFotoProducto());
         productoPanelAdmin1.setjFormattedTextFieldStock(proc.getStock());
         productoPanelAdmin1.setjTextFieldFechaDeEntrada(proc.getFechaDeEntrada());
+        productoPanelAdmin1.setPuntuacion(proc.getOpinionMedia());
+        
         //productoPanelAdmin1.set
 
     }
@@ -489,6 +502,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelNuevoProducto.setVisible(true);
         productoPanelAdmin1.setVisible(true);
         productoPanelAdmin1.setNuevoProducto();
+        
 
 
     }//GEN-LAST:event_jButtonNuevoProductoActionPerformed
@@ -564,10 +578,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //Establecemos el dia actual del alta como fecha entrada
             LocalDate fechaActual = LocalDate.now();
             LocalDate fechaDeEntrada = fechaActual;
+            ArrayList<Opinion> opiniones;
             //ArrayList<Opinion> opiniones = null;
-            cli = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, null);
+            
+            proc = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, null);
             //lo insertamos en el array
-            if (UtilProducto.altaProducto(cli)) {
+            if (UtilProducto.altaProducto(proc)) {
                 JOptionPane.showMessageDialog(this, "El producto ha sido dado de alta correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 productoPanelAdmin1.clearAll();
             } else {
