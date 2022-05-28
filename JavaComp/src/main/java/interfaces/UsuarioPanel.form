@@ -49,7 +49,7 @@
                       <Component id="jFormattedTextFieldTelefono" alignment="0" pref="130" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,7 +116,7 @@
                   <Component id="jLabelWeb" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldWeb" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

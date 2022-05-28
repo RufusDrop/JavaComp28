@@ -44,7 +44,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jFormattedTextFieldNumeroDeTarjetaDeCredito" max="32767" attributes="0"/>
+                                  <Component id="jFormattedTextFieldNumeroDeTarjeta" max="32767" attributes="0"/>
                                   <Component id="jTextFieldTitularDeLaCuenta" max="32767" attributes="0"/>
                                   <Component id="jFormattedTextFieldFechaDeCaducidad" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
@@ -74,7 +74,7 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelNumeroTarjetaDeCredito" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jFormattedTextFieldNumeroDeTarjetaDeCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldNumeroDeTarjeta" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -123,7 +123,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldTitularDeLaCuentaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldNumeroDeTarjetaDeCredito">
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldNumeroDeTarjeta">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format format="#0" subtype="-1" type="0"/>

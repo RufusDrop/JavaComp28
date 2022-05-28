@@ -42,6 +42,11 @@ public class Tarjeta implements Serializable{
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    
-    
+    public static boolean modificaTarjeta(Tarjeta tar, String tar_titular, int tar_numTarj, LocalDate tar_fechaCad) {
+        tar.setNombreTitular(tar_titular);
+        tar.setNumero(tar_numTarj);
+        tar.setFecha(tar_fechaCad);
+        return true;
+    }
 }
+    

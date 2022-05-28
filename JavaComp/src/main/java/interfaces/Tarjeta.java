@@ -1,7 +1,10 @@
 
 package interfaces;
 
+import classes.UtilRegistro;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import static interfaces.Login.objcli;
 
 
 public class Tarjeta extends javax.swing.JDialog {
@@ -9,14 +12,38 @@ public class Tarjeta extends javax.swing.JDialog {
     /**
      * Creates new form Tarjeta
      */
-    public Tarjeta(java.awt.Frame parent, boolean modal) {
+    public Tarjeta(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
+        classes.Tarjeta tarj = objcli.getTarjeta();
+        if(tarj!=null){
+            setjTextFieldTitularCuenta(tarj.getNombreTitular());
+            setjFormattedTextFieldNumero(tarj.getNumero());
+            setjFormattedTextFieldFechacaducidad(tarj.getFecha().toString());            
+        }
     }
 
     private Tarjeta(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public String getjTextFieldTitularCuenta(){
+        return jTextFieldTitularDeLaCuenta.getText();
+    }
+    public int getjFormattedTextFieldNumero(){
+        return Integer.valueOf(jFormattedTextFieldNumeroDeTarjeta.getText());
+    }
+    public String getjFormattedTextFieldFechaCaducidad(){
+        return jFormattedTextFieldFechaDeCaducidad.getText();
+    }
+    public void setjTextFieldTitularCuenta(String txt){
+        jTextFieldTitularDeLaCuenta.setText(txt);
+    }
+    public void setjFormattedTextFieldNumero(int num){
+        jFormattedTextFieldNumeroDeTarjeta.setValue(num);
+    }
+    public void setjFormattedTextFieldFechacaducidad(String txt){
+        jFormattedTextFieldFechaDeCaducidad.setText(txt);
     }
 
     /**
@@ -33,7 +60,7 @@ public class Tarjeta extends javax.swing.JDialog {
         jLabelNumeroTarjetaDeCredito = new javax.swing.JLabel();
         jLabelFechaDeCaducidad = new javax.swing.JLabel();
         jTextFieldTitularDeLaCuenta = new javax.swing.JTextField();
-        jFormattedTextFieldNumeroDeTarjetaDeCredito = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldNumeroDeTarjeta = new javax.swing.JFormattedTextField();
         jFormattedTextFieldFechaDeCaducidad = new javax.swing.JFormattedTextField();
         jButtonVolver = new javax.swing.JButton();
         jButtonValidar = new javax.swing.JButton();
@@ -56,8 +83,8 @@ public class Tarjeta extends javax.swing.JDialog {
             }
         });
 
-        jFormattedTextFieldNumeroDeTarjetaDeCredito.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        jFormattedTextFieldNumeroDeTarjetaDeCredito.setToolTipText("Recuerda no usar espacios");
+        jFormattedTextFieldNumeroDeTarjeta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jFormattedTextFieldNumeroDeTarjeta.setToolTipText("Recuerda no usar espacios");
 
         jFormattedTextFieldFechaDeCaducidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("M/yy"))));
         jFormattedTextFieldFechaDeCaducidad.setToolTipText("En mes/año");
@@ -98,7 +125,7 @@ public class Tarjeta extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(175, 175, 175)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jFormattedTextFieldNumeroDeTarjetaDeCredito)
+                                    .addComponent(jFormattedTextFieldNumeroDeTarjeta)
                                     .addComponent(jTextFieldTitularDeLaCuenta)
                                     .addComponent(jFormattedTextFieldFechaDeCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(46, Short.MAX_VALUE))
@@ -119,7 +146,7 @@ public class Tarjeta extends javax.swing.JDialog {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNumeroTarjetaDeCredito)
-                    .addComponent(jFormattedTextFieldNumeroDeTarjetaDeCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFormattedTextFieldNumeroDeTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelFechaDeCaducidad)
@@ -146,14 +173,18 @@ public class Tarjeta extends javax.swing.JDialog {
     private void jButtonValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidarActionPerformed
         // TODO add your handling code here:
         if(jTextFieldTitularDeLaCuenta.getText().isBlank()||
-            jFormattedTextFieldNumeroDeTarjetaDeCredito.getText().isBlank()||
+            jFormattedTextFieldNumeroDeTarjeta.getText().isBlank()||
             jFormattedTextFieldFechaDeCaducidad.getText().isBlank()){
             JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
         }
         else
-        if(jFormattedTextFieldNumeroDeTarjetaDeCredito.getText().contains(" ")){
+        if(jFormattedTextFieldNumeroDeTarjeta.getText().contains(" ")){
             JOptionPane.showMessageDialog(this, "Introduce el número de la tarjeta sin espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
+        classes.Tarjeta tarj = objcli.getTarjeta();
+        tarj.modificaTarjeta(tarj,getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),LocalDate.parse(getjFormattedTextFieldFechaCaducidad()));
+        objcli.setTarjeta(tarj);
+        UtilRegistro.guardarDatos();
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     /**
@@ -186,7 +217,7 @@ public class Tarjeta extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Tarjeta dialog = new Tarjeta(new javax.swing.JFrame(), true);
+                Tarjeta dialog = new Tarjeta(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -202,7 +233,7 @@ public class Tarjeta extends javax.swing.JDialog {
     private javax.swing.JButton jButtonValidar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JFormattedTextField jFormattedTextFieldFechaDeCaducidad;
-    private javax.swing.JFormattedTextField jFormattedTextFieldNumeroDeTarjetaDeCredito;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNumeroDeTarjeta;
     private javax.swing.JLabel jLabelDatosBancarios;
     private javax.swing.JLabel jLabelFechaDeCaducidad;
     private javax.swing.JLabel jLabelNumeroTarjetaDeCredito;
