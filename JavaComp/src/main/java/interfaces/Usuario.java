@@ -4,6 +4,10 @@
  */
 package interfaces;
 
+import classes.Direccion;
+import classes.UtilRegistro;
+import static interfaces.Login.objcli;
+
 /**
  *
  * @author nicol
@@ -17,7 +21,7 @@ public class Usuario extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,11 +32,16 @@ public class Usuario extends javax.swing.JDialog {
     private void initComponents() {
 
         jButtonGuardarCambios = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButtonGuardarCambios.setText("Guardar cambios");
+        jButtonGuardarCambios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarCambiosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,6 +67,24 @@ public class Usuario extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosActionPerformed
+ //Recogemos la información recogida en el UsuarioPanel
+    UsuarioPanel panelUsuario = new UsuarioPanel();
+    String nombre=panelUsuario.getjTextFieldNombre();
+    String correo=panelUsuario.getjTextFieldCorreoElectronico();
+    String clave=panelUsuario.getjTextFieldClave();
+    String direc=panelUsuario.getjTextFieldDireccion();
+    String ciudad=panelUsuario.getjTextFieldCiudad();
+    int codigoPostal=panelUsuario.getjFormattedTextFieldCodigoPostal();
+    int telefono=panelUsuario.getjFormattedTextFieldTelefono();
+    String cif=panelUsuario.getjTextFieldCIF();
+    String web=panelUsuario.getjTextFieldWeb();
+    String dni=panelUsuario.getjTextFieldDNI();
+    Direccion direccion =new Direccion(direc,codigoPostal,ciudad);
+    //Llama al metodo modificaCliente para modificar la informacion de este
+    UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web);
+    }//GEN-LAST:event_jButtonGuardarCambiosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,6 +130,6 @@ public class Usuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardarCambios;
-    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
+    private interfaces.UsuarioPanel usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }

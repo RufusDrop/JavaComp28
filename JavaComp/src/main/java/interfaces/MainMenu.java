@@ -5,6 +5,7 @@ import classes.Manager;
 import classes.Opinion;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import static interfaces.Login.objcli;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ListSelectionModel;
@@ -18,6 +19,8 @@ public class MainMenu extends javax.swing.JFrame {
      */
     public MainMenu() {
         initComponents();
+        jLabelNombreCuenta.setText(objcli.getNombre()); //Ponemos el nombre del usuario en el menú principal
+        jLabelCorreoElectronico.setText(objcli.getCorreo());//Ponemos el correo electronico del usuario en el menú principal
             //Inicializo el jListCategorias con todas las categorias selecccionado
             jListCategorias.setSelectionInterval(0, 5); //Desde 0 al numero de categorias
             jButtonCategorias.setText("Todas las categorias");
@@ -297,7 +300,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCarritoActionPerformed
 
     private void jButtonCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCuentaActionPerformed
-        // TODO add your handling code here:
+        new Usuario(this,true).setVisible(true);
     }//GEN-LAST:event_jButtonCuentaActionPerformed
 
     private void jListCategoriasAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jListCategoriasAncestorAdded

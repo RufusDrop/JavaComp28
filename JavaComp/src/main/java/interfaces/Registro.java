@@ -414,7 +414,6 @@ public class Registro extends javax.swing.JDialog {
         
         UtilRegistro.guardarDatos();
         }
-        System.out.println(UtilRegistro.getClientes().toString());
     }//GEN-LAST:event_jToggleButtonGuardarActionPerformed
 
     private void jButtonLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogInActionPerformed

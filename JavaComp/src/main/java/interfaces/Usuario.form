@@ -51,8 +51,11 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Guardar cambios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGuardarCambiosActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="interfaces.UsuarioPanelAdmin" name="usuarioPanelAdmin1">
+    <Component class="interfaces.UsuarioPanel" name="usuarioPanelAdmin1">
     </Component>
   </SubComponents>
 </Form>

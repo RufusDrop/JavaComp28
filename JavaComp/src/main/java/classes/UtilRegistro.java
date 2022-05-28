@@ -65,7 +65,7 @@ public class UtilRegistro {
      * @param cli_cif
      * @param cli_web
      * @return boolean */
-    public static boolean modificaCliente(Cliente cli, String cli_nombre, String cli_correo, String cli_clave, Direccion cli_direccion, Tarjeta cli_tarjeta, int cli_telefono, String cli_dni, String cli_cif, String cli_web) {
+    public static boolean modificaCliente(Cliente cli, String cli_nombre, String cli_correo, String cli_clave, Direccion cli_direccion, int cli_telefono, String cli_dni, String cli_cif, String cli_web) {
         if (cli == null || !clientes.contains(cli)) {
             return false;
         }
@@ -73,7 +73,6 @@ public class UtilRegistro {
         cli.setCorreo(cli_correo);
         cli.setClave(cli_clave);
         cli.setDireccion(cli_direccion);
-        cli.setTarjeta(cli_tarjeta);
         cli.setTelefono(cli_telefono);
         String tipo = cli.getClass().getSimpleName();
         if (tipo.equals("ClienteEmpresa")) {

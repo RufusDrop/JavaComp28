@@ -163,7 +163,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultaUsuarios = new javax.swing.JPanel();
         jButtonAnteriorUsuario = new javax.swing.JButton();
         jButtonSiguienteUsuario = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -664,6 +664,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelUsuarios;
     private interfaces.ProductoPanelAdmin productoPanelAdmin1;
-    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
+    private interfaces.UsuarioPanel usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }
