@@ -1,22 +1,23 @@
 
 package interfaces;
 
+import classes.Tarjeta;
 import classes.UtilRegistro;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import static interfaces.Login.objcli;
+import java.util.Date;
 
 
-public class Tarjeta extends javax.swing.JDialog {
+public class InterfazTarjeta extends javax.swing.JDialog {
 
     /**
      * Creates new form Tarjeta
      */
-    public Tarjeta(java.awt.Dialog parent, boolean modal) {
+    public InterfazTarjeta(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-        classes.Tarjeta tarj = objcli.getTarjeta();
+        Tarjeta tarj = objcli.getTarjeta();
         if(tarj!=null){
             setjTextFieldTitularCuenta(tarj.getNombreTitular());
             setjFormattedTextFieldNumero(tarj.getNumero());
@@ -24,7 +25,7 @@ public class Tarjeta extends javax.swing.JDialog {
         }
     }
 
-    private Tarjeta(boolean b) {
+    private InterfazTarjeta(boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     public String getjTextFieldTitularCuenta(){
@@ -33,8 +34,8 @@ public class Tarjeta extends javax.swing.JDialog {
     public int getjFormattedTextFieldNumero(){
         return Integer.valueOf(jFormattedTextFieldNumeroDeTarjeta.getText());
     }
-    public String getjFormattedTextFieldFechaCaducidad(){
-        return jFormattedTextFieldFechaDeCaducidad.getText();
+    public Date getjFormattedTextFieldFechaCaducidad(){
+        return (Date) jFormattedTextFieldFechaDeCaducidad.getValue();
     }
     public void setjTextFieldTitularCuenta(String txt){
         jTextFieldTitularDeLaCuenta.setText(txt);
@@ -86,8 +87,8 @@ public class Tarjeta extends javax.swing.JDialog {
         jFormattedTextFieldNumeroDeTarjeta.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
         jFormattedTextFieldNumeroDeTarjeta.setToolTipText("Recuerda no usar espacios");
 
-        jFormattedTextFieldFechaDeCaducidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("M/yy"))));
-        jFormattedTextFieldFechaDeCaducidad.setToolTipText("En mes/año");
+        jFormattedTextFieldFechaDeCaducidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        jFormattedTextFieldFechaDeCaducidad.setToolTipText("Introducir DD/M/AA");
 
         jButtonVolver.setText("Volver");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -181,10 +182,16 @@ public class Tarjeta extends javax.swing.JDialog {
         if(jFormattedTextFieldNumeroDeTarjeta.getText().contains(" ")){
             JOptionPane.showMessageDialog(this, "Introduce el número de la tarjeta sin espacios", "Error", JOptionPane.WARNING_MESSAGE);
         }
-        classes.Tarjeta tarj = objcli.getTarjeta();
-        tarj.modificaTarjeta(tarj,getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),LocalDate.parse(getjFormattedTextFieldFechaCaducidad()));
+        Tarjeta tarj = objcli.getTarjeta();
+        if(tarj==null){
+            classes.Tarjeta tar=new classes.Tarjeta(getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),getjFormattedTextFieldFechaCaducidad());
+            tarj=tar;
+        }else{
+        tarj.modificaTarjeta(tarj,getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),getjFormattedTextFieldFechaCaducidad());
+        }
         objcli.setTarjeta(tarj);
         UtilRegistro.guardarDatos();
+        
     }//GEN-LAST:event_jButtonValidarActionPerformed
 
     /**
@@ -204,20 +211,21 @@ public class Tarjeta extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazTarjeta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Tarjeta dialog = new Tarjeta(new javax.swing.JDialog(), true);
+                InterfazTarjeta dialog = new InterfazTarjeta(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

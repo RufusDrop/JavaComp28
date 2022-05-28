@@ -109,7 +109,7 @@ public class Usuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonGuardarCambiosActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Tarjeta(this,true).setVisible(true);
+        new InterfazTarjeta(this,true).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
