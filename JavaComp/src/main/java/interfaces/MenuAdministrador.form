@@ -474,7 +474,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="interfaces.UsuarioPanel" name="usuarioPanelAdmin1">
+        <Component class="interfaces.UsuarioPanelAdmin" name="usuarioPanelAdmin1">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">

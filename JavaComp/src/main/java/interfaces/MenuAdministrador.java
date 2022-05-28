@@ -6,7 +6,7 @@ import classes.UtilProducto;
 import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.ListIterator;
 import javax.swing.JOptionPane;
 
@@ -25,7 +25,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     public MenuAdministrador() {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
-
+        
         //CARGAR LOS DATOS
         UtilProducto.cargarDatos();
         System.out.println(UtilProducto.getProductos());
@@ -101,9 +101,15 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //presentamos la primera persona
             if (li.hasNext()) {
                 objproc = (Producto) li.next();
+                
             }
             if (objproc != null) {
                 presenta(objproc);
+                UtilProducto.productoActual = objproc;
+                System.out.println(UtilProducto.productoActual);
+                productoPanelAdmin1.setOpinionIndex(0);
+                productoPanelAdmin1.mostrarOpiniones(productoPanelAdmin1.getOpinionIndex());
+
             } else {
                 JOptionPane.showMessageDialog(this, "No hay productos2.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -163,7 +169,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultaUsuarios = new javax.swing.JPanel();
         jButtonAnteriorUsuario = new javax.swing.JButton();
         jButtonSiguienteUsuario = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanel();
+        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -514,6 +520,12 @@ public class MenuAdministrador extends javax.swing.JFrame {
             objproc = li.next();
             if (objproc != null) {
                 presenta(objproc);
+                UtilProducto.productoActual = objproc;
+                           productoPanelAdmin1.setOpinionIndex(0);
+                productoPanelAdmin1.mostrarOpiniones(productoPanelAdmin1.getOpinionIndex());
+
+                System.out.println(UtilProducto.productoActual);
+                
             } else {
                 System.out.println("Wow");
                 JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -543,6 +555,11 @@ public class MenuAdministrador extends javax.swing.JFrame {
             objproc = li.previous();
             if (objproc != null) {
                 presenta(objproc);
+                UtilProducto.productoActual = objproc;
+                productoPanelAdmin1.setOpinionIndex(0);
+                productoPanelAdmin1.mostrarOpiniones(productoPanelAdmin1.getOpinionIndex());
+
+                System.out.println(UtilProducto.productoActual);
             } else {
                 JOptionPane.showMessageDialog(this, "No hay más productos.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
@@ -578,13 +595,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //Establecemos el dia actual del alta como fecha entrada
             LocalDate fechaActual = LocalDate.now();
             LocalDate fechaDeEntrada = fechaActual;
-            ArrayList<Opinion> opiniones;
+            ArrayList<Opinion> opiniones = new ArrayList<Opinion>();
             //ArrayList<Opinion> opiniones = null;
             
-            proc = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, null);
+            proc = new Producto(nombreProducto, descripcion, categoria, precio, fotoProducto, stock, fechaDeEntrada, opiniones);
             //lo insertamos en el array
             if (UtilProducto.altaProducto(proc)) {
                 JOptionPane.showMessageDialog(this, "El producto ha sido dado de alta correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, proc, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 productoPanelAdmin1.clearAll();
             } else {
                 JOptionPane.showMessageDialog(this, "El producto ya existe. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -664,6 +682,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelUsuarios;
     private interfaces.ProductoPanelAdmin productoPanelAdmin1;
-    private interfaces.UsuarioPanel usuarioPanelAdmin1;
+    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }

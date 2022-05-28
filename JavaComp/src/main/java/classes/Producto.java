@@ -121,27 +121,11 @@ public class Producto implements Serializable {
      * 
      * Se añade una opinion a la lista asegurandose de que no se repita
      */
-    public boolean addOpinion(Opinion opinion) {
-        if(!opiniones.contains(opinion)){
+    public void addOpinion(Opinion opinion) {
             opiniones.add(opinion);
-            return true;
-        }
-        else
-        {
-            return false;
-            //La opinion esta repetida
-        }
     }
-    public boolean removeOpinion(Opinion opinion) {
-        if(opiniones.contains(opinion)){
+    public void removeOpinion(Opinion opinion) {
             opiniones.remove(opinion);
-            return true;
-        }
-        else
-        {
-            return false;
-            //La opinion no existe
-        }
     }
     
     

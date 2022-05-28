@@ -15,7 +15,7 @@ public class Login extends javax.swing.JFrame {
      */
     private ArrayList<Cliente> cliaux; //Referencia al ArrayList de personas de la clase UtilCenso
     private ListIterator<Cliente> li; //Iterador para recorrer el ArrayList en ambas direcciones
-    public static Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
+    private Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
     
         private void verificacion() {
         try {
@@ -248,6 +248,8 @@ public class Login extends javax.swing.JFrame {
         }
         
        verificacion();
+        System.out.println(UtilRegistro.getClientes().toString());
+
     }//GEN-LAST:event_jToggleButtonIniciarSesionActionPerformed
 
     /**
