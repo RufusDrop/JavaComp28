@@ -4,7 +4,6 @@ package interfaces;
 import classes.Cliente;
 import classes.ClienteEmpresa;
 import classes.ClienteParticular;
-import static interfaces.Login.objcli;
 import javax.swing.ImageIcon;
 public class UsuarioPanel extends javax.swing.JPanel {
 
@@ -13,26 +12,25 @@ public class UsuarioPanel extends javax.swing.JPanel {
      */
     public UsuarioPanel() {
         initComponents();
-        
-        if(objcli.getClass().equals(ClienteEmpresa.class)){
-            setjComboBoxTipoUsuario("Empresa");
+        String tipo = getjComboBoxTipoUsuario();
+        if(tipo=="Empresa"){
             jLabelDNI.setVisible(false);
             jTextFieldDNI.setVisible(false);
             jLabelCIF.setVisible(true);
             jTextFieldCIF.setVisible(true);
             jLabelWeb.setVisible(true);
             jTextFieldWeb.setVisible(true);
-            importadorInformacion(objcli);
         }else{
-            setjComboBoxTipoUsuario("Cliente");
             jLabelDNI.setVisible(true);
             jTextFieldDNI.setVisible(true);
             jLabelCIF.setVisible(false);
             jTextFieldCIF.setVisible(false);
             jLabelWeb.setVisible(false);
             jTextFieldWeb.setVisible(false);
-            importadorInformacion(objcli);
         }
+    }
+    public String getjComboBoxTipoUsuario(){
+        return jComboBoxTipoUsuario.getName() ;
     }
     public String getjTextFieldNombre(){
         return jTextFieldNombre.getText();
@@ -50,12 +48,10 @@ public class UsuarioPanel extends javax.swing.JPanel {
         return jTextFieldCiudad.getText();
     }
     public int getjFormattedTextFieldCodigoPostal(){
-        String str = String.valueOf(jFormattedTextFieldCodigoPostal.getValue());
-        return Integer.parseInt(str);
+        return Integer.valueOf(jFormattedTextFieldCodigoPostal.getText());
     }
     public int getjFormattedTextFieldTelefono(){
-        String str = String.valueOf(jFormattedTextFieldTelefono.getValue());
-        return Integer.parseInt(str);
+        return Integer.valueOf(jFormattedTextFieldTelefono.getText());
     }
     public String getjTextFieldCIF(){
         return jTextFieldCIF.getText();

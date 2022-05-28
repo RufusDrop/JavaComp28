@@ -4,10 +4,12 @@
  */
 package interfaces;
 
+import classes.ClienteEmpresa;
 import classes.Direccion;
 import classes.UtilRegistro;
 import static interfaces.Login.objcli;
-
+import interfaces.UsuarioPanel;
+import javax.swing.JOptionPane;
 /**
  *
  * @author nicol
@@ -19,7 +21,12 @@ public class Usuario extends javax.swing.JDialog {
      */
     public Usuario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+        initComponents();       
+        if(objcli.getClass().equals(ClienteEmpresa.class)){
+            usuarioPanel.importadorInformacion(objcli);
+        }else{
+            usuarioPanel.importadorInformacion(objcli);
+        }
     }
  
     /**
@@ -32,7 +39,7 @@ public class Usuario extends javax.swing.JDialog {
     private void initComponents() {
 
         jButtonGuardarCambios = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanel();
+        usuarioPanel = new interfaces.UsuarioPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,7 +56,7 @@ public class Usuario extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
@@ -59,7 +66,7 @@ public class Usuario extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -70,20 +77,24 @@ public class Usuario extends javax.swing.JDialog {
 
     private void jButtonGuardarCambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarCambiosActionPerformed
  //Recogemos la información recogida en el UsuarioPanel
-    UsuarioPanel panelUsuario = new UsuarioPanel();
-    String nombre=panelUsuario.getjTextFieldNombre();
-    String correo=panelUsuario.getjTextFieldCorreoElectronico();
-    String clave=panelUsuario.getjTextFieldClave();
-    String direc=panelUsuario.getjTextFieldDireccion();
-    String ciudad=panelUsuario.getjTextFieldCiudad();
-    int codigoPostal=panelUsuario.getjFormattedTextFieldCodigoPostal();
-    int telefono=panelUsuario.getjFormattedTextFieldTelefono();
-    String cif=panelUsuario.getjTextFieldCIF();
-    String web=panelUsuario.getjTextFieldWeb();
-    String dni=panelUsuario.getjTextFieldDNI();
+    String nombre=usuarioPanel.getjTextFieldNombre();
+    String correo=usuarioPanel.getjTextFieldCorreoElectronico();
+    String clave=usuarioPanel.getjTextFieldClave();
+    String direc=usuarioPanel.getjTextFieldDireccion();
+    String ciudad=usuarioPanel.getjTextFieldCiudad();
+    int codigoPostal=usuarioPanel.getjFormattedTextFieldCodigoPostal();
+    int telefono=usuarioPanel.getjFormattedTextFieldTelefono();
+    String cif=usuarioPanel.getjTextFieldCIF();
+    String web=usuarioPanel.getjTextFieldWeb();
+    String dni=usuarioPanel.getjTextFieldDNI();
     Direccion direccion =new Direccion(direc,codigoPostal,ciudad);
     //Llama al metodo modificaCliente para modificar la informacion de este
-    UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web);
+    if(UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web)){
+        JOptionPane.showMessageDialog(this, "Cambios guardados con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    }else{
+        JOptionPane.showMessageDialog(this, "Error.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    UtilRegistro.guardarDatos();
     }//GEN-LAST:event_jButtonGuardarCambiosActionPerformed
 
     /**
@@ -130,6 +141,6 @@ public class Usuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardarCambios;
-    private interfaces.UsuarioPanel usuarioPanelAdmin1;
+    private interfaces.UsuarioPanel usuarioPanel;
     // End of variables declaration//GEN-END:variables
 }

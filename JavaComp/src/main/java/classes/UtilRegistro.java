@@ -59,7 +59,6 @@ public class UtilRegistro {
      * @param cli_correo
      * @param cli_clave
      * @param cli_direccion
-     * @param cli_tarjeta
      * @param cli_telefono
      * @param cli_dni
      * @param cli_cif
@@ -68,7 +67,7 @@ public class UtilRegistro {
     public static boolean modificaCliente(Cliente cli, String cli_nombre, String cli_correo, String cli_clave, Direccion cli_direccion, int cli_telefono, String cli_dni, String cli_cif, String cli_web) {
         if (cli == null || !clientes.contains(cli)) {
             return false;
-        }
+        }else{
         cli.setNombre(cli_nombre);
         cli.setCorreo(cli_correo);
         cli.setClave(cli_clave);
@@ -84,6 +83,7 @@ public class UtilRegistro {
             part.setDNI(cli_dni);
         }
         return true;
+        }
     }
 
     

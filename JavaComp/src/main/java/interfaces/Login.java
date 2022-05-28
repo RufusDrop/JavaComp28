@@ -15,7 +15,7 @@ public class Login extends javax.swing.JFrame {
      */
     private ArrayList<Cliente> cliaux; //Referencia al ArrayList de personas de la clase UtilCenso
     private ListIterator<Cliente> li; //Iterador para recorrer el ArrayList en ambas direcciones
-    private Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
+    public static Cliente objcli; //Referencia a un objeto de tipo persona del ArrayList
     
         private void verificacion() {
         try {
@@ -32,11 +32,15 @@ public class Login extends javax.swing.JFrame {
             objcli = (Cliente) li.next();
             int i=0;
             while(i<=cliaux.size()){           
-                if(todoCorrecto(objcli)){
+                if(todoCorrecto(objcli)==1){
                     new MainMenu().setVisible(true);
                     this.setVisible(false);
                     break;
-                }else{
+                }else if(todoCorrecto(objcli)==2){
+                    new MenuAdministrador().setVisible(true);
+                    this.setVisible(false);
+                }
+                else{
                     objcli = (Cliente) li.next(); 
                     i+=1;
                 }
@@ -46,16 +50,19 @@ public class Login extends javax.swing.JFrame {
             System.out.println("Error: " + e.toString());
         }
     }//fin consultarTodo
+
   
-    private boolean todoCorrecto(Cliente cli) {
+    private int todoCorrecto(Cliente cli) {
         String correoIntroducido = jTextFieldCorreoElectronico.getText();
         String claveIntroducida = String.valueOf(jPasswordFieldContrasena.getPassword());
         String correo = cli.getCorreo();
         String clave = cli.getClave();
         if(correoIntroducido.equals(correo)&&claveIntroducida.equals(clave)){
-            return true;
+            return 1;
+        }else if(correoIntroducido.equals("admin@javacomp.com")&&claveIntroducida.equals("admin")){
+            return 2;
         }else{
-            return false;
+            return 0;
         }
     }
     
