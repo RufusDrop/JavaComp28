@@ -39,6 +39,7 @@ public class Login extends javax.swing.JFrame {
                 }else if(todoCorrecto(objcli)==2){
                     new MenuAdministrador().setVisible(true);
                     this.setVisible(false);
+                    break;
                 }
                 else{
                     objcli = (Cliente) li.next(); 
