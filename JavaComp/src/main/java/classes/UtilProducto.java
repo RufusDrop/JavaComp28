@@ -65,18 +65,18 @@ public class UtilProducto {
      * @param cli_fechaDeEntrada     
      * @param opiniones     
      * @return boolean */
-    public static boolean modificaProducto(Producto cli, String cli_titulo, String cli_descripcion, String cli_categoria, double cli_precio, String cli_fotoProducto, int cli_stock, LocalDate cli_fechaDeEntrada, ArrayList<Opinion> cli_opiniones) {
-        if (cli == null || !productos.contains(cli)) {
+    public static boolean modificaProducto(Producto producto, String producto_titulo, String producto_descripcion, String producto_categoria, double producto_precio, String producto_fotoProducto, int producto_stock, LocalDate producto_fechaDeEntrada, ArrayList<Opinion> producto_opiniones) {
+        if (producto == null || !productos.contains(producto)) {
             return false;
         }
-        cli.setTitulo(cli_titulo);
-        cli.setDescripcion(cli_descripcion);
-        cli.setCategoria(cli_categoria);
-        cli.setPrecio(cli_precio);
-        cli.setFotoProducto(cli_fotoProducto);
-        cli.setStock(cli_stock);
-        cli.setFechaDeEntrada(cli_fechaDeEntrada);
-        cli.setOpiniones(cli_opiniones);
+        producto.setTitulo(producto_titulo);
+        producto.setDescripcion(producto_descripcion);
+        producto.setCategoria(producto_categoria);
+        producto.setPrecio(producto_precio);
+        producto.setFotoProducto(producto_fotoProducto);
+        producto.setStock(producto_stock);
+        producto.setFechaDeEntrada(producto_fechaDeEntrada);
+        producto.setOpiniones(producto_opiniones);
         return true;
     }
     
@@ -103,9 +103,7 @@ public class UtilProducto {
             }
         };
         //Ordenamos el array
-        System.out.println("1: "+productoActual.getOpiniones());
         Collections.sort(productoActual.getOpiniones(), NomCliComp);
-        System.out.println("2: "+productoActual.getOpiniones());
         return productoActual.getOpiniones();
     }
     /** Da de alta un producto

@@ -106,7 +106,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
             if (objproc != null) {
                 presenta(objproc);
                 UtilProducto.productoActual = objproc;
-                System.out.println(UtilProducto.productoActual);
                 productoPanelAdmin1.setOpinionIndex(0);
                 productoPanelAdmin1.mostrarOpiniones(productoPanelAdmin1.getOpinionIndex());
 
@@ -169,7 +168,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jPanelConsultaUsuarios = new javax.swing.JPanel();
         jButtonAnteriorUsuario = new javax.swing.JButton();
         jButtonSiguienteUsuario = new javax.swing.JButton();
-        usuarioPanelAdmin1 = new interfaces.UsuarioPanelAdmin();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -437,8 +435,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        usuarioPanelAdmin1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
         javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
         jPanelUsuarios.setLayout(jPanelUsuariosLayout);
         jPanelUsuariosLayout.setHorizontalGroup(
@@ -447,19 +443,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 .addContainerGap(75, Short.MAX_VALUE)
                 .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72))
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelUsuariosLayout.setVerticalGroup(
             jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelUsuariosLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usuarioPanelAdmin1, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
@@ -536,16 +526,67 @@ public class MenuAdministrador extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonSiguienteProductoActionPerformed
-
+    /**
+     * Modifica el producto seleccionado
+     * @param evt 
+     */
     private void jButtonModificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonModificarProductoActionPerformed
         // TODO add your handling code here:
         //MODIFICA EL PRODUCTO ACTUAL
+        try {
+            String nombreProducto = productoPanelAdmin1.getjTextFieldNombreProducto();
+            String descripcion = productoPanelAdmin1.getjTextFieldDescripcion();
+            String categoria = productoPanelAdmin1.getjComboBoxCategoria();
+            double precio = productoPanelAdmin1.getjFormattedTextFieldPrecio();
+            String fotoProducto = productoPanelAdmin1.getjTextFieldFotoProducto();
+            int stock = productoPanelAdmin1.getjFormattedTextFieldStock();
+            //Establecemos el dia actual del alta como fecha entrada
+            LocalDate fechaActual = LocalDate.now();
+            LocalDate fechaDeEntrada = fechaActual;
+            ArrayList<Opinion> opiniones = UtilProducto.getOpiniones();
+            //ArrayList<Opinion> opiniones = null;
+            
+            //lo insertamos en el array
+            if (UtilProducto.modificaProducto(objproc,nombreProducto,descripcion,categoria,precio,fotoProducto,stock,fechaDeEntrada,opiniones)) {
+                JOptionPane.showMessageDialog(this, "El producto ha sido modificado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Excepcion al modificar1. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Excepción al modificar2.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+        UtilProducto.guardarDatos();
+            
+        
+        
 
 
     }//GEN-LAST:event_jButtonModificarProductoActionPerformed
-
+    /**
+     * Se elimina el producto seleccionado de los datos
+     * @param evt 
+     */
     private void jButtonEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarProductoActionPerformed
         // TODO add your handling code here:
+        try {
+            
+            
+            //lo insertamos en el array
+            if (UtilProducto.bajaProducto(objproc)) {
+                JOptionPane.showMessageDialog(this, "El producto ha sido eliminado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Excepcion al eliminar. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Excepción al eliminar2.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+        UtilProducto.guardarDatos();
+        consultarTodo();
+        
     }//GEN-LAST:event_jButtonEliminarProductoActionPerformed
 
     private void jButtonAnteriorProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorProductoActionPerformed
@@ -602,7 +643,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //lo insertamos en el array
             if (UtilProducto.altaProducto(proc)) {
                 JOptionPane.showMessageDialog(this, "El producto ha sido dado de alta correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-                JOptionPane.showMessageDialog(this, proc, "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 productoPanelAdmin1.clearAll();
             } else {
                 JOptionPane.showMessageDialog(this, "El producto ya existe. Inicia sesión.", "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -613,7 +653,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
         }
 
         UtilProducto.guardarDatos();
-        System.out.println(UtilProducto.getProductos().toString());
 
     }//GEN-LAST:event_jButtonAnadirProductosActionPerformed
 
@@ -682,6 +721,5 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelUsuarios;
     private interfaces.ProductoPanelAdmin productoPanelAdmin1;
-    private interfaces.UsuarioPanelAdmin usuarioPanelAdmin1;
     // End of variables declaration//GEN-END:variables
 }
