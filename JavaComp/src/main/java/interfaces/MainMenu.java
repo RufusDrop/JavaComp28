@@ -364,7 +364,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLayeredPaneMain.add(jScrollPaneProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1370, 690));
 
         jLabelMainText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabelMainText.setText("Buenos días _nombre estas son algunas recomendaciones para ti:");
+        jLabelMainText.setText("Buenos días, estas son algunas recomendaciones para ti:");
         jLabelMainText.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanelRecomendacionesLayout = new javax.swing.GroupLayout(jPanelRecomendaciones);
