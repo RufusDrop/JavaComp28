@@ -1,22 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package interfaces;
 
-/**
- *
- * @author ruben
- */
-public class ProductoPanel extends javax.swing.JPanel {
+import classes.Producto;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.border.EtchedBorder;
 
+public class ProductoPanel extends javax.swing.JPanel {
+    private MainMenu Parent;
+    private Producto productoBase;
     /**
      * Creates new form ProductoPanel
      */
-    public ProductoPanel() {
+    public ProductoPanel(Producto producto,MainMenu parent) {
         initComponents();
+        mostrarProducto(producto);
+        Parent = parent;
+        productoBase=producto;
+        
+        //SE LE AÑADE UN BORDER
+        this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
     }
-
+    private void mostrarProducto(Producto producto){
+        jLabelNombreProducto.setText(producto.getTitulo());
+        jLabelDescripcion.setText("\""+producto.getDescripcion()+"\"");
+        jLabelPrecio.setText("Precio: "+String.valueOf(producto.getPrecio()));
+        jLabelStock.setText("Stock: "+String.valueOf(producto.getStock()));
+        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+producto.getFotoProducto())));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,56 +44,53 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabelPrecio = new javax.swing.JLabel();
         jLabelStock = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                formMouseExited(evt);
+            }
+        });
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabelNombreProducto.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
         jLabelNombreProducto.setText("NombreProducto");
+        add(jLabelNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 14, 1014, -1));
 
         jLabelFotoProducto.setBackground(new java.awt.Color(51, 51, 51));
+        add(jLabelFotoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 186, 179));
 
         jLabelDescripcion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelDescripcion.setText("Descripcion");
+        add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 73, 1014, 24));
 
         jLabelPrecio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelPrecio.setText("Precio: precio");
+        add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 117, 161, -1));
 
         jLabelStock.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabelStock.setText("Stock: stock");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabelFotoProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 504, Short.MAX_VALUE)
-                        .addComponent(jLabelStock, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(188, 188, 188))
-                    .addComponent(jLabelNombreProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDescripcion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelFotoProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabelNombreProducto)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabelPrecio)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(jLabelStock)
-                        .addGap(21, 21, 21))))
-        );
+        add(jLabelStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 126, 161, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        // TODO add your handling code here:
+        Parent.setProductoSeleccionado(productoBase);
+    }//GEN-LAST:event_formMouseClicked
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        // TODO add your handling code here:
+        this.setBorder(BorderFactory.createLineBorder(Color.white));
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseExited
+        // TODO add your handling code here:
+        this.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+    }//GEN-LAST:event_formMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

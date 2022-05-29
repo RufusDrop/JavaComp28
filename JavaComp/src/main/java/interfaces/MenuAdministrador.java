@@ -1,5 +1,8 @@
 package interfaces;
 
+import classes.Cliente;
+import classes.ClienteEmpresa;
+import classes.ClienteParticular;
 import classes.Opinion;
 import classes.Producto;
 import classes.UtilProducto;
@@ -14,9 +17,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     //Inializamos el producto actual
     private Producto proc = null;
-    private ArrayList<Producto> procaux; //Referencia al ArrayList de personas de la clase UtilCenso
+    private ArrayList<Producto> procaux; //Referencia al ArrayList de personas de la clase Utilproducto
     private ListIterator<Producto> li; //Iterador para recorrer el ArrayList en ambas direcciones
     private Producto objproc; //Referencia a un objeto de tipo persona del ArrayList
+    
+    private ArrayList<Cliente> peraux; //Referencia al ArrayList de clientes de la clase Utilregistro
+    private ListIterator<Cliente> licliente; //Iterador para recorrer el ArrayList en ambas direcciones
+    private Cliente objper; //Referencia a un objeto de tipo persona del ArrayList
+    
     
     
     /**
@@ -26,11 +34,14 @@ public class MenuAdministrador extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
         
+        
         //CARGAR LOS DATOS
         UtilProducto.cargarDatos();
+        UtilRegistro.cargarDatos();
         System.out.println(UtilProducto.getProductos());
         ///CONSULTAR 
         consultarTodo();
+        consultarClientes();
 
         //POR DEFECTO SE EMPIEZA CON USUARIOS SELECCIONADO
         jPanelProductos.setVisible(false);
@@ -137,6 +148,55 @@ public class MenuAdministrador extends javax.swing.JFrame {
         //productoPanelAdmin1.set
 
     }
+    
+    
+    private void consultarClientes() {
+        try {
+            //referenciamos al ArrayList de UtilCenso
+            peraux = UtilRegistro.getClientes();
+            //creamos el iterador sobre el ArrayList
+            licliente = peraux.listIterator();
+            //si no hay personas...
+            if (peraux.size() < 1) {
+                jPanelUsuarios.setVisible(false);
+                return;
+            } else {
+                //jPanelUsuarios.setVisible(true);
+            }
+            //presentamos la primera persona
+            if (licliente.hasNext()) {
+                objper = (Cliente) licliente.next();
+            }
+            if (objper != null) {
+                presentaClientes(objper);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.toString());
+        }
+    }//fin consultarTodo
+
+    /** Presenta los datos de una persona en el panel de datos */
+    private void presentaClientes(Cliente cliente) {
+        usuarioPanel1.setjTextFieldNombre(cliente.getNombre());
+        usuarioPanel1.setjTextFieldCorreoElectronico(cliente.getCorreo());
+        usuarioPanel1.setjTextFieldContrasena("**************");
+        usuarioPanel1.setjTextFieldDireccion(cliente.getDireccion().getDireccion());
+        usuarioPanel1.setjFormattedTextFieldTelefono(cliente.getTelefono());
+        usuarioPanel1.setjTextFieldCiudad(cliente.getDireccion().getCiudad());
+        usuarioPanel1.setjFormattedTextFieldCodigoPostal(cliente.getDireccion().getCodigoPostal());
+
+        if (cliente.getClass().getSimpleName().equals("ClienteEmpresa")) {
+            ClienteEmpresa clienteempresa = (ClienteEmpresa) cliente;
+            usuarioPanel1.setjTextFieldCIF(clienteempresa.getCIF());
+            usuarioPanel1.setjTextFieldWeb(clienteempresa.getWeb());
+        } else {
+            ClienteParticular clienteparticular = (ClienteParticular) cliente;
+            usuarioPanel1.setjTextFieldDNI(clienteparticular.getDNI());
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,11 +207,17 @@ public class MenuAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanelAdministrador = new javax.swing.JPanel();
         jLabelAdministrador = new javax.swing.JLabel();
         jPanelConsultar = new javax.swing.JPanel();
         jComboBoxUsuariosProductosVentas = new javax.swing.JComboBox<>();
         jButtonConsultar = new javax.swing.JButton();
+        jPanelUsuarios = new javax.swing.JPanel();
+        jPanelConsultaUsuarios = new javax.swing.JPanel();
+        jButtonAnteriorUsuario = new javax.swing.JButton();
+        jButtonSiguienteUsuario = new javax.swing.JButton();
+        usuarioPanel1 = new interfaces.UsuarioPanel();
         jPanelProductos = new javax.swing.JPanel();
         jPanelNuevoProducto = new javax.swing.JPanel();
         jButtonBorrar = new javax.swing.JButton();
@@ -164,10 +230,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         jButtonSiguienteProducto = new javax.swing.JButton();
         jButtonNuevoProducto = new javax.swing.JButton();
         productoPanelAdmin1 = new interfaces.ProductoPanelAdmin();
-        jPanelUsuarios = new javax.swing.JPanel();
-        jPanelConsultaUsuarios = new javax.swing.JPanel();
-        jButtonAnteriorUsuario = new javax.swing.JButton();
-        jButtonSiguienteUsuario = new javax.swing.JButton();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -238,6 +303,70 @@ public class MenuAdministrador extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanelConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 0, -1, 54));
+
+        jButtonAnteriorUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAnteriorUsuario.setText("<--");
+        jButtonAnteriorUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonAnteriorUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorUsuarioActionPerformed(evt);
+            }
+        });
+
+        jButtonSiguienteUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonSiguienteUsuario.setText("-->");
+        jButtonSiguienteUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jButtonSiguienteUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSiguienteUsuarioActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
+        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
+        jPanelConsultaUsuariosLayout.setHorizontalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addContainerGap(196, Short.MAX_VALUE)
+                .addComponent(jButtonAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(jButtonSiguienteUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+        );
+        jPanelConsultaUsuariosLayout.setVerticalGroup(
+            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAnteriorUsuario)
+                    .addComponent(jButtonSiguienteUsuario))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
+        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
+        jPanelUsuariosLayout.setHorizontalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72))
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(usuarioPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        jPanelUsuariosLayout.setVerticalGroup(
+            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(usuarioPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
         jButtonBorrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButtonBorrar.setText("Borrar");
@@ -396,64 +525,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
         getContentPane().add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
 
-        jButtonAnteriorUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonAnteriorUsuario.setText("<--");
-        jButtonAnteriorUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonAnteriorUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAnteriorUsuarioActionPerformed(evt);
-            }
-        });
-
-        jButtonSiguienteUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButtonSiguienteUsuario.setText("-->");
-        jButtonSiguienteUsuario.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        jButtonSiguienteUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSiguienteUsuarioActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanelConsultaUsuariosLayout = new javax.swing.GroupLayout(jPanelConsultaUsuarios);
-        jPanelConsultaUsuarios.setLayout(jPanelConsultaUsuariosLayout);
-        jPanelConsultaUsuariosLayout.setHorizontalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
-                .addComponent(jButtonAnteriorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154)
-                .addComponent(jButtonSiguienteUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(199, 199, 199))
-        );
-        jPanelConsultaUsuariosLayout.setVerticalGroup(
-            jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelConsultaUsuariosLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(jPanelConsultaUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAnteriorUsuario)
-                    .addComponent(jButtonSiguienteUsuario))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanelUsuariosLayout = new javax.swing.GroupLayout(jPanelUsuarios);
-        jPanelUsuarios.setLayout(jPanelUsuariosLayout);
-        jPanelUsuariosLayout.setHorizontalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelUsuariosLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
-        );
-        jPanelUsuariosLayout.setVerticalGroup(
-            jPanelUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelUsuariosLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jPanelConsultaUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(593, Short.MAX_VALUE))
-        );
-
-        getContentPane().add(jPanelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -464,11 +535,13 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     private void jButtonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarActionPerformed
         // TODO add your handling code here:
+        
         Object tipoDeBusqueda;
         tipoDeBusqueda = jComboBoxUsuariosProductosVentas.getSelectedItem();
         if (tipoDeBusqueda.equals("Usuarios")) {
             jPanelProductos.setVisible(false);
             jPanelUsuarios.setVisible(true);
+            consultarClientes();
             //jPanelVentas.setVisible(false);
         } else if (tipoDeBusqueda.equals("Productos")) {
             jPanelProductos.setVisible(true);
@@ -483,14 +556,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
             //jPanelVentas.setVisible(true);
         }
     }//GEN-LAST:event_jButtonConsultarActionPerformed
-
-    private void jButtonAnteriorUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonAnteriorUsuarioActionPerformed
-
-    private void jButtonSiguienteUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSiguienteUsuarioActionPerformed
 
     private void jButtonNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoProductoActionPerformed
         // TODO add your handling code here:
@@ -656,6 +721,34 @@ public class MenuAdministrador extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonAnadirProductosActionPerformed
 
+    private void jButtonSiguienteUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteUsuarioActionPerformed
+        // TODO add your handling code here:
+        //Comprobamos el rango del ArrayList...
+        if (licliente.hasNext()) {
+            objper = licliente.next();
+            if (objper != null) {
+                presentaClientes(objper);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay más clientes", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+    }//GEN-LAST:event_jButtonSiguienteUsuarioActionPerformed
+
+    private void jButtonAnteriorUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorUsuarioActionPerformed
+        // TODO add your handling code here:
+
+        //Comprobamos el rango del ArrayList...
+        if (licliente.hasPrevious()) {
+            objper = licliente.previous();
+            if (objper != null) {
+                presentaClientes(objper);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay más clientes.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_jButtonAnteriorUsuarioActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -711,6 +804,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNuevoProducto;
     private javax.swing.JButton jButtonSiguienteProducto;
     private javax.swing.JButton jButtonSiguienteUsuario;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBoxUsuariosProductosVentas;
     private javax.swing.JLabel jLabelAdministrador;
     private javax.swing.JPanel jPanelAdministrador;
@@ -721,5 +815,6 @@ public class MenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelUsuarios;
     private interfaces.ProductoPanelAdmin productoPanelAdmin1;
+    private interfaces.UsuarioPanel usuarioPanel1;
     // End of variables declaration//GEN-END:variables
 }

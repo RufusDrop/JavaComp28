@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.awt.Image;
 import java.io.Serializable;
-public class Producto implements Serializable {
+public class Producto implements Serializable{
     private String titulo;
     private String descripcion;
     private String categoria; 
@@ -127,6 +127,8 @@ public class Producto implements Serializable {
     public void removeOpinion(Opinion opinion) {
             opiniones.remove(opinion);
     }
+
+   
     
     
 }

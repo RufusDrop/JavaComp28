@@ -2,6 +2,7 @@
 package interfaces;
 
 import classes.Cliente;
+import classes.UtilProducto;
 import classes.UtilRegistro;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -72,6 +73,7 @@ public class Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //Esta linea se pone para que la ventana salga centrada.
         //CARGAMOS LOS DATOS
         UtilRegistro.cargarDatos();
+        UtilProducto.cargarDatos();
         
           try {
         javax.swing.UIManager.setLookAndFeel(new FlatDarkLaf());

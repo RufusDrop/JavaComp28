@@ -4,6 +4,9 @@ package interfaces;
 import classes.Opinion;
 import classes.Producto;
 import classes.UtilProducto;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -139,7 +142,10 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         
     }
     public void setFotoProducto(String URL){
-        jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+URL)));
+        Path path = Paths.get(String.valueOf(getClass().getResource("/images/"+URL))); 
+       if(Files.exists(path)){
+            jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+URL)));
+       }
     }
     public void clearAll(){
         jTextFieldNombreProducto.setText(null);
