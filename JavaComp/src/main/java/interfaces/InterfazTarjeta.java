@@ -186,8 +186,10 @@ public class InterfazTarjeta extends javax.swing.JDialog {
         if(tarj==null){
             classes.Tarjeta tar=new classes.Tarjeta(getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),getjFormattedTextFieldFechaCaducidad());
             tarj=tar;
+            JOptionPane.showMessageDialog(this, "Su tarjeta ha sido guardada con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }else{
         tarj.modificaTarjeta(tarj,getjTextFieldTitularCuenta(),getjFormattedTextFieldNumero(),getjFormattedTextFieldFechaCaducidad());
+        JOptionPane.showMessageDialog(this, "Su tarjeta ha sido guardada con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
         objcli.setTarjeta(tarj);
         UtilRegistro.guardarDatos();

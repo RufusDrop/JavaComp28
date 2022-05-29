@@ -75,8 +75,9 @@ public class Usuario extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(usuarioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonGuardarCambios, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -91,14 +92,16 @@ public class Usuario extends javax.swing.JDialog {
     String nombre=usuarioPanel.getjTextFieldNombre();
     String correo=usuarioPanel.getjTextFieldCorreoElectronico();
     String clave=usuarioPanel.getjTextFieldClave();
-    String direc=usuarioPanel.getjTextFieldDireccion();
+    String calle=usuarioPanel.getjTextFieldCalle();
+    int numero=usuarioPanel.getjFormattedTextFieldNumero();
+    String extra=usuarioPanel.getjTextFieldExtra();
     String ciudad=usuarioPanel.getjTextFieldCiudad();
     int codigoPostal=usuarioPanel.getjFormattedTextFieldCodigoPostal();
     int telefono=usuarioPanel.getjFormattedTextFieldTelefono();
     String cif=usuarioPanel.getjTextFieldCIF();
     String web=usuarioPanel.getjTextFieldWeb();
     String dni=usuarioPanel.getjTextFieldDNI();
-    Direccion direccion =new Direccion(direc,codigoPostal,ciudad);
+    Direccion direccion =new Direccion(calle,numero,extra,codigoPostal,ciudad);
     //Llama al metodo modificaCliente para modificar la informacion de este
     if(UtilRegistro.modificaCliente(objcli, nombre, correo, clave, direccion, telefono, dni, cif, web)){
         JOptionPane.showMessageDialog(this, "Cambios guardados con éxito.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);

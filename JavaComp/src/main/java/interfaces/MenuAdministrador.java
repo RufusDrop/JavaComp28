@@ -183,7 +183,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
         usuarioPanel1.setjTextFieldNombre(cliente.getNombre());
         usuarioPanel1.setjTextFieldCorreoElectronico(cliente.getCorreo());
         usuarioPanel1.setjTextFieldContrasena("**************");
-        usuarioPanel1.setjTextFieldDireccion(cliente.getDireccion().getDireccion());
+        usuarioPanel1.setjTextFieldCalle(cliente.getDireccion().getDireccion());
         usuarioPanel1.setjFormattedTextFieldTelefono(cliente.getTelefono());
         usuarioPanel1.setjTextFieldCiudad(cliente.getDireccion().getCiudad());
         usuarioPanel1.setjFormattedTextFieldCodigoPostal(cliente.getDireccion().getCodigoPostal());

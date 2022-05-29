@@ -89,13 +89,13 @@ public class Registro extends javax.swing.JDialog {
         jLabelNombre = new javax.swing.JLabel();
         jLabelCorreoElectronico = new javax.swing.JLabel();
         jLabelContrasena = new javax.swing.JLabel();
-        jLabelDireccion = new javax.swing.JLabel();
+        jLabelCalle = new javax.swing.JLabel();
         jLabelTelefono = new javax.swing.JLabel();
         jTextFieldDNI = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
         jTextFieldContrasena = new javax.swing.JTextField();
-        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldCalle = new javax.swing.JTextField();
         jToggleButtonGuardar = new javax.swing.JToggleButton();
         jLabelTieneCuentaPregunta = new javax.swing.JLabel();
         jButtonLogIn = new javax.swing.JButton();
@@ -109,6 +109,10 @@ public class Registro extends javax.swing.JDialog {
         jLabelCiudad = new javax.swing.JLabel();
         jLabelCodigoPostal = new javax.swing.JLabel();
         jFormattedTextFieldCodigoPostal = new javax.swing.JFormattedTextField();
+        jLabelNumero = new javax.swing.JLabel();
+        jTextFieldExtra = new javax.swing.JTextField();
+        jLabelExtra = new javax.swing.JLabel();
+        jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -124,8 +128,8 @@ public class Registro extends javax.swing.JDialog {
 
         jLabelContrasena.setText("Contraseña:");
 
-        jLabelDireccion.setText("Direccion:");
-        jLabelDireccion.setToolTipText("Introducir tipo de vía, nombre de la vía, número, puerta, letra... ");
+        jLabelCalle.setText("Calle:");
+        jLabelCalle.setToolTipText("Introducir tipo de vía, nombre de la vía, número, puerta, letra... ");
 
         jLabelTelefono.setText("Teléfono:");
 
@@ -143,7 +147,7 @@ public class Registro extends javax.swing.JDialog {
 
         jTextFieldContrasena.setToolTipText("Por seguridad usar 8 caracteres como mínimo con letras, numeros y caracteres especiales.");
 
-        jTextFieldDireccion.setToolTipText("Introducir tipo de vía, nombre de la vía, número, puerta, letra...\n");
+        jTextFieldCalle.setToolTipText("Introducir tipo de vía, nombre de la vía, número, puerta, letra...\n");
 
         jToggleButtonGuardar.setText("GUARDAR");
         jToggleButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -194,58 +198,73 @@ public class Registro extends javax.swing.JDialog {
 
         jFormattedTextFieldCodigoPostal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
 
+        jLabelNumero.setText("Número:");
+
+        jLabelExtra.setText("Letra, piso, puerta...");
+
+        jFormattedTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldNumeroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCorreoElectronico)
+                    .addComponent(jLabelContrasena)
+                    .addComponent(jLabelCalle)
+                    .addComponent(jLabelTelefono)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jLabelCodigoPostal)
+                    .addComponent(jLabelCiudad)
+                    .addComponent(jLabelWeb)
+                    .addComponent(jLabelTieneCuentaPregunta)
+                    .addComponent(jLabelNumero)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelCIF)
+                            .addComponent(jLabelTipoDeUsuario)
+                            .addComponent(jLabelDNI)))
+                    .addComponent(jLabelExtra))
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jButtonLogIn, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jTextFieldWeb, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                    .addComponent(jComboBoxEmpresaParticular, 0, 130, Short.MAX_VALUE)
+                    .addComponent(jTextFieldCIF)
+                    .addComponent(jTextFieldNombre)
+                    .addComponent(jTextFieldCorreoElectronico)
+                    .addComponent(jTextFieldContrasena)
+                    .addComponent(jTextFieldCalle)
+                    .addComponent(jFormattedTextFieldTelefono)
+                    .addComponent(jTextFieldCiudad)
+                    .addComponent(jFormattedTextFieldCodigoPostal)
+                    .addComponent(jTextFieldExtra)
+                    .addComponent(jFormattedTextFieldNumero))
+                .addGap(24, 24, 24))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabelRegistro))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
+                        .addGap(117, 117, 117)
                         .addComponent(jToggleButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCorreoElectronico)
-                    .addComponent(jLabelContrasena)
-                    .addComponent(jLabelDireccion)
-                    .addComponent(jLabelTelefono)
-                    .addComponent(jLabelTipoDeUsuario)
-                    .addComponent(jLabelNombre)
-                    .addComponent(jLabelCodigoPostal)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabelCIF)
-                        .addComponent(jLabelDNI))
-                    .addComponent(jLabelCiudad)
-                    .addComponent(jLabelWeb)
-                    .addComponent(jLabelTieneCuentaPregunta))
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldWeb, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                        .addComponent(jComboBoxEmpresaParticular, 0, 130, Short.MAX_VALUE)
-                        .addComponent(jTextFieldCIF)
-                        .addComponent(jTextFieldDNI)
-                        .addComponent(jTextFieldNombre)
-                        .addComponent(jTextFieldCorreoElectronico)
-                        .addComponent(jTextFieldContrasena)
-                        .addComponent(jTextFieldDireccion)
-                        .addComponent(jFormattedTextFieldTelefono)
-                        .addComponent(jTextFieldCiudad)
-                        .addComponent(jFormattedTextFieldCodigoPostal)))
-                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabelRegistro)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTipoDeUsuario)
                     .addComponent(jComboBoxEmpresaParticular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -259,43 +278,51 @@ public class Registro extends javax.swing.JDialog {
                     .addComponent(jTextFieldDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelNombre))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCorreoElectronico)
                     .addComponent(jTextFieldCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContrasena)
                     .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTelefono)
                     .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDireccion)
-                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelCalle)
+                    .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNumero)
+                    .addComponent(jFormattedTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelExtra)
+                    .addComponent(jTextFieldExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCiudad)
                     .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodigoPostal)
                     .addComponent(jFormattedTextFieldCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelWeb)
                     .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addComponent(jToggleButtonGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTieneCuentaPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonLogIn))
-                .addGap(42, 42, 42))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,14 +358,17 @@ public class Registro extends javax.swing.JDialog {
                  jTextFieldNombre.getText().isBlank()||
                  jTextFieldCorreoElectronico.getText().isBlank() ||
                  jTextFieldContrasena.getText().isBlank()|| 
-                 jTextFieldDireccion.getText().isBlank()||
+                 jTextFieldCalle.getText().isBlank()||
+                 jTextFieldExtra.getText().isBlank()||
+                 jFormattedTextFieldNumero.getText().isBlank()||
                  jFormattedTextFieldTelefono.getText().isBlank()||
                  jFormattedTextFieldCodigoPostal.getText().isBlank()||
-                 jTextFieldCiudad.getText().isBlank())
-                 
-         { 
-              JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
-        }
+                 jTextFieldCiudad.getText().isBlank()||
+                 jFormattedTextFieldNumero.getText().isBlank()){
+        
+                 JOptionPane.showMessageDialog(this, "Rellena todos los campos", "Error", JOptionPane.WARNING_MESSAGE);
+          }
+        
         else
         if(tipoDeUsuario=="Particular" && jTextFieldDNI.getText().contains(" ")){  //Luego se comprueba que el dni sea correcto
                 JOptionPane.showMessageDialog(this, "El DNI no puede tener espacios", "Error", JOptionPane.WARNING_MESSAGE);
@@ -380,16 +410,17 @@ public class Registro extends javax.swing.JDialog {
          * Se atribuyen variables a la informacion introducida por el usuario
          */
         try {
-            String direccion = jTextFieldDireccion.getText();
+            String calle = jTextFieldCalle.getText();
             String ciudad = jTextFieldCiudad.getText();
             int codigoPostal =  Integer.parseInt(jFormattedTextFieldCodigoPostal.getText());
-        
+            int numero= Integer.parseInt(jFormattedTextFieldNumero.getText());
+            String extra = jTextFieldExtra.getText();
             String nombre = jTextFieldNombre.getText();
             String correo = jTextFieldCorreoElectronico.getText();
             String clave = jTextFieldContrasena.getText();
             int telefono = Integer.parseInt(jFormattedTextFieldTelefono.getText());
             
-            dir = new Direccion(direccion,codigoPostal,ciudad);
+            dir = new Direccion(calle,numero,extra,codigoPostal,ciudad);
             
             if (tipoDeUsuario.equals("Empresa")) {
                 String cif = jTextFieldCIF.getText();
@@ -463,6 +494,10 @@ public class Registro extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldTelefonoActionPerformed
 
+    private void jFormattedTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldNumeroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -517,26 +552,30 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JButton jButtonLogIn;
     private javax.swing.JComboBox<String> jComboBoxEmpresaParticular;
     private javax.swing.JFormattedTextField jFormattedTextFieldCodigoPostal;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNumero;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelCIF;
+    private javax.swing.JLabel jLabelCalle;
     private javax.swing.JLabel jLabelCiudad;
     private javax.swing.JLabel jLabelCodigoPostal;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelDNI;
-    private javax.swing.JLabel jLabelDireccion;
+    private javax.swing.JLabel jLabelExtra;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelRegistro;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JLabel jLabelTieneCuentaPregunta;
     private javax.swing.JLabel jLabelTipoDeUsuario;
     private javax.swing.JLabel jLabelWeb;
     private javax.swing.JTextField jTextFieldCIF;
+    private javax.swing.JTextField jTextFieldCalle;
     private javax.swing.JTextField jTextFieldCiudad;
     private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     private javax.swing.JTextField jTextFieldDNI;
-    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldExtra;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldWeb;
     private javax.swing.JToggleButton jToggleButtonGuardar;

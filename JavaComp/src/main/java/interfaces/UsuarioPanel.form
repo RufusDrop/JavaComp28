@@ -24,32 +24,43 @@
                   <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelContrasena" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelCalle" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelTipoDeCuenta" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelCIF" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelDNI" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelCodigoPostal" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelNumero" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelExtra" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelCiudad" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelCodigoPostal" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabelWeb" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextFieldWeb" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jTextFieldDNI" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCIF" max="32767" attributes="0"/>
-                      <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCorreoElectronico" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldContrasena" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldDireccion" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jComboBoxTipoUsuario" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextFieldCodigoPostal" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jTextFieldCiudad" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jFormattedTextFieldTelefono" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextFieldDNI" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCIF" max="32767" attributes="0"/>
+                          <Component id="jTextFieldNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldContrasena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCalle" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jComboBoxTipoUsuario" alignment="0" pref="130" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldNumero" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="36" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jTextFieldWeb" pref="130" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldTelefono" pref="130" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldCodigoPostal" pref="130" max="32767" attributes="0"/>
+                          <Component id="jTextFieldCiudad" pref="130" max="32767" attributes="0"/>
+                          <Component id="jTextFieldExtra" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,32 +102,42 @@
                   <Component id="jLabelContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldContrasena" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTextFieldDireccion" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabelDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jLabelCalle" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldCalle" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jFormattedTextFieldNumero" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabelCiudad" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextFieldCiudad" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jTextFieldExtra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelExtra" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextFieldCiudad" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelCodigoPostal" min="-2" max="-2" attributes="0"/>
                   <Component id="jFormattedTextFieldCodigoPostal" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelTelefono" min="-2" max="-2" attributes="0"/>
                   <Component id="jFormattedTextFieldTelefono" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabelWeb" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextFieldWeb" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,7 +164,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldCorreoElectronicoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextFieldDireccion">
+    <Component class="javax.swing.JTextField" name="jTextFieldCalle">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelTelefono">
       <Properties>
@@ -191,7 +212,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="jTextFieldWeb">
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabelDireccion">
+    <Component class="javax.swing.JLabel" name="jLabelCalle">
       <Properties>
         <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
       </Properties>
@@ -241,6 +262,23 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldTelefonoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelNumero">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTextFieldExtra">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelExtra">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Letra, piso, puerta..."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldNumero">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextFieldNumeroActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

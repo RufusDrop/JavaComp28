@@ -7,24 +7,35 @@ public class Direccion implements Serializable {
     private String direccion;
     private int codigoPostal;
     private String ciudad;
+    private int numero;
+    private String extra;
 
-    public Direccion(String calle, int codigoPostal, String ciudad) {
+    public Direccion(String calle, int numero, String extra, int codigoPostal, String ciudad) {
         this.direccion = calle;
+        this.numero= numero;
         this.codigoPostal = codigoPostal;
         this.ciudad = ciudad;
+        this.extra = extra;    
     }
 
     @Override
     public String toString() {
-        return "Direccion{" + "calle=" + direccion + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + '}';
+        return "Direccion{" + "calle=" + direccion + ", numero=" + numero + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", letra, piso, puerta=" + extra + '}';
     }
   
     public String getDireccion() {
         return direccion;
     }
-
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 
     public int getCodigoPostal() {
@@ -42,5 +53,13 @@ public class Direccion implements Serializable {
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
-    
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
 }

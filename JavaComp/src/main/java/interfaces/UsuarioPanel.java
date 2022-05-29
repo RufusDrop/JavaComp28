@@ -41,8 +41,14 @@ public class UsuarioPanel extends javax.swing.JPanel {
     public String getjTextFieldClave(){
         return jTextFieldContrasena.getText();
     }
-    public String getjTextFieldDireccion(){
-        return jTextFieldDireccion.getText();
+    public String getjTextFieldCalle(){
+        return jTextFieldCalle.getText();
+    }
+    public int getjFormattedTextFieldNumero(){
+        return Integer.valueOf(jFormattedTextFieldNumero.getText());
+    }
+    public String getjTextFieldExtra(){
+        return jTextFieldExtra.getText();
     }
     public String getjTextFieldCiudad(){
         return jTextFieldCiudad.getText();
@@ -80,8 +86,14 @@ public class UsuarioPanel extends javax.swing.JPanel {
     public void setjTextFieldContrasena(String txt){
        jTextFieldContrasena.setText(txt);
     }
-    public void setjTextFieldDireccion(String txt){
-        jTextFieldDireccion.setText(txt);
+    public void setjTextFieldCalle(String txt){
+        jTextFieldCalle.setText(txt);
+    }
+    public void setjFormattedTextFieldNumero(int num){
+        jFormattedTextFieldNumero.setText(String.valueOf(num));
+    }
+    public void setjTextFieldExtra(String txt){
+        jTextFieldExtra.setText(txt);
     }
     public void setjTextFieldCiudad(String txt){
         jTextFieldCiudad.setText(txt);
@@ -105,7 +117,9 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jTextFieldNombre.setEditable(false);
         jTextFieldCorreoElectronico.setEditable(false);
         jTextFieldContrasena.setEditable(false);
-        jTextFieldDireccion.setEditable(false);
+        jTextFieldCalle.setEditable(false);
+        jFormattedTextFieldNumero.setEditable(false);
+        jTextFieldExtra.setEditable(false);
         jFormattedTextFieldCodigoPostal.setEditable(false);
         jTextFieldWeb.setEditable(false);
     }
@@ -116,7 +130,9 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jTextFieldNombre.setEditable(true);
         jTextFieldCorreoElectronico.setEditable(true);
         jTextFieldContrasena.setEditable(true);
-        jTextFieldDireccion.setEditable(true);
+        jTextFieldCalle.setEditable(true);
+        jFormattedTextFieldNumero.setEditable(true);
+        jTextFieldExtra.setEditable(true);
         jFormattedTextFieldCodigoPostal.setEditable(true);
         jTextFieldWeb.setEditable(true);
     }
@@ -125,7 +141,9 @@ public class UsuarioPanel extends javax.swing.JPanel {
         setjTextFieldNombre(usuario.getNombre());
         setjTextFieldCorreoElectronico(usuario.getCorreo());
         setjTextFieldContrasena(usuario.getClave());
-        setjTextFieldDireccion(usuario.getDireccion().getDireccion());
+        setjTextFieldCalle(usuario.getDireccion().getDireccion());
+        setjFormattedTextFieldNumero(usuario.getDireccion().getNumero());
+        setjTextFieldExtra(usuario.getDireccion().getExtra());
         setjTextFieldCiudad(usuario.getDireccion().getCiudad());
         setjFormattedTextFieldCodigoPostal(usuario.getDireccion().getCodigoPostal());
         setjFormattedTextFieldTelefono(usuario.getTelefono());
@@ -154,7 +172,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
 
         jComboBoxTipoUsuario = new javax.swing.JComboBox<>();
         jTextFieldCorreoElectronico = new javax.swing.JTextField();
-        jTextFieldDireccion = new javax.swing.JTextField();
+        jTextFieldCalle = new javax.swing.JTextField();
         jLabelTelefono = new javax.swing.JLabel();
         jLabelCorreoElectronico = new javax.swing.JLabel();
         jTextFieldNombre = new javax.swing.JTextField();
@@ -165,7 +183,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jLabelFotoCuenta = new javax.swing.JLabel();
         jTextFieldCIF = new javax.swing.JTextField();
         jTextFieldWeb = new javax.swing.JTextField();
-        jLabelDireccion = new javax.swing.JLabel();
+        jLabelCalle = new javax.swing.JLabel();
         jTextFieldContrasena = new javax.swing.JTextField();
         jLabelTipoDeCuenta = new javax.swing.JLabel();
         jLabelDNI = new javax.swing.JLabel();
@@ -175,6 +193,10 @@ public class UsuarioPanel extends javax.swing.JPanel {
         jLabelCodigoPostal = new javax.swing.JLabel();
         jTextFieldCiudad = new javax.swing.JTextField();
         jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
+        jLabelNumero = new javax.swing.JLabel();
+        jTextFieldExtra = new javax.swing.JTextField();
+        jLabelExtra = new javax.swing.JLabel();
+        jFormattedTextFieldNumero = new javax.swing.JFormattedTextField();
 
         jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empresa", "Particular" }));
         jComboBoxTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +238,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelDireccion.setText("Dirección");
+        jLabelCalle.setText("Dirección");
 
         jLabelTipoDeCuenta.setText("Tipo de cuenta");
 
@@ -243,6 +265,16 @@ public class UsuarioPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabelNumero.setText("Número:");
+
+        jLabelExtra.setText("Letra, piso, puerta...");
+
+        jFormattedTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldNumeroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -255,29 +287,37 @@ public class UsuarioPanel extends javax.swing.JPanel {
                     .addComponent(jLabelNombre)
                     .addComponent(jLabelCorreoElectronico)
                     .addComponent(jLabelContrasena)
-                    .addComponent(jLabelDireccion)
+                    .addComponent(jLabelCalle)
                     .addComponent(jLabelTipoDeCuenta)
                     .addComponent(jLabelCIF)
                     .addComponent(jLabelDNI)
-                    .addComponent(jLabelCodigoPostal)
+                    .addComponent(jLabelNumero)
+                    .addComponent(jLabelExtra)
                     .addComponent(jLabelCiudad)
+                    .addComponent(jLabelCodigoPostal)
                     .addComponent(jLabelTelefono)
                     .addComponent(jLabelWeb))
-                .addGap(104, 104, 104)
+                .addGap(102, 102, 102)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextFieldDNI)
-                        .addComponent(jTextFieldCIF)
-                        .addComponent(jTextFieldNombre)
-                        .addComponent(jTextFieldCorreoElectronico)
-                        .addComponent(jTextFieldContrasena)
-                        .addComponent(jTextFieldDireccion)
-                        .addComponent(jComboBoxTipoUsuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jFormattedTextFieldCodigoPostal)
-                        .addComponent(jTextFieldCiudad)
-                        .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldDNI)
+                            .addComponent(jTextFieldCIF)
+                            .addComponent(jTextFieldNombre)
+                            .addComponent(jTextFieldCorreoElectronico)
+                            .addComponent(jTextFieldContrasena)
+                            .addComponent(jTextFieldCalle)
+                            .addComponent(jComboBoxTipoUsuario, 0, 130, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldNumero))
+                        .addContainerGap(36, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldWeb, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jFormattedTextFieldCodigoPostal, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jTextFieldExtra))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,12 +349,20 @@ public class UsuarioPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelContrasena)
                     .addComponent(jTextFieldContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelDireccion))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelCalle)
+                    .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNumero)
+                    .addComponent(jFormattedTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldExtra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelExtra))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCiudad)
                     .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -329,7 +377,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelWeb)
                     .addComponent(jTextFieldWeb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -382,29 +430,37 @@ public class UsuarioPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldTelefonoActionPerformed
 
+    private void jFormattedTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldNumeroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldNumeroActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
     private javax.swing.JFormattedTextField jFormattedTextFieldCodigoPostal;
+    private javax.swing.JFormattedTextField jFormattedTextFieldNumero;
     private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabelCIF;
+    private javax.swing.JLabel jLabelCalle;
     private javax.swing.JLabel jLabelCiudad;
     private javax.swing.JLabel jLabelCodigoPostal;
     private javax.swing.JLabel jLabelContrasena;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelDNI;
-    private javax.swing.JLabel jLabelDireccion;
+    private javax.swing.JLabel jLabelExtra;
     private javax.swing.JLabel jLabelFotoCuenta;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelTelefono;
     private javax.swing.JLabel jLabelTipoDeCuenta;
     private javax.swing.JLabel jLabelWeb;
     private javax.swing.JTextField jTextFieldCIF;
+    private javax.swing.JTextField jTextFieldCalle;
     private javax.swing.JTextField jTextFieldCiudad;
     private javax.swing.JTextField jTextFieldContrasena;
     private javax.swing.JTextField jTextFieldCorreoElectronico;
     private javax.swing.JTextField jTextFieldDNI;
-    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldExtra;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldWeb;
     // End of variables declaration//GEN-END:variables
