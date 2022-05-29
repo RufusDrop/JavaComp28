@@ -23,6 +23,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabelNombreCuenta.setText(objcli.getNombre()); //Ponemos el nombre del usuario en el menú principal
         jLabelCorreoElectronico.setText(objcli.getCorreo());//Ponemos el correo electronico del usuario en el menú principal
         jScrollPaneProductos.setVisible(false);
+        jPanelProductoSeleccionado.setVisible(false);
             //Inicializo el jListCategorias con todas las categorias selecccionado
             jListCategorias.setSelectionInterval(0, 5); //Desde 0 al numero de categorias
             jButtonCategorias.setText("Todas las categorias");
@@ -56,7 +57,21 @@ public class MainMenu extends javax.swing.JFrame {
         }
         //</editor-fold>
     }
-    public void setProductoSeleccionado(Producto productoSeleccionado){
+    public void mostrarProductoSeleccionado(Producto productoSeleccionado){
+        jScrollPaneProductos.setVisible(false);
+        jPanelProductoSeleccionado.setVisible(true);
+        productoPanelCliente1.setNombreProducto(productoSeleccionado.getTitulo());
+        productoPanelCliente1.setDescripcion(productoSeleccionado.getDescripcion());
+        productoPanelCliente1.setCategoria(productoSeleccionado.getCategoria());
+        productoPanelCliente1.setPrecio(productoSeleccionado.getPrecio());
+        productoPanelCliente1.setFotoProducto(productoSeleccionado.getFotoProducto());
+        productoPanelCliente1.setStock(productoSeleccionado.getStock());
+        productoPanelCliente1.setFechaDeEntrada(productoSeleccionado.getFechaDeEntrada().toString());
+        productoPanelCliente1.setPuntuacion(productoSeleccionado.getOpinionMedia());
+        productoPanelCliente1.setProductoActual(productoSeleccionado);
+        productoPanelCliente1.mostrarOpiniones();
+        productoPanelCliente1.setUnidadesAComprarMax();
+        
         
     }
     
@@ -74,7 +89,7 @@ public class MainMenu extends javax.swing.JFrame {
            
         for (int i = 0; i < productos.size(); i++) {
             interfaces.ProductoPanel productoPanel = new interfaces.ProductoPanel(productos.get(i),this);
-            productoPanel.setBounds(100, 100+(i*260), 1200, 180);
+            productoPanel.setBounds(100, 20+(i*200), 1200, 180);
             alto+=200;
             jPanelProductos.add(productoPanel);
             productoPanel.setVisible(true);
@@ -119,6 +134,8 @@ public class MainMenu extends javax.swing.JFrame {
         jComboBoxTipoBusqueda = new javax.swing.JComboBox<>();
         jButtonBusqueda = new javax.swing.JButton();
         jPanelProductoSeleccionado = new javax.swing.JPanel();
+        productoPanelCliente1 = new interfaces.ProductoPanelCliente();
+        jButtonVolver = new javax.swing.JButton();
         jScrollPaneProductos = new javax.swing.JScrollPane();
         jPanelProductos = new javax.swing.JPanel();
         jLabelErrorBusqueda = new javax.swing.JLabel();
@@ -279,18 +296,37 @@ public class MainMenu extends javax.swing.JFrame {
 
         jLayeredPaneMain.add(jPanelBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 70));
 
+        jButtonVolver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelProductoSeleccionadoLayout = new javax.swing.GroupLayout(jPanelProductoSeleccionado);
         jPanelProductoSeleccionado.setLayout(jPanelProductoSeleccionadoLayout);
         jPanelProductoSeleccionadoLayout.setHorizontalGroup(
             jPanelProductoSeleccionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1370, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProductoSeleccionadoLayout.createSequentialGroup()
+                .addGap(0, 20, Short.MAX_VALUE)
+                .addComponent(productoPanelCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, 1350, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanelProductoSeleccionadoLayout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(jButtonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelProductoSeleccionadoLayout.setVerticalGroup(
             jPanelProductoSeleccionadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addGroup(jPanelProductoSeleccionadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(productoPanelCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButtonVolver)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jLayeredPaneMain.add(jPanelProductoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1370, 640));
+        jLayeredPaneMain.add(jPanelProductoSeleccionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1370, 690));
 
         jScrollPaneProductos.setBackground(new java.awt.Color(0, 0, 51));
         jScrollPaneProductos.setForeground(new java.awt.Color(0, 0, 255));
@@ -320,12 +356,12 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanelProductosLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabelErrorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(485, Short.MAX_VALUE))
+                .addContainerGap(525, Short.MAX_VALUE))
         );
 
         jScrollPaneProductos.setViewportView(jPanelProductos);
 
-        jLayeredPaneMain.add(jScrollPaneProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1370, 650));
+        jLayeredPaneMain.add(jScrollPaneProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1370, 690));
 
         jLabelMainText.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabelMainText.setText("Buenos días _nombre estas son algunas recomendaciones para ti:");
@@ -358,7 +394,9 @@ public class MainMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPaneMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -413,12 +451,18 @@ public class MainMenu extends javax.swing.JFrame {
     private void jButtonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaActionPerformed
         // TODO add your handling code here:
         jScrollPaneProductos.setVisible(true);
-        jListCategorias.setVisible(false);
+        jScrollPaneCategorias.setVisible(false);
         String textoBusqueda = jTextFieldBusqueda.getText();
         String metodoBusqueda = jComboBoxTipoBusqueda.getSelectedItem().toString();
         categoriasSeleccionadas = jListCategorias.getSelectedValuesList();
         mostrarProductos(Manager.BuscarProductos(textoBusqueda, categoriasSeleccionadas,metodoBusqueda));
     }//GEN-LAST:event_jButtonBusquedaActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        // TODO add your handling code here:
+        jScrollPaneProductos.setVisible(true);
+        jPanelProductoSeleccionado.setVisible(false);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -468,6 +512,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCarrito;
     private javax.swing.JButton jButtonCategorias;
     private javax.swing.JButton jButtonCuenta;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBoxTipoBusqueda;
     private javax.swing.JLabel jLabelCorreoElectronico;
     private javax.swing.JLabel jLabelErrorBusqueda;
@@ -483,5 +528,6 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneCategorias;
     private javax.swing.JScrollPane jScrollPaneProductos;
     private javax.swing.JTextField jTextFieldBusqueda;
+    private interfaces.ProductoPanelCliente productoPanelCliente1;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,6 +2,7 @@
 package interfaces;
 
 import classes.Producto;
+import classes.UtilProducto;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -79,7 +80,8 @@ public class ProductoPanel extends javax.swing.JPanel {
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         // TODO add your handling code here:
-        Parent.setProductoSeleccionado(productoBase);
+        Parent.mostrarProductoSeleccionado(productoBase);
+        UtilProducto.productoActual = productoBase;
     }//GEN-LAST:event_formMouseClicked
 
     private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered

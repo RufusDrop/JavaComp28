@@ -1,6 +1,8 @@
 
 package interfaces;
 
+import classes.Opinion;
+
 public class OpinionPanel extends javax.swing.JPanel {
 
     /**
@@ -9,6 +11,12 @@ public class OpinionPanel extends javax.swing.JPanel {
     public OpinionPanel() {
         initComponents();
     }
+    public void MostrarOpinion(Opinion opinion){
+        setjLabelOpinion(opinion.getComentario());
+        setjLabelFecha(opinion.getFechaRealizacion().toString());
+        setPuntuacion(opinion.getCalificacion());
+    }
+    
     public String getjLabelOpinion(){
         return jLabelOpinion.getText();
     }
