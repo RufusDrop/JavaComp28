@@ -23,7 +23,7 @@ public class Direccion implements Serializable {
         return "Direccion{" + "calle=" + direccion + ", numero=" + numero + ", codigoPostal=" + codigoPostal + ", ciudad=" + ciudad + ", letra, piso, puerta=" + extra + '}';
     }
   
-    public String getDireccion() {
+    public String getCalle() {
         return direccion;
     }
     public void setDireccion(String direccion) {

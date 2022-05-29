@@ -141,7 +141,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
         setjTextFieldNombre(usuario.getNombre());
         setjTextFieldCorreoElectronico(usuario.getCorreo());
         setjTextFieldContrasena(usuario.getClave());
-        setjTextFieldCalle(usuario.getDireccion().getDireccion());
+        setjTextFieldCalle(usuario.getDireccion().getCalle());
         setjFormattedTextFieldNumero(usuario.getDireccion().getNumero());
         setjTextFieldExtra(usuario.getDireccion().getExtra());
         setjTextFieldCiudad(usuario.getDireccion().getCiudad());
@@ -238,7 +238,7 @@ public class UsuarioPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabelCalle.setText("Dirección");
+        jLabelCalle.setText("Calle:");
 
         jLabelTipoDeCuenta.setText("Tipo de cuenta");
 
@@ -266,6 +266,12 @@ public class UsuarioPanel extends javax.swing.JPanel {
         });
 
         jLabelNumero.setText("Número:");
+
+        jTextFieldExtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldExtraActionPerformed(evt);
+            }
+        });
 
         jLabelExtra.setText("Letra, piso, puerta...");
 
@@ -433,6 +439,10 @@ public class UsuarioPanel extends javax.swing.JPanel {
     private void jFormattedTextFieldNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldNumeroActionPerformed
+
+    private void jTextFieldExtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldExtraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldExtraActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

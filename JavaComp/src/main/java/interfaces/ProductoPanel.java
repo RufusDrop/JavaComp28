@@ -28,6 +28,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabelDescripcion.setText("\""+producto.getDescripcion()+"\"");
         jLabelPrecio.setText("Precio: "+String.valueOf(producto.getPrecio()));
         jLabelStock.setText("Stock: "+String.valueOf(producto.getStock()));
+        jLabelPuntuacionMedia.setText("Puntuación: "+String.valueOf(producto.getOpinionMedia()));
         jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+producto.getFotoProducto())));
     }
     /**
@@ -44,6 +45,7 @@ public class ProductoPanel extends javax.swing.JPanel {
         jLabelDescripcion = new javax.swing.JLabel();
         jLabelPrecio = new javax.swing.JLabel();
         jLabelStock = new javax.swing.JLabel();
+        jLabelPuntuacionMedia = new javax.swing.JLabel();
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -74,8 +76,12 @@ public class ProductoPanel extends javax.swing.JPanel {
         add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 117, 161, -1));
 
         jLabelStock.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabelStock.setText("Stock: stock");
-        add(jLabelStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(894, 126, 161, -1));
+        jLabelStock.setText("Puntuacion media:");
+        add(jLabelStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 120, 360, -1));
+
+        jLabelPuntuacionMedia.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabelPuntuacionMedia.setText("Stock: stock");
+        add(jLabelPuntuacionMedia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, 161, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
@@ -100,6 +106,7 @@ public class ProductoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelFotoProducto;
     private javax.swing.JLabel jLabelNombreProducto;
     private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelPuntuacionMedia;
     private javax.swing.JLabel jLabelStock;
     // End of variables declaration//GEN-END:variables
 }

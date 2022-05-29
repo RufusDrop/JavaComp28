@@ -161,7 +161,7 @@ public class MenuAdministrador extends javax.swing.JFrame {
                 jPanelUsuarios.setVisible(false);
                 return;
             } else {
-                //jPanelUsuarios.setVisible(true);
+                jPanelUsuarios.setVisible(true);
             }
             //presentamos la primera persona
             if (licliente.hasNext()) {
@@ -183,7 +183,9 @@ public class MenuAdministrador extends javax.swing.JFrame {
         usuarioPanel1.setjTextFieldNombre(cliente.getNombre());
         usuarioPanel1.setjTextFieldCorreoElectronico(cliente.getCorreo());
         usuarioPanel1.setjTextFieldContrasena("**************");
-        usuarioPanel1.setjTextFieldCalle(cliente.getDireccion().getDireccion());
+        usuarioPanel1.setjTextFieldCalle(cliente.getDireccion().getCalle());
+        usuarioPanel1.setjFormattedTextFieldNumero(cliente.getDireccion().getNumero());
+        usuarioPanel1.setjTextFieldExtra(cliente.getDireccion().getExtra());
         usuarioPanel1.setjFormattedTextFieldTelefono(cliente.getTelefono());
         usuarioPanel1.setjTextFieldCiudad(cliente.getDireccion().getCiudad());
         usuarioPanel1.setjFormattedTextFieldCodigoPostal(cliente.getDireccion().getCodigoPostal());

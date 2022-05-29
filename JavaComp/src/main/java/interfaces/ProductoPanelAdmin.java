@@ -142,10 +142,7 @@ public class ProductoPanelAdmin extends javax.swing.JPanel {
         
     }
     public void setFotoProducto(String URL){
-        Path path = Paths.get(String.valueOf(getClass().getResource("/images/"+URL))); 
-       if(Files.exists(path)){
             jLabelFotoProducto.setIcon(new ImageIcon(getClass().getResource("/images/"+URL)));
-       }
     }
     public void clearAll(){
         jTextFieldNombreProducto.setText(null);
